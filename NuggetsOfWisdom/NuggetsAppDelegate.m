@@ -7,12 +7,18 @@
 //
 
 #import "NuggetsAppDelegate.h"
+#import <Parse/Parse.h>
 
 @implementation NuggetsAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [Parse setApplicationId:@"sKtmhxM9qK4VPgdJ8s1speUjACWy49U18mB6BlJY"
+                  clientKey:@"otvNM3uW2f80rhr7abNBA3UIevflfxp0jcTRPhGi"];
+    
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+
     return YES;
 }
 							

@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Nugget.h"
 
 @interface NuggetsFirstViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UITextField *NuggetToAdd;
+@property (weak, nonatomic) IBOutlet UITextField *NuggetToAddSource;
+@property (weak, nonatomic) IBOutlet UITextField *NuggetToAddTags;
+
+- (Nugget *)createNugget:(NSString *)text withSource:(NSString *)source withTags:(NSString *)tags;
 
 @end
