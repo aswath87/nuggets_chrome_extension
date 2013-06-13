@@ -12,6 +12,6 @@
 
 @property (strong, nonatomic) NSString *nugget;
 @property (strong, nonatomic) NSString *source;
-@property (strong, nonatomic) NSString *tag;
+@property (strong, nonatomic) NSArray *tags;
 
 @end

@@ -11,55 +11,55 @@
 
 @interface NuggetsFirstViewController ()
 
-#define UIColorFromRGB(rgbValue) [UIColor \
-colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
-green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
-blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
-
 @end
 
 @implementation NuggetsFirstViewController
 
-- (Nugget *)createNugget:(NSString *)text withSource:(NSString *)source withTags:(NSString *)tag
+- (Nugget *)createNugget:(NSString *)text withSource:(NSString *)source withTags:(NSString *)tags
 {
     Nugget *newNugget = [[Nugget alloc] init];
     newNugget.nugget = text;
     newNugget.source = source;
-    newNugget.tag = tag; //[tags componentsSeparatedByString:@","];
+    newNugget.tags = [tags componentsSeparatedByString:@","];
     return newNugget;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self performSegueWithIdentifier:@"goToRegister" sender: self];
-//    [self.tabBarController setSelectedIndex:2];
-}
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	
-    NSString* boldFontName = @"GillSans-Bold";
-    [self styleNavigationBarWithFontName:boldFontName];
-    
-    NSString* fontName = @"Avenir-Book";
-    
-    self.NuggetToAdd.backgroundColor = [UIColor colorWithRed:237.0/255 green:243.0/255 blue:245.0/255 alpha:1.0f];
-    self.NuggetToAdd.placeholder = @"What did you learn?";
-    self.NuggetToAdd.leftViewMode = UITextFieldViewModeAlways;
-    self.NuggetToAdd.font = [UIFont fontWithName:fontName size:16.0f];
-    
-    self.NuggetToAddSource.backgroundColor = [UIColor colorWithRed:237.0/255 green:243.0/255 blue:245.0/255 alpha:1.0f];
-    self.NuggetToAddSource.placeholder = @"Where? url / person / place";
-    self.NuggetToAddSource.leftViewMode = UITextFieldViewModeAlways;
-    self.NuggetToAddSource.font = [UIFont fontWithName:fontName size:16.0f];
-    
-    self.NuggetToAddTags.backgroundColor = [UIColor colorWithRed:237.0/255 green:243.0/255 blue:245.0/255 alpha:1.0f];
-    self.NuggetToAddTags.placeholder = @"Tags";
-    self.NuggetToAddTags.leftViewMode = UITextFieldViewModeAlways;
-    self.NuggetToAddTags.font = [UIFont fontWithName:fontName size:16.0f];
+    PFUser *currentUser = [PFUser currentUser];
+    if (!currentUser)
+    {
+        [self performSegueWithIdentifier:@"goToRegister" sender: self];
+    }
+    else
+    {
+        NSString* boldFontName = @"GillSans-Bold";
+        [self styleNavigationBarWithFontName:boldFontName];
+        
+        NSString* fontName = @"Avenir-Book";
+        
+        self.NuggetToAdd.backgroundColor = [UIColor colorWithRed:237.0/255 green:243.0/255 blue:245.0/255 alpha:1.0f];
+        self.NuggetToAdd.placeholder = @"What did you learn?";
+        self.NuggetToAdd.leftViewMode = UITextFieldViewModeAlways;
+        self.NuggetToAdd.font = [UIFont fontWithName:fontName size:16.0f];
+        
+        self.NuggetToAddSource.backgroundColor = [UIColor colorWithRed:237.0/255 green:243.0/255 blue:245.0/255 alpha:1.0f];
+        self.NuggetToAddSource.placeholder = @"Where? url / person / place";
+        self.NuggetToAddSource.leftViewMode = UITextFieldViewModeAlways;
+        self.NuggetToAddSource.font = [UIFont fontWithName:fontName size:16.0f];
+        
+        self.NuggetToAddTags.backgroundColor = [UIColor colorWithRed:237.0/255 green:243.0/255 blue:245.0/255 alpha:1.0f];
+        self.NuggetToAddTags.placeholder = @"Tags";
+        self.NuggetToAddTags.leftViewMode = UITextFieldViewModeAlways;
+        self.NuggetToAddTags.font = [UIFont fontWithName:fontName size:16.0f];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,10 +71,11 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 - (void)addNuggetToBasket:(Nugget *)nugget
 {
     PFObject *nuggetObject = [PFObject objectWithClassName:@"Nugget"];
-    [nuggetObject setObject:nugget.nugget forKey:@"Content"];
-    [nuggetObject setObject:nugget.source forKey:@"Source"];
-    [nuggetObject setObject:nugget.tag forKey:@"Tag"];
-    [nuggetObject save];
+    [nuggetObject setObject:[PFUser currentUser] forKey:@"owner"];
+    [nuggetObject setObject:nugget.nugget forKey:@"text"];
+    [nuggetObject setObject:nugget.source forKey:@"source"];
+    [nuggetObject setObject:nugget.tags forKey:@"tags"];
+    [nuggetObject saveEventually];
 }
 
 - (IBAction)addNewNugget:(UIButton *)sender

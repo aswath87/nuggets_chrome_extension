@@ -41,7 +41,6 @@
     dispatch_queue_t loaderQ = dispatch_queue_create("loader", NULL);
     dispatch_async(loaderQ, ^{
         PFQuery *query = [PFQuery queryWithClassName:@"Nugget"];
-        [query whereKey:@"Tag" notEqualTo:@"steve jobs"];
         [query orderByDescending:@"createdAt"];
         NSArray *nuggets = [query findObjects];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -60,17 +59,17 @@
 
 - (NSString *)nuggetForRow:(NSUInteger)row
 {
-    return self.nuggets[row][@"Content"];
+    return self.nuggets[row][@"text"];
 }
 
 - (NSString *)nuggetSourceForRow:(NSUInteger)row
 {
-    return self.nuggets[row][@"Source"];
+    return self.nuggets[row][@"source"];
 }
 
 - (NSString *)nuggetTagForRow:(NSUInteger)row
 {
-    return self.nuggets[row][@"Tag"];
+    return [self.nuggets[row][@"tags"] componentsJoinedByString:@","];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

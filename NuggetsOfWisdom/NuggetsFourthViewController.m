@@ -58,17 +58,17 @@
 
 - (NSString *)nuggetForRow:(NSUInteger)row
 {
-    return self.nuggets[row][@"Content"];
+    return self.nuggets[row][@"text"];
 }
 
 - (NSString *)nuggetSourceForRow:(NSUInteger)row
 {
-    return self.nuggets[row][@"Source"];
+    return self.nuggets[row][@"source"];
 }
 
 - (NSString *)nuggetTagForRow:(NSUInteger)row
 {
-    return self.nuggets[row][@"Tag"];
+    return [self.nuggets[row][@"tags"] componentsJoinedByString:@","];
 }
 
 

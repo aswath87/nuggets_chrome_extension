@@ -18,40 +18,42 @@
 
 @implementation NuggetsSecondViewController
 
-- (void)viewWillAppear:(BOOL)animated
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//}
+
+- (void)viewDidLoad
 {
-    [super viewWillAppear:animated];
+    [super viewDidLoad];
     
     PFUser *currentUser = [PFUser currentUser];
     if (!currentUser)
     {
         [self performSegueWithIdentifier:@"goToRegister" sender: self];
     }
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    [self.stuffToShow1 setHidden:YES];
-    [self.stuffToShow2 setHidden:YES];
-    
-    dispatch_queue_t loaderQ = dispatch_queue_create("loader", NULL);
-    dispatch_async(loaderQ, ^{
-        PFQuery *query = [PFQuery queryWithClassName:@"Nugget"];
-        [query orderByDescending:@"createdAt"];
-        NSArray *nuggets = [query findObjects];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.nuggets = nuggets;
-            self.nuggetIndex = 0;
-            
-            UIColor* neutralColor = [UIColor colorWithWhite:0.4 alpha:1.0];
-            NSString* fontName = @"Avenir-Book";
-            self.nuggetLabel.textColor =  neutralColor;
-            self.nuggetLabel.font =  [UIFont fontWithName:fontName size:16.0f];
-            self.nuggetLabel.text = self.nuggets[self.nuggetIndex][@"Content"];
+    else
+    {
+        [self.stuffToShow1 setHidden:YES];
+        [self.stuffToShow2 setHidden:YES];
+        
+        dispatch_queue_t loaderQ = dispatch_queue_create("loader", NULL);
+        dispatch_async(loaderQ, ^{
+            PFQuery *query = [PFQuery queryWithClassName:@"Nugget"];
+            [query orderByDescending:@"createdAt"];
+            NSArray *nuggets = [query findObjects];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.nuggets = nuggets;
+                self.nuggetIndex = 0;
+                
+                UIColor* neutralColor = [UIColor colorWithWhite:0.4 alpha:1.0];
+                NSString* fontName = @"Avenir-Book";
+                self.nuggetLabel.textColor =  neutralColor;
+                self.nuggetLabel.font =  [UIFont fontWithName:fontName size:16.0f];
+                self.nuggetLabel.text = self.nuggets[self.nuggetIndex][@"text"];
+            });
         });
-    });
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -102,7 +104,7 @@
     }
     else
     {
-        self.nuggetLabel.text = self.nuggets[self.nuggetIndex][@"Content"];
+        self.nuggetLabel.text = self.nuggets[self.nuggetIndex][@"text"];
     }
 }
 

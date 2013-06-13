@@ -49,6 +49,12 @@
     [self.emailTextField becomeFirstResponder];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self.emailTextField becomeFirstResponder];
+}
+
+
 - (void)handleUserLogin:(PFUser *)user error:(NSError *)error {
     NSString *alertTitle, *alertMessage;
     if (user)
