@@ -32,7 +32,9 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.tabBarController setSelectedIndex:2];
+    
+    [self performSegueWithIdentifier:@"goToRegister" sender: self];
+//    [self.tabBarController setSelectedIndex:2];
 }
 
 - (void)viewDidLoad

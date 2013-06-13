@@ -86,11 +86,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "NuggetsOfWisdom/NuggetsSecondViewController.m"
-         timestampString = "392509452.390073"
+         timestampString = "392840542.471405"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "30"
-         endingLineNumber = "30"
+         startingLineNumber = "41"
+         endingLineNumber = "41"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -99,11 +99,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "NuggetsOfWisdom/NuggetsSecondViewController.m"
-         timestampString = "392509452.390073"
+         timestampString = "392840542.471405"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "33"
-         endingLineNumber = "33"
+         startingLineNumber = "44"
+         endingLineNumber = "44"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -112,20 +112,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "NuggetsOfWisdom/NuggetsFirstViewController.m"
-         timestampString = "392510243.167859"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "113"
-         endingLineNumber = "113"
-         landmarkName = "-styleNavigationBarWithFontName:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "NuggetsOfWisdom/NuggetsFirstViewController.m"
-         timestampString = "392510243.167859"
+         timestampString = "392840542.471405"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "115"
@@ -137,12 +124,25 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "NuggetsOfWisdom/NuggetsSecondViewController.m"
-         timestampString = "392509452.390073"
+         filePath = "NuggetsOfWisdom/NuggetsFirstViewController.m"
+         timestampString = "392840542.471405"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "82"
-         endingLineNumber = "82"
+         startingLineNumber = "117"
+         endingLineNumber = "117"
+         landmarkName = "-styleNavigationBarWithFontName:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "NuggetsOfWisdom/NuggetsSecondViewController.m"
+         timestampString = "392840542.471405"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "93"
+         endingLineNumber = "93"
          landmarkName = "-updateNuggetLabel"
          landmarkType = "5">
       </FileBreakpoint>

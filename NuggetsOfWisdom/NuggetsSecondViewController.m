@@ -18,6 +18,17 @@
 
 @implementation NuggetsSecondViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    PFUser *currentUser = [PFUser currentUser];
+    if (!currentUser)
+    {
+        [self performSegueWithIdentifier:@"goToRegister" sender: self];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

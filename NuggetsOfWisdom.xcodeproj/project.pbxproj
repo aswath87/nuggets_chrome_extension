@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7E30722B1763F342000240D6 /* Nugget.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E30722A1763F342000240D6 /* Nugget.m */; };
 		7E30722E176406CC000240D6 /* NuggetsThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E30722D176406CC000240D6 /* NuggetsThirdViewController.m */; };
-		7E307231176407FD000240D6 /* NuggetsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E307230176407FD000240D6 /* NuggetsTableViewCell.m */; };
 		7E30723317641DB4000240D6 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E30723217641DB4000240D6 /* Parse.framework */; };
 		7E30723517641F1F000240D6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E30723417641F1F000240D6 /* AudioToolbox.framework */; };
 		7E30723717641F24000240D6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E30723617641F24000240D6 /* CFNetwork.framework */; };
@@ -42,6 +41,10 @@
 		7E30726F17653D91000240D6 /* PlusSign_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E30726E17653D90000240D6 /* PlusSign_small.png */; };
 		7E30727617653E8F000240D6 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E30727417653E8E000240D6 /* checkmark.png */; };
 		7E30727717653E8F000240D6 /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E30727517653E8E000240D6 /* x.png */; };
+		7E307286176967D5000240D6 /* NuggetsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E307285176967D5000240D6 /* NuggetsTableViewCell.m */; };
+		7E30728D17696804000240D6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E30728817696804000240D6 /* LoginViewController.m */; };
+		7E30728E17696804000240D6 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E30728A17696804000240D6 /* RegisterViewController.m */; };
+		7E30728F17696804000240D6 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E30728C17696804000240D6 /* Utils.m */; };
 		7E774BDF1763D2BD00FEBBC2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E774BDE1763D2BD00FEBBC2 /* UIKit.framework */; };
 		7E774BE11763D2BD00FEBBC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E774BE01763D2BD00FEBBC2 /* Foundation.framework */; };
 		7E774BE31763D2BD00FEBBC2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E774BE21763D2BD00FEBBC2 /* CoreGraphics.framework */; };
@@ -65,8 +68,6 @@
 		7E30722A1763F342000240D6 /* Nugget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Nugget.m; sourceTree = "<group>"; };
 		7E30722C176406CC000240D6 /* NuggetsThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuggetsThirdViewController.h; sourceTree = "<group>"; };
 		7E30722D176406CC000240D6 /* NuggetsThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuggetsThirdViewController.m; sourceTree = "<group>"; };
-		7E30722F176407FD000240D6 /* NuggetsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NuggetsTableViewCell.h; path = ../NuggetsTableViewCell.h; sourceTree = "<group>"; };
-		7E307230176407FD000240D6 /* NuggetsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NuggetsTableViewCell.m; path = ../NuggetsTableViewCell.m; sourceTree = "<group>"; };
 		7E30723217641DB4000240D6 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../../Downloads/Parse.framework; sourceTree = "<group>"; };
 		7E30723417641F1F000240D6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		7E30723617641F24000240D6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -101,6 +102,14 @@
 		7E30726E17653D90000240D6 /* PlusSign_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PlusSign_small.png; path = ../../../Pictures/PlusSign_small.png; sourceTree = "<group>"; };
 		7E30727417653E8E000240D6 /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkmark.png; path = ../../../Pictures/checkmark.png; sourceTree = "<group>"; };
 		7E30727517653E8E000240D6 /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = x.png; path = ../../../Pictures/x.png; sourceTree = "<group>"; };
+		7E307284176967D5000240D6 /* NuggetsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuggetsTableViewCell.h; sourceTree = "<group>"; };
+		7E307285176967D5000240D6 /* NuggetsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuggetsTableViewCell.m; sourceTree = "<group>"; };
+		7E30728717696804000240D6 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		7E30728817696804000240D6 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		7E30728917696804000240D6 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		7E30728A17696804000240D6 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		7E30728B17696804000240D6 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		7E30728C17696804000240D6 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		7E774BDB1763D2BD00FEBBC2 /* NuggetsOfWisdom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NuggetsOfWisdom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E774BDE1763D2BD00FEBBC2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7E774BE01763D2BD00FEBBC2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -153,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				7E774BE41763D2BD00FEBBC2 /* NuggetsOfWisdom */,
+				7E774BE51763D2BD00FEBBC2 /* Supporting Files */,
 				7E774BDD1763D2BD00FEBBC2 /* Frameworks */,
 				7E774BDC1763D2BD00FEBBC2 /* Products */,
 			);
@@ -192,19 +202,24 @@
 				7E774BF61763D2BD00FEBBC2 /* MainStoryboard.storyboard */,
 				7E3072291763F342000240D6 /* Nugget.h */,
 				7E30722A1763F342000240D6 /* Nugget.m */,
+				7E30728717696804000240D6 /* LoginViewController.h */,
+				7E30728817696804000240D6 /* LoginViewController.m */,
+				7E30728917696804000240D6 /* RegisterViewController.h */,
+				7E30728A17696804000240D6 /* RegisterViewController.m */,
 				7E774BF91763D2BD00FEBBC2 /* NuggetsFirstViewController.h */,
 				7E774BFA1763D2BD00FEBBC2 /* NuggetsFirstViewController.m */,
 				7E774C001763D2BD00FEBBC2 /* NuggetsSecondViewController.h */,
 				7E774C011763D2BD00FEBBC2 /* NuggetsSecondViewController.m */,
 				7E30722C176406CC000240D6 /* NuggetsThirdViewController.h */,
 				7E30722D176406CC000240D6 /* NuggetsThirdViewController.m */,
-				7E30722F176407FD000240D6 /* NuggetsTableViewCell.h */,
-				7E307230176407FD000240D6 /* NuggetsTableViewCell.m */,
+				7E307284176967D5000240D6 /* NuggetsTableViewCell.h */,
+				7E307285176967D5000240D6 /* NuggetsTableViewCell.m */,
 				7E30726217651AEB000240D6 /* NuggetsFourthViewController.h */,
 				7E30726317651AEB000240D6 /* NuggetsFourthViewController.m */,
 				7E30726517651B59000240D6 /* NuggetsWithAuthorTableViewCell.h */,
 				7E30726617651B59000240D6 /* NuggetsWithAuthorTableViewCell.m */,
-				7E774BE51763D2BD00FEBBC2 /* Supporting Files */,
+				7E30728B17696804000240D6 /* Utils.h */,
+				7E30728C17696804000240D6 /* Utils.m */,
 			);
 			path = NuggetsOfWisdom;
 			sourceTree = "<group>";
@@ -247,6 +262,7 @@
 				7E774BF41763D2BD00FEBBC2 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			path = NuggetsOfWisdom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,9 +362,12 @@
 				7E774C021763D2BD00FEBBC2 /* NuggetsSecondViewController.m in Sources */,
 				7E30722B1763F342000240D6 /* Nugget.m in Sources */,
 				7E30722E176406CC000240D6 /* NuggetsThirdViewController.m in Sources */,
-				7E307231176407FD000240D6 /* NuggetsTableViewCell.m in Sources */,
 				7E30726417651AEC000240D6 /* NuggetsFourthViewController.m in Sources */,
 				7E30726717651B5A000240D6 /* NuggetsWithAuthorTableViewCell.m in Sources */,
+				7E307286176967D5000240D6 /* NuggetsTableViewCell.m in Sources */,
+				7E30728D17696804000240D6 /* LoginViewController.m in Sources */,
+				7E30728E17696804000240D6 /* RegisterViewController.m in Sources */,
+				7E30728F17696804000240D6 /* Utils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
