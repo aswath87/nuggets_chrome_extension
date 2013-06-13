@@ -102,8 +102,64 @@
     [self performSegueWithIdentifier:@"toRegisterPage" sender:self];
 }
 
+- (void)handlePasswordReset:(BOOL)succeeded error:(NSError *)error {
+    NSString *alertTitle, *alertMessage;
+    if (succeeded && ![[error userInfo] objectForKey:@"error"])
+    {
+        alertTitle = @"Done";
+        alertMessage = [NSString stringWithFormat:@"Instructions to reset your password were sent to %@", self.emailTextField.text];
+    }
+    else
+    {
+        alertTitle = @"Error";
+        alertMessage = @"Sorry, but we were unable to request a password reset.";
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.spinner stopAnimating];
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:alertTitle
+                                                          message:alertMessage
+                                                         delegate:nil
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+        [message show];
+    });
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if([title isEqualToString:@"Send"])
+    {
+        if (![Utils isEmailValidWithString:self.emailTextField.text])
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Email address invalid"
+                                                            message:@"The email you provided appears invalid.  Please check that you entered it correctly."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+        else
+        {
+            [self.spinner startAnimating];
+            dispatch_queue_t downloadQueue = dispatch_queue_create("reset_password", NULL);
+            dispatch_async(downloadQueue, ^{
+                [PFUser requestPasswordResetForEmailInBackground:self.emailTextField.text
+                                                          target:self
+                                                        selector:@selector(handlePasswordReset:error:)];
+            });
+        }
+    }
+}
+
 - (IBAction)forgotPassword:(id)sender
 {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Request password reset"
+                                                      message:[NSString stringWithFormat:@"Send instructions to reset your password to %@?", self.emailTextField.text]
+                                                     delegate:self
+                                            cancelButtonTitle:@"Cancel"
+                                            otherButtonTitles:@"Send",nil];
+    [alert show];
 }
 
 - (IBAction)cancelButtonClicked:(id)sender

@@ -344,14 +344,33 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="QSO-Gc-Ozd">
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="otB-Ty-Eme">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="19" id="4CX-Ee-Jzh"/>
+                                    <constraint firstAttribute="height" constant="25" id="hmE-yq-Xyx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <state key="normal" title="?">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="forgotPassword:" destination="yc9-bU-TR3" eventType="touchUpInside" id="h4d-SY-vYA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="yTw-0T-Fbf" firstAttribute="leading" secondItem="mP0-L7-gWU" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="1kz-wW-h3E"/>
                             <constraint firstItem="QSO-Gc-Ozd" firstAttribute="top" secondItem="mP0-L7-gWU" secondAttribute="top" constant="64" id="7XA-OH-eOA"/>
+                            <constraint firstItem="otB-Ty-Eme" firstAttribute="centerY" secondItem="yTw-0T-Fbf" secondAttribute="centerY" type="default" id="8cZ-0P-DXb"/>
                             <constraint firstAttribute="trailing" secondItem="z1V-tL-7Jh" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="BBg-DH-Z3g"/>
                             <constraint firstItem="QSO-Gc-Ozd" firstAttribute="centerX" secondItem="LRm-2E-bhb" secondAttribute="centerX" type="default" id="Dqq-W7-RO2"/>
                             <constraint firstItem="QSO-Gc-Ozd" firstAttribute="centerX" secondItem="yTw-0T-Fbf" secondAttribute="centerX" type="default" id="Ds7-3C-A2V"/>
+                            <constraint firstAttribute="trailing" secondItem="otB-Ty-Eme" secondAttribute="trailing" constant="24" id="Khf-3R-Jg3"/>
                             <constraint firstItem="LRm-2E-bhb" firstAttribute="top" secondItem="mP0-L7-gWU" secondAttribute="top" constant="101" id="WUS-jy-uBg"/>
                             <constraint firstItem="z1V-tL-7Jh" firstAttribute="top" secondItem="mP0-L7-gWU" secondAttribute="top" constant="13" id="ZPf-3g-aKX"/>
                             <constraint firstItem="z1V-tL-7Jh" firstAttribute="leading" secondItem="mP0-L7-gWU" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="iUR-6s-dRr"/>
