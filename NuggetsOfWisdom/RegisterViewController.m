@@ -58,27 +58,34 @@
     [self.nameTextField becomeFirstResponder];
 }
 
-- (void)handleSignUp:(NSNumber *)result error:(NSError *)error {
-    NSString *alertTitle, *alertMessage;
+- (void)handleSignUp:(NSNumber *)result error:(NSError *)error
+{
     if (!error)
     {
-        alertTitle = @"Woot!";
-        alertMessage = @"You've been registered!";
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
     else
     {
-        alertTitle = @"Error";
-        alertMessage = [[error userInfo] objectForKey:@"error"];
+        NSString *alertMessage;
+        if ([error code] == 202)
+        {
+            alertMessage = [NSString stringWithFormat:@"Looks like %@ is already registered.", self.emailTextField.text];
+        }
+        else
+        {
+            alertMessage = @"Sorry, something went wrong. Try again?";
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.spinner stopAnimating];
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                              message:alertMessage
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles:nil];
+            [message show];
+        });
     }
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.spinner stopAnimating];
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:alertTitle
-                                                          message:alertMessage
-                                                         delegate:nil
-                                                cancelButtonTitle:@"OK"
-                                                otherButtonTitles:nil];
-        [message show];
-    });
 }
 
 - (IBAction)registerButtonClicked:(id)sender

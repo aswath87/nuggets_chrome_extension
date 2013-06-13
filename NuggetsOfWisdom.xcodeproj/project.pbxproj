@@ -45,6 +45,7 @@
 		7E30728D17696804000240D6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E30728817696804000240D6 /* LoginViewController.m */; };
 		7E30728E17696804000240D6 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E30728A17696804000240D6 /* RegisterViewController.m */; };
 		7E30728F17696804000240D6 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E30728C17696804000240D6 /* Utils.m */; };
+		7E307291176A6F56000240D6 /* glyphicons_136_cogwheel.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E307290176A6F56000240D6 /* glyphicons_136_cogwheel.png */; };
 		7E774BDF1763D2BD00FEBBC2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E774BDE1763D2BD00FEBBC2 /* UIKit.framework */; };
 		7E774BE11763D2BD00FEBBC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E774BE01763D2BD00FEBBC2 /* Foundation.framework */; };
 		7E774BE31763D2BD00FEBBC2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E774BE21763D2BD00FEBBC2 /* CoreGraphics.framework */; };
@@ -110,6 +111,7 @@
 		7E30728A17696804000240D6 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		7E30728B17696804000240D6 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		7E30728C17696804000240D6 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		7E307290176A6F56000240D6 /* glyphicons_136_cogwheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = glyphicons_136_cogwheel.png; path = ../../../Downloads/glyphicons_free/glyphicons/png/glyphicons_136_cogwheel.png; sourceTree = "<group>"; };
 		7E774BDB1763D2BD00FEBBC2 /* NuggetsOfWisdom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NuggetsOfWisdom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E774BDE1763D2BD00FEBBC2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7E774BE01763D2BD00FEBBC2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -227,6 +229,7 @@
 		7E774BE51763D2BD00FEBBC2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7E307290176A6F56000240D6 /* glyphicons_136_cogwheel.png */,
 				7E30727417653E8E000240D6 /* checkmark.png */,
 				7E30727517653E8E000240D6 /* x.png */,
 				7E30726E17653D90000240D6 /* PlusSign_small.png */,
@@ -346,6 +349,7 @@
 				7E30726F17653D91000240D6 /* PlusSign_small.png in Resources */,
 				7E30727617653E8F000240D6 /* checkmark.png in Resources */,
 				7E30727717653E8F000240D6 /* x.png in Resources */,
+				7E307291176A6F56000240D6 /* glyphicons_136_cogwheel.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

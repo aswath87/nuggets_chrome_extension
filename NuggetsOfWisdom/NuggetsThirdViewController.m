@@ -25,14 +25,22 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidLoad];
+    [super viewDidAppear:animated];
     
-    [self loadNuggets];
-    [self.refreshControl addTarget:self
-                            action:@selector(loadPlaces)
-                  forControlEvents:UIControlEventValueChanged];
+    PFUser *currentUser = [PFUser currentUser];
+    if (!currentUser)
+    {
+        [self performSegueWithIdentifier:@"goToRegister" sender: self];
+    }
+    else
+    {
+        [self loadNuggets];
+    }
+//    [self.refreshControl addTarget:self
+//                            action:@selector(loadPlaces)
+//                  forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)loadNuggets
@@ -41,6 +49,7 @@
     dispatch_queue_t loaderQ = dispatch_queue_create("loader", NULL);
     dispatch_async(loaderQ, ^{
         PFQuery *query = [PFQuery queryWithClassName:@"Nugget"];
+        [query whereKey:@"owner" equalTo:[PFUser currentUser]];
         [query orderByDescending:@"createdAt"];
         NSArray *nuggets = [query findObjects];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -92,6 +101,12 @@
     cell.nuggetTag.text = [self nuggetTagForRow:indexPath.row];
     
     return cell;
+}
+
+- (IBAction)settingsButtonClicked:(id)sender
+{
+    [PFUser logOut];
+    [self.tabBarController setSelectedIndex:3];
 }
 
 /*

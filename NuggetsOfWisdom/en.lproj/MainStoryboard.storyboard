@@ -10,7 +10,7 @@
             <objects>
                 <viewController title="First" id="2" customClass="NuggetsFirstViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="16">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="What did you learn?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6gU-I2-4P3">
@@ -92,7 +92,7 @@
             <objects>
                 <viewController title="Second" id="3" customClass="NuggetsSecondViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="17">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mgb-Rc-igO">
@@ -189,23 +189,23 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="XQk-Qf-JWQ" secondAttribute="trailing" constant="64" id="06P-p7-LdS"/>
-                            <constraint firstAttribute="bottom" secondItem="HP3-45-S0a" secondAttribute="bottom" constant="105" id="0dr-FI-zoU"/>
+                            <constraint firstItem="GKZ-PG-qcL" firstAttribute="top" secondItem="17" secondAttribute="top" constant="225" id="0ue-0K-FFO"/>
                             <constraint firstItem="XQk-Qf-JWQ" firstAttribute="top" secondItem="jeI-YT-zRv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="5Qw-fd-3e9"/>
-                            <constraint firstItem="dSl-Lv-dJq" firstAttribute="top" secondItem="GKZ-PG-qcL" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Mcv-ep-FHw"/>
+                            <constraint firstItem="dSl-Lv-dJq" firstAttribute="top" secondItem="wxE-eU-leq" secondAttribute="top" type="default" id="DTu-vr-gOe"/>
                             <constraint firstItem="oQY-zk-7OQ" firstAttribute="top" secondItem="17" secondAttribute="top" type="default" id="PMS-ng-fWM"/>
-                            <constraint firstItem="dSl-Lv-dJq" firstAttribute="leading" secondItem="17" secondAttribute="leading" constant="65" id="THG-s9-vQq"/>
                             <constraint firstItem="oQY-zk-7OQ" firstAttribute="trailing" secondItem="17" secondAttribute="trailing" type="default" id="TLZ-Pt-gIW"/>
                             <constraint firstItem="HP3-45-S0a" firstAttribute="centerX" secondItem="dSl-Lv-dJq" secondAttribute="centerX" type="default" id="YFd-xG-TOj"/>
+                            <constraint firstItem="dSl-Lv-dJq" firstAttribute="leading" secondItem="17" secondAttribute="leading" constant="68" id="Zyv-9Q-u4g"/>
                             <constraint firstItem="oQY-zk-7OQ" firstAttribute="leading" secondItem="17" secondAttribute="leading" type="default" id="cGq-Fs-oez"/>
-                            <constraint firstItem="wxE-eU-leq" firstAttribute="top" secondItem="GKZ-PG-qcL" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="hLy-qn-Hso"/>
+                            <constraint firstAttribute="trailing" secondItem="wxE-eU-leq" secondAttribute="trailing" constant="68" id="ckO-Qh-tmb"/>
                             <constraint firstItem="H6q-wS-Tpf" firstAttribute="top" secondItem="17" secondAttribute="top" constant="144" id="l30-vb-Lr4"/>
-                            <constraint firstItem="wxE-eU-leq" firstAttribute="centerX" secondItem="XQk-Qf-JWQ" secondAttribute="centerX" type="default" id="lMz-Z7-1fF"/>
                             <constraint firstItem="H6q-wS-Tpf" firstAttribute="centerX" secondItem="GKZ-PG-qcL" secondAttribute="centerX" type="default" id="mNZ-Ec-kqm"/>
-                            <constraint firstAttribute="bottom" secondItem="dSl-Lv-dJq" secondAttribute="bottom" constant="62" id="q9W-8U-8e4"/>
                             <constraint firstItem="Mgb-Rc-igO" firstAttribute="top" secondItem="17" secondAttribute="top" constant="83" id="qoB-o2-XLg"/>
                             <constraint firstItem="H6q-wS-Tpf" firstAttribute="centerX" secondItem="jeI-YT-zRv" secondAttribute="centerX" type="default" id="rWx-ZW-Hpj"/>
                             <constraint firstItem="H6q-wS-Tpf" firstAttribute="centerX" secondItem="oQY-zk-7OQ" secondAttribute="centerX" type="default" id="rjS-xC-8Ue"/>
+                            <constraint firstAttribute="bottom" secondItem="HP3-45-S0a" secondAttribute="bottom" constant="193" id="syY-8P-een"/>
                             <constraint firstItem="jeI-YT-zRv" firstAttribute="top" secondItem="17" secondAttribute="top" constant="127" id="tuX-Xu-ibS"/>
+                            <constraint firstAttribute="bottom" secondItem="dSl-Lv-dJq" secondAttribute="bottom" constant="150" id="voS-Xc-Vw2"/>
                             <constraint firstItem="Mgb-Rc-igO" firstAttribute="centerX" secondItem="jeI-YT-zRv" secondAttribute="centerX" type="default" id="wWY-Ng-tVk"/>
                         </constraints>
                     </view>
@@ -226,12 +226,12 @@
             </objects>
             <point key="canvasLocation" x="653" y="498"/>
         </scene>
-        <!--Register View Controller-->
+        <!--Register View Controller - Register-->
         <scene sceneID="bhP-Kg-afz">
             <objects>
                 <viewController id="XZG-TI-xKo" customClass="RegisterViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VkW-Ed-akW">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Ex-t1-Czx">
@@ -284,7 +284,7 @@
                             <constraint firstItem="zvY-Lh-Vsu" firstAttribute="top" secondItem="7Ex-t1-Czx" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="uWY-SP-jOj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="6TK-ir-RWg">
+                    <navigationItem key="navigationItem" title="Register" id="6TK-ir-RWg">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="Eep-O7-45e">
                             <connections>
                                 <action selector="cancelButtonClicked:" destination="XZG-TI-xKo" id="0co-Hl-Z0g"/>
@@ -308,12 +308,12 @@
             </objects>
             <point key="canvasLocation" x="1625" y="399"/>
         </scene>
-        <!--Login View Controller-->
+        <!--Login View Controller - Welcome back-->
         <scene sceneID="XZX-lb-zRm">
             <objects>
                 <viewController id="yc9-bU-TR3" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mP0-L7-gWU">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z1V-tL-7Jh">
@@ -378,7 +378,7 @@
                             <constraint firstItem="yTw-0T-Fbf" firstAttribute="top" secondItem="z1V-tL-7Jh" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ypR-aG-dNu"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="BCU-ZK-Mdx">
+                    <navigationItem key="navigationItem" title="Welcome back" id="BCU-ZK-Mdx">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="OXC-Ba-vt1">
                             <connections>
                                 <action selector="cancelButtonClicked:" destination="yc9-bU-TR3" id="pNX-vq-X4C"/>
@@ -406,14 +406,20 @@
             <objects>
                 <tableViewController id="tq5-ue-IIj" customClass="NuggetsThirdViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="82" sectionHeaderHeight="22" sectionFooterHeight="22" id="MfV-jJ-wtT">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <navigationBar key="tableHeaderView" contentMode="scaleToFill" barStyle="blackOpaque" id="EAy-lh-1iA">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
-                                <navigationItem title="Me" id="CkQ-9b-uIB"/>
+                                <navigationItem title="Me" id="CkQ-9b-uIB">
+                                    <barButtonItem key="rightBarButtonItem" image="glyphicons_136_cogwheel.png" style="plain" id="mV7-b5-OCO">
+                                        <connections>
+                                            <action selector="settingsButtonClicked:" destination="tq5-ue-IIj" id="uxS-FV-Fvr"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
                             </items>
                         </navigationBar>
                         <prototypes>
@@ -473,6 +479,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Me" image="111-user.png" id="NvG-dq-6ms"/>
+                    <connections>
+                        <segue destination="lK8-g9-i8d" kind="modal" identifier="goToRegister" modalTransitionStyle="flipHorizontal" id="sJh-o5-dvp"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zcE-Z4-DTz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -483,7 +492,7 @@
             <objects>
                 <tableViewController id="kFy-et-FER" customClass="NuggetsFourthViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="106" sectionHeaderHeight="22" sectionFooterHeight="22" id="qIG-02-5E6">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <navigationBar key="tableHeaderView" contentMode="scaleToFill" barStyle="blackOpaque" id="4iE-wt-rlh">
@@ -617,6 +626,7 @@
         <image name="PlusSign.png" width="588" height="594"/>
         <image name="PlusSign_small.png" width="18" height="18"/>
         <image name="checkmark.png" width="48" height="41"/>
+        <image name="glyphicons_136_cogwheel.png" width="24" height="24"/>
         <image name="glyphicons_340_globe.png" width="24" height="24"/>
         <image name="x.png" width="498" height="591"/>
     </resources>
@@ -624,6 +634,10 @@
         <class className="LoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
             <relationships>
+                <relationship kind="action" name="cancelButtonClicked:"/>
+                <relationship kind="action" name="forgotPassword:"/>
+                <relationship kind="action" name="goToRegisterPage:"/>
+                <relationship kind="action" name="loginButtonClicked:"/>
                 <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
@@ -635,6 +649,7 @@
         <class className="NuggetsFirstViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NuggetsFirstViewController.h"/>
             <relationships>
+                <relationship kind="action" name="addNewNugget:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="NuggetToAdd" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="NuggetToAddSource" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="NuggetToAddTags" candidateClass="UITextField"/>
@@ -646,6 +661,8 @@
         <class className="NuggetsSecondViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NuggetsSecondViewController.h"/>
             <relationships>
+                <relationship kind="action" name="forgotButtonClicked:" candidateClass="UIButton"/>
+                <relationship kind="action" name="rememberedButtonClicked:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="nextButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="nuggetLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="stuffToHide1" candidateClass="UIButton"/>
@@ -667,6 +684,9 @@
         </class>
         <class className="NuggetsThirdViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NuggetsThirdViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="settingsButtonClicked:"/>
+            </relationships>
         </class>
         <class className="NuggetsWithAuthorTableViewCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NuggetsWithAuthorTableViewCell.h"/>
@@ -681,6 +701,9 @@
         <class className="RegisterViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisterViewController.h"/>
             <relationships>
+                <relationship kind="action" name="cancelButtonClicked:"/>
+                <relationship kind="action" name="goToLoginPage:" candidateClass="UIButton"/>
+                <relationship kind="action" name="registerButtonClicked:"/>
                 <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
@@ -691,7 +714,7 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="IdA-jV-cUv"/>

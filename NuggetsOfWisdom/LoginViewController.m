@@ -55,27 +55,24 @@
 }
 
 
-- (void)handleUserLogin:(PFUser *)user error:(NSError *)error {
-    NSString *alertTitle, *alertMessage;
+- (void)handleUserLogin:(PFUser *)user error:(NSError *)error
+{
     if (user)
     {
-        alertTitle = @"Woot!";
-        alertMessage = @"User logged in!";
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
     else
     {
-        alertTitle = @"Email or password invalid";
-        alertMessage = @"The email or password you provided does not appear to be valid.  Please check that you entered them correctly.";
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.spinner stopAnimating];
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Email or password invalid"
+                                                              message:@"The email or password you provided does not appear to be valid.  Please check that you entered them correctly."
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles:nil];
+            [message show];
+        });
     }
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.spinner stopAnimating];
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:alertTitle
-                                                          message:alertMessage
-                                                         delegate:nil
-                                                cancelButtonTitle:@"OK"
-                                                otherButtonTitles:nil];
-        [message show];
-    });
 }
 
 - (IBAction)loginButtonClicked:(id)sender
