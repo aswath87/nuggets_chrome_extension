@@ -80,8 +80,16 @@
 
 - (IBAction)addNewNugget:(UIButton *)sender
 {
-    Nugget *newNugget = [self createNugget:self.NuggetToAdd.text withSource:self.NuggetToAddSource.text withTags:self.NuggetToAddTags.text];
+    Nugget *newNugget = [self createNugget:self.NuggetToAdd.text
+                                withSource:self.NuggetToAddSource.text
+                                  withTags:self.NuggetToAddTags.text];
     [self addNuggetToBasket:newNugget];
+    
+    self.NuggetToAdd.text = @"";
+    self.NuggetToAddSource.text = @"";
+    self.NuggetToAddTags.text = @"";
+    
+    [self.tabBarController setSelectedIndex:2]; // go to Me tab
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -89,9 +97,8 @@
     [self.view endEditing:YES];
 }
 
-- (void)styleNavigationBarWithFontName:(NSString*)navigationTitleFont{
-    
-    
+- (void)styleNavigationBarWithFontName:(NSString*)navigationTitleFont
+{
     CGSize size = CGSizeMake(320, 44);
     UIColor* color = [UIColor colorWithRed:50.0/255 green:102.0/255 blue:147.0/255 alpha:1.0f];
     

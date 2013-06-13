@@ -107,7 +107,7 @@
 - (void)logout
 {
     [PFUser logOut];
-    [self.tabBarController setSelectedIndex:3];
+    [self.tabBarController setSelectedIndex:3]; // go to Discover tab
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
