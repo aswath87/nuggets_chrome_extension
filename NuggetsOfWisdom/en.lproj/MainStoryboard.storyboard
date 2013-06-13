@@ -709,7 +709,6 @@
         <class className="NuggetsThirdViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NuggetsThirdViewController.h"/>
             <relationships>
-                <relationship kind="action" name="settingsButtonClicked:"/>
                 <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationItem"/>
             </relationships>
         </class>
@@ -739,7 +738,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="sJh-o5-dvp"/>
+        <segue reference="r7N-hc-aWL"/>
         <segue reference="9xd-p2-P7m"/>
     </inferredMetricsTieBreakers>
 </document>

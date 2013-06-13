@@ -41,6 +41,7 @@
     dispatch_queue_t loaderQ = dispatch_queue_create("loader", NULL);
     dispatch_async(loaderQ, ^{
         PFQuery *query = [PFQuery queryWithClassName:@"Nugget"];
+        [query includeKey:@"owner"];
         NSArray *nuggets = [query findObjects];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.nuggets = nuggets;
@@ -71,6 +72,12 @@
     return [self.nuggets[row][@"tags"] componentsJoinedByString:@","];
 }
 
+- (NSString *)nuggetOwnerNameForRow:(NSUInteger)row
+{
+    PFUser *owner = self.nuggets[row][@"owner"];
+    return [owner objectForKey:@"displayname"];
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -87,8 +94,8 @@
         cell = [nib objectAtIndex:0];
     }
     
-    cell.authorPic.image = [UIImage imageNamed:@"profile.jpg"];
-    cell.authorName.text = @"Nathan Chan";
+    cell.authorPic.image = [UIImage imageNamed:@"unknown_user.png"];
+    cell.authorName.text = [self nuggetOwnerNameForRow:indexPath.row];
     cell.nuggetSourceLabel.text = [self nuggetSourceForRow:indexPath.row];
     cell.nuggetLabel.text = [self nuggetForRow:indexPath.row];
     cell.nuggetTagsLabel.text = [self nuggetTagForRow:indexPath.row];
