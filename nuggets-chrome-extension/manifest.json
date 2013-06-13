@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+
+  "name": "Nuggets of Wisdom",
+  "description": "This extension allows you to save the nuggets of wisdom from links you browse.",
+  "version": "0.1",
+
+  "browser_action": {
+    "default_icon": "nuggets.png",
+    "default_popup": "nuggets.html"
+  },
+  "permissions": [
+    "tabs",
+    "https://secure.flickr.com/"
+  ]
+}

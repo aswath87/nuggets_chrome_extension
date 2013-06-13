@@ -1,0 +1,101 @@
+body {
+    min-width: 300px;
+    max-width: 300px;
+    width: 300px
+    overflow-x: hidden;
+    font-family: helvetica, sans-serif;
+    font-size: 16px;
+    text-align: left;
+    background-color: rgb(50,102,147);/*#23941F;*/
+    color: #EFEFEF;
+}
+
+#container {
+    margin: 20px;
+    background
+}
+
+h2 {
+    font-family: garamond, serif;
+    font-size: 28px;
+}
+
+h2, p {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+h3 {
+    margin: 19px 0px 10px 0px;
+    text-align: center;
+    font-family: garamond, serif;
+}
+
+hr {
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+
+textarea {
+    min-height: 100px;
+    font-family: helvetica, sans-serif;
+}
+
+input, textarea {
+    width: 255px;
+    margin-bottom: 10px;
+}
+
+img {
+    margin: 4%;
+    border: 1% solid black;
+    vertical-align: middle;
+}
+
+#submit {
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    margin: 10px 100px 20px;
+}
+
+#submit img {
+    position: relative;
+    height: 50px;
+    width: 50px;
+}
+
+.nugget-tile {
+    width: 100%;
+    border-bottom: 1px dotted white;
+    min-height: 20px;
+    overflow: auto;
+    margin-bottom: 10px;
+    padding: 10px 0px;
+}
+
+.nugget-tile > div {
+    display: inline-block;
+    line-height: 120%;
+    margin-bottom: 5px;
+}
+
+.nugget-content {
+    float: left;
+    width: 85%;
+    font-size: 14px;
+}
+
+.nugget-add {
+    float: right;
+    cursor: pointer;
+    width: 20px;
+    text-align: right;
+    height: 20px;
+}
+
+.follow-image {
+    height: 15px;
+    width: 15px;
+}
