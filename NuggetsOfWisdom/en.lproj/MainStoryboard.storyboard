@@ -231,20 +231,20 @@
             <objects>
                 <viewController id="XZG-TI-xKo" customClass="RegisterViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VkW-Ed-akW">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Ex-t1-Czx">
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zvY-Lh-Vsu">
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iFn-Oq-wHD">
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JQL-Ag-4vU">
                                 <constraints>
@@ -269,19 +269,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="7Ex-t1-Czx" firstAttribute="top" secondItem="VkW-Ed-akW" secondAttribute="top" constant="20" symbolic="YES" type="default" id="2oy-JM-xBO"/>
+                            <constraint firstItem="JQL-Ag-4vU" firstAttribute="top" secondItem="VkW-Ed-akW" secondAttribute="top" constant="147" id="B1b-TJ-tFs"/>
                             <constraint firstItem="7kX-Ln-VuG" firstAttribute="centerX" secondItem="iFn-Oq-wHD" secondAttribute="centerX" type="default" id="O8m-mL-2Yk"/>
                             <constraint firstItem="iFn-Oq-wHD" firstAttribute="leading" secondItem="VkW-Ed-akW" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="VYP-8i-u1j"/>
-                            <constraint firstItem="JQL-Ag-4vU" firstAttribute="top" secondItem="VkW-Ed-akW" secondAttribute="top" constant="148" id="XEP-tZ-Wut"/>
                             <constraint firstAttribute="trailing" secondItem="7Ex-t1-Czx" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Zo2-mK-oXQ"/>
                             <constraint firstAttribute="trailing" secondItem="zvY-Lh-Vsu" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="aJn-Tx-9fe"/>
-                            <constraint firstItem="7Ex-t1-Czx" firstAttribute="top" secondItem="VkW-Ed-akW" secondAttribute="top" constant="20" symbolic="YES" type="default" id="bWq-V7-7ex"/>
                             <constraint firstAttribute="trailing" secondItem="iFn-Oq-wHD" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ee4-7J-ZqE"/>
                             <constraint firstItem="7kX-Ln-VuG" firstAttribute="top" secondItem="VkW-Ed-akW" secondAttribute="top" constant="83" id="ehe-fd-OQE"/>
                             <constraint firstItem="7Ex-t1-Czx" firstAttribute="leading" secondItem="VkW-Ed-akW" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="k7D-xE-lxJ"/>
                             <constraint firstItem="JQL-Ag-4vU" firstAttribute="centerX" secondItem="iFn-Oq-wHD" secondAttribute="centerX" type="default" id="l1Q-M5-6Nt"/>
                             <constraint firstItem="zvY-Lh-Vsu" firstAttribute="leading" secondItem="VkW-Ed-akW" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="rNk-Mt-pKS"/>
                             <constraint firstItem="iFn-Oq-wHD" firstAttribute="top" secondItem="zvY-Lh-Vsu" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="tQg-tz-xa2"/>
-                            <constraint firstItem="zvY-Lh-Vsu" firstAttribute="top" secondItem="7Ex-t1-Czx" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="uWY-SP-jOj"/>
+                            <constraint firstItem="zvY-Lh-Vsu" firstAttribute="top" secondItem="7Ex-t1-Czx" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="xcx-e1-KiW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Register" id="6TK-ir-RWg">
@@ -313,23 +313,23 @@
             <objects>
                 <viewController id="yc9-bU-TR3" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mP0-L7-gWU">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z1V-tL-7Jh">
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yTw-0T-Fbf">
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRm-2E-bhb">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="7HI-DL-yoQ"/>
                                     <constraint firstAttribute="width" constant="151" id="GDt-wD-j0l"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <state key="normal" title="Sign up for an account">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -365,17 +365,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="yTw-0T-Fbf" firstAttribute="leading" secondItem="mP0-L7-gWU" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="1kz-wW-h3E"/>
-                            <constraint firstItem="QSO-Gc-Ozd" firstAttribute="top" secondItem="mP0-L7-gWU" secondAttribute="top" constant="64" id="7XA-OH-eOA"/>
-                            <constraint firstItem="otB-Ty-Eme" firstAttribute="centerY" secondItem="yTw-0T-Fbf" secondAttribute="centerY" type="default" id="8cZ-0P-DXb"/>
+                            <constraint firstItem="z1V-tL-7Jh" firstAttribute="top" secondItem="mP0-L7-gWU" secondAttribute="top" constant="20" symbolic="YES" type="default" id="7Wh-BG-yG1"/>
+                            <constraint firstItem="otB-Ty-Eme" firstAttribute="centerY" secondItem="yTw-0T-Fbf" secondAttribute="centerY" type="default" id="83a-sS-2SM"/>
                             <constraint firstAttribute="trailing" secondItem="z1V-tL-7Jh" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="BBg-DH-Z3g"/>
-                            <constraint firstItem="QSO-Gc-Ozd" firstAttribute="centerX" secondItem="LRm-2E-bhb" secondAttribute="centerX" type="default" id="Dqq-W7-RO2"/>
-                            <constraint firstItem="QSO-Gc-Ozd" firstAttribute="centerX" secondItem="yTw-0T-Fbf" secondAttribute="centerX" type="default" id="Ds7-3C-A2V"/>
+                            <constraint firstItem="LRm-2E-bhb" firstAttribute="centerX" secondItem="yTw-0T-Fbf" secondAttribute="centerX" type="default" id="Evh-51-vRO"/>
+                            <constraint firstItem="LRm-2E-bhb" firstAttribute="top" secondItem="mP0-L7-gWU" secondAttribute="top" constant="109" id="IFP-eg-pAc"/>
                             <constraint firstAttribute="trailing" secondItem="otB-Ty-Eme" secondAttribute="trailing" constant="24" id="Khf-3R-Jg3"/>
-                            <constraint firstItem="LRm-2E-bhb" firstAttribute="top" secondItem="mP0-L7-gWU" secondAttribute="top" constant="101" id="WUS-jy-uBg"/>
-                            <constraint firstItem="z1V-tL-7Jh" firstAttribute="top" secondItem="mP0-L7-gWU" secondAttribute="top" constant="13" id="ZPf-3g-aKX"/>
+                            <constraint firstItem="QSO-Gc-Ozd" firstAttribute="top" secondItem="mP0-L7-gWU" secondAttribute="top" constant="44" id="TZg-oe-IRo"/>
+                            <constraint firstItem="yTw-0T-Fbf" firstAttribute="top" secondItem="z1V-tL-7Jh" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="iC2-eL-Oyc"/>
                             <constraint firstItem="z1V-tL-7Jh" firstAttribute="leading" secondItem="mP0-L7-gWU" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="iUR-6s-dRr"/>
+                            <constraint firstItem="QSO-Gc-Ozd" firstAttribute="centerX" secondItem="yTw-0T-Fbf" secondAttribute="centerX" type="default" id="mAF-8j-OC9"/>
                             <constraint firstAttribute="trailing" secondItem="yTw-0T-Fbf" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="qgu-t5-lCi"/>
-                            <constraint firstItem="yTw-0T-Fbf" firstAttribute="top" secondItem="z1V-tL-7Jh" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ypR-aG-dNu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Welcome back" id="BCU-ZK-Mdx">
@@ -399,32 +399,19 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UY4-Y8-CEN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2153" y="399"/>
+            <point key="canvasLocation" x="2011" y="399"/>
         </scene>
-        <!--Nuggets Third View Controller - Me-->
+        <!--Nuggets Third View Controller-->
         <scene sceneID="JSy-4v-m5f">
             <objects>
                 <tableViewController id="tq5-ue-IIj" customClass="NuggetsThirdViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="82" sectionHeaderHeight="22" sectionFooterHeight="22" id="MfV-jJ-wtT">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" barStyle="blackOpaque" id="EAy-lh-1iA">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="Me" id="CkQ-9b-uIB">
-                                    <barButtonItem key="rightBarButtonItem" image="glyphicons_136_cogwheel.png" style="plain" id="mV7-b5-OCO">
-                                        <connections>
-                                            <action selector="settingsButtonClicked:" destination="tq5-ue-IIj" id="uxS-FV-Fvr"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </navigationItem>
-                            </items>
-                        </navigationBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NuggetCell" rowHeight="82" id="cGw-Ly-YGP" customClass="NuggetsTableViewCell">
-                                <rect key="frame" x="0.0" y="66" width="320" height="82"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="82"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
@@ -478,14 +465,21 @@
                             <outlet property="delegate" destination="tq5-ue-IIj" id="c17-5E-WbO"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Me" image="111-user.png" id="NvG-dq-6ms"/>
+                    <navigationItem key="navigationItem" id="yth-Xq-b8f">
+                        <barButtonItem key="rightBarButtonItem" image="glyphicons_136_cogwheel.png" id="mR0-Ja-z4e">
+                            <connections>
+                                <action selector="settingsButtonClicked:" destination="tq5-ue-IIj" id="Zk9-LU-2g7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="navigationBar" destination="yth-Xq-b8f" id="yvB-ga-FIp"/>
                         <segue destination="lK8-g9-i8d" kind="modal" identifier="goToRegister" modalTransitionStyle="flipHorizontal" id="sJh-o5-dvp"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zcE-Z4-DTz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="656" y="1254"/>
+            <point key="canvasLocation" x="1086" y="1254"/>
         </scene>
         <!--Nuggets Fourth View Controller - Discover-->
         <scene sceneID="8dY-OC-QT7">
@@ -593,7 +587,7 @@
                     <connections>
                         <segue destination="2" kind="relationship" relationship="viewControllers" id="26"/>
                         <segue destination="3" kind="relationship" relationship="viewControllers" id="27"/>
-                        <segue destination="tq5-ue-IIj" kind="relationship" relationship="viewControllers" id="B22-u1-6B7"/>
+                        <segue destination="mQ5-oI-qgi" kind="relationship" relationship="viewControllers" id="B22-u1-6B7"/>
                         <segue destination="kFy-et-FER" kind="relationship" relationship="viewControllers" id="x4Q-Za-noP"/>
                     </connections>
                 </tabBarController>
@@ -619,6 +613,25 @@
             </objects>
             <point key="canvasLocation" x="1099" y="399"/>
         </scene>
+        <!--Navigation Controller - Me-->
+        <scene sceneID="kfR-pX-I9C">
+            <objects>
+                <navigationController id="mQ5-oI-qgi" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Me" image="111-user.png" id="NvG-dq-6ms"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5L3-yE-bOV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="tq5-ue-IIj" kind="relationship" relationship="rootViewController" id="NSB-bo-wBA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wVd-aL-5l2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="656" y="1254"/>
+        </scene>
     </scenes>
     <resources>
         <image name="03-loopback.png" width="32" height="22"/>
@@ -634,10 +647,6 @@
         <class className="LoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
             <relationships>
-                <relationship kind="action" name="cancelButtonClicked:"/>
-                <relationship kind="action" name="forgotPassword:"/>
-                <relationship kind="action" name="goToRegisterPage:"/>
-                <relationship kind="action" name="loginButtonClicked:"/>
                 <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
@@ -649,7 +658,6 @@
         <class className="NuggetsFirstViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NuggetsFirstViewController.h"/>
             <relationships>
-                <relationship kind="action" name="addNewNugget:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="NuggetToAdd" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="NuggetToAddSource" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="NuggetToAddTags" candidateClass="UITextField"/>
@@ -686,6 +694,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NuggetsThirdViewController.h"/>
             <relationships>
                 <relationship kind="action" name="settingsButtonClicked:"/>
+                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationItem"/>
             </relationships>
         </class>
         <class className="NuggetsWithAuthorTableViewCell" superclassName="UITableViewCell">
@@ -701,9 +710,6 @@
         <class className="RegisterViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisterViewController.h"/>
             <relationships>
-                <relationship kind="action" name="cancelButtonClicked:"/>
-                <relationship kind="action" name="goToLoginPage:" candidateClass="UIButton"/>
-                <relationship kind="action" name="registerButtonClicked:"/>
                 <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
@@ -717,7 +723,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="IdA-jV-cUv"/>
-        <segue reference="Q37-yS-HJU"/>
+        <segue reference="sJh-o5-dvp"/>
+        <segue reference="9xd-p2-P7m"/>
     </inferredMetricsTieBreakers>
 </document>

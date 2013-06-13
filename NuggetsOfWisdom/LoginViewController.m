@@ -34,15 +34,16 @@
     self.emailTextField.backgroundColor = [UIColor whiteColor];
     self.emailTextField.font = [UIFont fontWithName:fontName size:16.0f];
     
-    UIView* leftView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 20)];
+    UIView* leftView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 20)];
     self.emailTextField.leftViewMode = UITextFieldViewModeAlways;
     self.emailTextField.leftView = leftView1;
     
     self.passwordTextField.backgroundColor = [UIColor whiteColor];
     self.passwordTextField.font = [UIFont fontWithName:fontName size:16.0f];
     self.passwordTextField.secureTextEntry = YES;
+    self.passwordTextField.delegate = self;
     
-    UIView* leftView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 20)];
+    UIView* leftView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 20)];
     self.passwordTextField.leftViewMode = UITextFieldViewModeAlways;
     self.passwordTextField.leftView = leftView2;
     
@@ -75,7 +76,7 @@
     }
 }
 
-- (IBAction)loginButtonClicked:(id)sender
+- (void)attemptLogin
 {
     if ([self.emailTextField.text length] == 0 || [self.passwordTextField.text length] == 0)
     {
@@ -97,7 +98,17 @@
                                          selector:@selector(handleUserLogin:error:)];
         });
     }
-    return;
+}
+
+- (IBAction)loginButtonClicked:(id)sender
+{
+    [self attemptLogin];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self attemptLogin];
+    return YES;
 }
 
 - (IBAction)goToRegisterPage:(id)sender
@@ -157,12 +168,24 @@
 
 - (IBAction)forgotPassword:(id)sender
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Request password reset"
-                                                      message:[NSString stringWithFormat:@"Send instructions to reset your password to %@?", self.emailTextField.text]
-                                                     delegate:self
-                                            cancelButtonTitle:@"Cancel"
-                                            otherButtonTitles:@"Send",nil];
-    [alert show];
+    if ([Utils isEmailValidWithString:self.emailTextField.text])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Request password reset"
+                                                          message:[NSString stringWithFormat:@"Request password reset for %@?", self.emailTextField.text]
+                                                         delegate:self
+                                                cancelButtonTitle:@"Cancel"
+                                                otherButtonTitles:@"Send",nil];
+        [alert show];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Email address invalid"
+                                                        message:@"The email you provided appears invalid.  Please check that you entered it correctly."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 - (IBAction)cancelButtonClicked:(id)sender

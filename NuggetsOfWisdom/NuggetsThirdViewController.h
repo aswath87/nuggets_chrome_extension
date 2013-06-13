@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NuggetsThirdViewController : UITableViewController
+@interface NuggetsThirdViewController : UITableViewController <UIAlertViewDelegate>
 
 @property (nonatomic, strong) NSArray *nuggets;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 
 @end

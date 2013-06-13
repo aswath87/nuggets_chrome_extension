@@ -36,6 +36,7 @@
     }
     else
     {
+        self.navigationBar.title = [currentUser valueForKey:@"displayname"];
         [self loadNuggets];
     }
 //    [self.refreshControl addTarget:self
@@ -103,10 +104,29 @@
     return cell;
 }
 
-- (IBAction)settingsButtonClicked:(id)sender
+- (void)logout
 {
     [PFUser logOut];
     [self.tabBarController setSelectedIndex:3];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if([title isEqualToString:@"Logout"])
+    {
+        [self logout];
+    }
+}
+
+- (IBAction)settingsButtonClicked:(id)sender
+{
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Logout"
+                                                      message:@"Are you sure you want to logout?"
+                                                     delegate:self
+                                            cancelButtonTitle:@"Cancel"
+                                            otherButtonTitles:@"Logout",nil];
+    [message show];
 }
 
 /*

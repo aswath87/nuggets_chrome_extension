@@ -33,14 +33,14 @@
     self.nameTextField.backgroundColor = [UIColor whiteColor];
     self.nameTextField.font = [UIFont fontWithName:fontName size:16.0f];
     
-    UIView* leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 20)];
+    UIView* leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 20)];
     self.nameTextField.leftViewMode = UITextFieldViewModeAlways;
     self.nameTextField.leftView = leftView;
     
     self.emailTextField.backgroundColor = [UIColor whiteColor];
     self.emailTextField.font = [UIFont fontWithName:fontName size:16.0f];
     
-    UIView* leftView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 20)];
+    UIView* leftView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 20)];
     self.emailTextField.leftViewMode = UITextFieldViewModeAlways;
     self.emailTextField.leftView = leftView1;
     
@@ -48,7 +48,7 @@
     self.passwordTextField.font = [UIFont fontWithName:fontName size:16.0f];
     self.passwordTextField.secureTextEntry = YES;
     
-    UIView* leftView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 20)];
+    UIView* leftView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 20)];
     self.passwordTextField.leftViewMode = UITextFieldViewModeAlways;
     self.passwordTextField.leftView = leftView2;
 }
