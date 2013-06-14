@@ -8,8 +8,12 @@
 
 #import "NuggetsFirstViewController.h"
 #import <Parse/Parse.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface NuggetsFirstViewController ()
+
+#define maxNuggetCharacterLength 140
+#define nuggetTextViewPlaceholderText @"What did you learn?"
 
 @end
 
@@ -24,15 +28,10 @@
     return newNugget;
 }
 
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//    [super viewWillAppear:animated];
-//}
-
-- (void)viewDidLoad
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidLoad];
-	
+    [super viewDidAppear:animated];
+    
     PFUser *currentUser = [PFUser currentUser];
     if (!currentUser)
     {
@@ -40,26 +39,37 @@
     }
     else
     {
-        NSString* boldFontName = @"GillSans-Bold";
-        [self styleNavigationBarWithFontName:boldFontName];
-        
-        NSString* fontName = @"Avenir-Book";
-        
-        self.NuggetToAdd.backgroundColor = [UIColor colorWithRed:237.0/255 green:243.0/255 blue:245.0/255 alpha:1.0f];
-        self.NuggetToAdd.placeholder = @"What did you learn?";
-        self.NuggetToAdd.leftViewMode = UITextFieldViewModeAlways;
-        self.NuggetToAdd.font = [UIFont fontWithName:fontName size:16.0f];
-        
-        self.NuggetToAddSource.backgroundColor = [UIColor colorWithRed:237.0/255 green:243.0/255 blue:245.0/255 alpha:1.0f];
-        self.NuggetToAddSource.placeholder = @"Where? url / person / place";
-        self.NuggetToAddSource.leftViewMode = UITextFieldViewModeAlways;
-        self.NuggetToAddSource.font = [UIFont fontWithName:fontName size:16.0f];
-        
-        self.NuggetToAddTags.backgroundColor = [UIColor colorWithRed:237.0/255 green:243.0/255 blue:245.0/255 alpha:1.0f];
-        self.NuggetToAddTags.placeholder = @"Tags";
-        self.NuggetToAddTags.leftViewMode = UITextFieldViewModeAlways;
-        self.NuggetToAddTags.font = [UIFont fontWithName:fontName size:16.0f];
+//        [self.nuggetText becomeFirstResponder];
     }
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    NSString* boldFontName = @"GillSans-Bold";
+    [self styleNavigationBarWithFontName:boldFontName]; // assumes this first view controller is opened first
+    NSString* fontName = @"Avenir-Book";
+    
+    [self styleNavigationBarWithFontName:boldFontName];
+    
+    self.nuggetText.backgroundColor = [UIColor colorWithRed:237.0/255 green:243.0/255 blue:245.0/255 alpha:1.0f];
+    self.nuggetText.layer.borderColor = [[UIColor grayColor] CGColor];
+    self.nuggetText.layer.borderWidth = 2.0f;
+    self.nuggetText.text = nuggetTextViewPlaceholderText;
+    self.nuggetText.textColor = [UIColor lightGrayColor];
+    self.nuggetText.font = [UIFont fontWithName:fontName size:16.0f];
+    self.nuggetText.delegate = self;
+    
+    self.NuggetToAddSource.backgroundColor = [UIColor colorWithRed:237.0/255 green:243.0/255 blue:245.0/255 alpha:1.0f];
+    self.NuggetToAddSource.placeholder = @"Where? url / person / place";
+    self.NuggetToAddSource.leftViewMode = UITextFieldViewModeAlways;
+    self.NuggetToAddSource.font = [UIFont fontWithName:fontName size:16.0f];
+    
+    self.NuggetToAddTags.backgroundColor = [UIColor colorWithRed:237.0/255 green:243.0/255 blue:245.0/255 alpha:1.0f];
+    self.NuggetToAddTags.placeholder = @"Tags";
+    self.NuggetToAddTags.leftViewMode = UITextFieldViewModeAlways;
+    self.NuggetToAddTags.font = [UIFont fontWithName:fontName size:16.0f];
 }
 
 - (void)didReceiveMemoryWarning
@@ -78,18 +88,75 @@
     [nuggetObject saveEventually];
 }
 
-- (IBAction)addNewNugget:(UIButton *)sender
+- (void)attemptSaveNugget
 {
-    Nugget *newNugget = [self createNugget:self.NuggetToAdd.text
-                                withSource:self.NuggetToAddSource.text
-                                  withTags:self.NuggetToAddTags.text];
-    [self addNuggetToBasket:newNugget];
+    if (self.nuggetText.textColor == [UIColor lightGrayColor]
+        || [self.nuggetText.text length] == 0)
+    {
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Incomplete entry"
+                                                          message:@"Enter a nugget!"
+                                                         delegate:nil
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+        [message show];
+    }
+    else
+    {
+        Nugget *newNugget = [self createNugget:self.nuggetText.text
+                                    withSource:self.NuggetToAddSource.text
+                                      withTags:self.NuggetToAddTags.text];
+        [self addNuggetToBasket:newNugget];
+        
+        self.nuggetText.text = nuggetTextViewPlaceholderText;
+        self.nuggetText.textColor = [UIColor lightGrayColor];
+        self.NuggetToAddSource.text = @"";
+        self.NuggetToAddTags.text = @"";
+        
+        [self.tabBarController setSelectedIndex:2]; // go to Me tab
+    }
+}
+
+- (IBAction)plusSignClicked:(id)sender
+{
+    [self attemptSaveNugget];
+}
+
+- (IBAction)saveButtonClicked:(id)sender
+{
+    [self attemptSaveNugget];
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:nuggetTextViewPlaceholderText])
+    {
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor];
+    }
+    [textView becomeFirstResponder];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:@""]) {
+        textView.text = nuggetTextViewPlaceholderText;
+        textView.textColor = [UIColor lightGrayColor];
+    }
+    [textView resignFirstResponder];
+}
+
+- (void)textViewDidChange:(UITextView *)textView {
+    //create NSString containing the text from the UITextView
+    NSString *substring = [NSString stringWithString:textView.text];
     
-    self.NuggetToAdd.text = @"";
-    self.NuggetToAddSource.text = @"";
-    self.NuggetToAddTags.text = @"";
-    
-    [self.tabBarController setSelectedIndex:2]; // go to Me tab
+    if (substring.length > maxNuggetCharacterLength)
+    {
+        self.nuggetCharacterCounter.textColor = [UIColor redColor];
+    }
+    else if (substring.length <= maxNuggetCharacterLength) {
+        self.nuggetCharacterCounter.textColor = [UIColor blackColor];
+    }
+    self.nuggetCharacterCounter.text = [NSString stringWithFormat:@"%d",maxNuggetCharacterLength - [substring length]];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
