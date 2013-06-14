@@ -15,18 +15,17 @@
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Where? url / person / place" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Efh-H6-0Br">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="258" id="UVR-Tw-VSo"/>
-                                    <constraint firstAttribute="height" constant="30" id="z3f-qu-Hu5"/>
+                                    <constraint firstAttribute="height" constant="30" id="UW3-TA-eO2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="tags" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qsr-G9-pyS">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="tag" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qsr-G9-pyS">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="rzF-CC-NWP"/>
+                                    <constraint firstAttribute="height" constant="30" id="Qyb-Th-PnB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WaU-p3-YKE">
                                 <constraints>
@@ -57,10 +56,6 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="140" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fb6-Lm-G4t">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="d9n-Vg-CPO"/>
-                                    <constraint firstAttribute="height" constant="30" id="l3A-ZA-qAZ"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -68,29 +63,90 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1z6-In-o0b">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="232" id="hS2-hg-mvY"/>
-                                    <constraint firstAttribute="height" constant="123" id="sN8-VP-WEK"/>
+                                    <constraint firstAttribute="height" constant="144" id="h9o-Nu-Ufe"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94U-mP-HTb">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addTagButtonClicked:" destination="2" eventType="touchUpInside" id="8pQ-at-QYN"/>
+                                </connections>
+                            </button>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cD9-uQ-fD6">
+                                <color key="backgroundColor" red="0.86275050949999998" green="0.86275050949999998" blue="0.86275050949999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="Fml-0F-fNP"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WkC-AM-scX">
+                                    <size key="itemSize" width="89" height="22"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TagCell" id="An7-hf-srH" customClass="TagCollectionViewCell">
+                                        <rect key="frame" x="5" y="0.0" width="89" height="22"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="89" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Qg-If-bDc">
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="7Qg-If-bDc" firstAttribute="leading" secondItem="An7-hf-srH" secondAttribute="leading" type="default" id="5in-Zs-FXB"/>
+                                            <constraint firstItem="7Qg-If-bDc" firstAttribute="top" secondItem="An7-hf-srH" secondAttribute="top" type="default" id="6OB-e6-fgZ"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="tagLabel" destination="7Qg-If-bDc" id="SNA-LG-6Xb"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="2" id="kpz-kk-80F"/>
+                                    <outlet property="delegate" destination="2" id="BC9-ge-G0d"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qsr-G9-pyS" firstAttribute="centerX" secondItem="WaU-p3-YKE" secondAttribute="centerX" type="default" id="24g-xg-evf"/>
+                            <constraint firstItem="Fb6-Lm-G4t" firstAttribute="leading" secondItem="1z6-In-o0b" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="0mL-AK-0PG"/>
+                            <constraint firstItem="1z6-In-o0b" firstAttribute="top" secondItem="16" secondAttribute="top" constant="59" id="2Gi-bS-LMV"/>
                             <constraint firstItem="Rb5-dL-nMf" firstAttribute="trailing" secondItem="16" secondAttribute="trailing" type="default" id="5P7-rK-rHh"/>
-                            <constraint firstItem="1z6-In-o0b" firstAttribute="top" secondItem="16" secondAttribute="top" constant="68" id="G3O-E9-Fg5"/>
-                            <constraint firstItem="Efh-H6-0Br" firstAttribute="top" secondItem="1z6-In-o0b" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Ks5-KV-c1w"/>
-                            <constraint firstItem="qsr-G9-pyS" firstAttribute="centerY" secondItem="16" secondAttribute="centerY" type="default" id="LLy-hG-Kph"/>
-                            <constraint firstItem="Rb5-dL-nMf" firstAttribute="centerX" secondItem="Efh-H6-0Br" secondAttribute="centerX" type="default" id="MaE-1Z-ZmD"/>
+                            <constraint firstItem="94U-mP-HTb" firstAttribute="top" secondItem="Efh-H6-0Br" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="5jm-c2-7Td"/>
+                            <constraint firstAttribute="trailing" secondItem="94U-mP-HTb" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="AKl-GJ-8kl"/>
+                            <constraint firstAttribute="bottom" secondItem="WaU-p3-YKE" secondAttribute="bottom" constant="75" id="AwY-Pn-Yad"/>
+                            <constraint firstAttribute="trailing" secondItem="Efh-H6-0Br" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="CCx-LD-g50"/>
+                            <constraint firstItem="qsr-G9-pyS" firstAttribute="top" secondItem="Efh-H6-0Br" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Cci-Tg-KUn"/>
+                            <constraint firstItem="1z6-In-o0b" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="I0b-TI-nkD"/>
+                            <constraint firstItem="94U-mP-HTb" firstAttribute="centerX" secondItem="Fb6-Lm-G4t" secondAttribute="centerX" type="default" id="PMK-uy-JkD"/>
+                            <constraint firstItem="Fb6-Lm-G4t" firstAttribute="top" secondItem="1z6-In-o0b" secondAttribute="top" type="default" id="Q64-Du-7Ye"/>
+                            <constraint firstItem="qsr-G9-pyS" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="QIN-6H-Uhy"/>
+                            <constraint firstItem="cD9-uQ-fD6" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="QiF-pX-3TB"/>
                             <constraint firstItem="Rb5-dL-nMf" firstAttribute="top" secondItem="16" secondAttribute="top" type="default" id="TOY-5U-5nb"/>
-                            <constraint firstItem="qsr-G9-pyS" firstAttribute="trailing" secondItem="Efh-H6-0Br" secondAttribute="trailing" type="default" id="VmP-fj-TMe"/>
-                            <constraint firstItem="1z6-In-o0b" firstAttribute="leading" secondItem="Efh-H6-0Br" secondAttribute="leading" type="default" id="nNW-Qv-TgS"/>
+                            <constraint firstItem="cD9-uQ-fD6" firstAttribute="top" secondItem="94U-mP-HTb" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="dol-zS-A04"/>
+                            <constraint firstItem="WaU-p3-YKE" firstAttribute="centerX" secondItem="cD9-uQ-fD6" secondAttribute="centerX" type="default" id="fve-Om-Y4x"/>
+                            <constraint firstAttribute="trailing" secondItem="cD9-uQ-fD6" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="hit-ck-Q2Q"/>
+                            <constraint firstItem="Efh-H6-0Br" firstAttribute="top" secondItem="1z6-In-o0b" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="i0o-1g-ivR"/>
+                            <constraint firstItem="cD9-uQ-fD6" firstAttribute="top" secondItem="qsr-G9-pyS" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="n7g-eh-M0A"/>
                             <constraint firstAttribute="trailing" secondItem="Fb6-Lm-G4t" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="nRP-o8-ZsO"/>
                             <constraint firstItem="Rb5-dL-nMf" firstAttribute="leading" secondItem="16" secondAttribute="leading" type="default" id="oIU-k1-s23"/>
-                            <constraint firstItem="1z6-In-o0b" firstAttribute="top" secondItem="Fb6-Lm-G4t" secondAttribute="top" type="default" id="p6A-sa-lUY"/>
-                            <constraint firstAttribute="bottom" secondItem="WaU-p3-YKE" secondAttribute="bottom" constant="169" id="r7z-Tv-EFQ"/>
-                            <constraint firstItem="qsr-G9-pyS" firstAttribute="leading" secondItem="Efh-H6-0Br" secondAttribute="leading" type="default" id="w2W-0s-9lH"/>
+                            <constraint firstAttribute="trailing" secondItem="qsr-G9-pyS" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ogB-8A-iYJ"/>
+                            <constraint firstItem="Efh-H6-0Br" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="vDs-34-L7S"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Record" image="PlusSign_small.png" id="7"/>
@@ -99,6 +155,7 @@
                         <outlet property="NuggetToAddTags" destination="qsr-G9-pyS" id="wCa-j0-Rnj"/>
                         <outlet property="nuggetCharacterCounter" destination="Fb6-Lm-G4t" id="qx1-Hz-xHm"/>
                         <outlet property="nuggetText" destination="1z6-In-o0b" id="bfb-IH-xjq"/>
+                        <outlet property="tagsCollectionView" destination="cD9-uQ-fD6" id="R8F-th-0XS"/>
                         <segue destination="lK8-g9-i8d" kind="modal" identifier="goToRegister" modalTransitionStyle="flipHorizontal" id="r7N-hc-aWL"/>
                     </connections>
                 </viewController>
@@ -689,12 +746,11 @@
         <class className="NuggetsFirstViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NuggetsFirstViewController.h"/>
             <relationships>
-                <relationship kind="action" name="plusSignClicked:"/>
-                <relationship kind="action" name="saveButtonClicked:"/>
                 <relationship kind="outlet" name="NuggetToAddSource" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="NuggetToAddTags" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="nuggetCharacterCounter" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="nuggetText" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="tagsCollectionView" candidateClass="UICollectionView"/>
             </relationships>
         </class>
         <class className="NuggetsFourthViewController" superclassName="UITableViewController">
@@ -703,8 +759,6 @@
         <class className="NuggetsSecondViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NuggetsSecondViewController.h"/>
             <relationships>
-                <relationship kind="action" name="forgotButtonClicked:" candidateClass="UIButton"/>
-                <relationship kind="action" name="rememberedButtonClicked:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="nextButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="nuggetLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="stuffToHide1" candidateClass="UIButton"/>
@@ -748,6 +802,21 @@
                 <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
             </relationships>
+        </class>
+        <class className="TagCollectionViewCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TagCollectionViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tagLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

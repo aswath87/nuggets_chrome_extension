@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7E267C7D176A8981008AC0DD /* unknown_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E267C7C176A8981008AC0DD /* unknown_user.png */; };
+		7E267C80176B9CEC008AC0DD /* TagCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E267C7F176B9CEB008AC0DD /* TagCollectionViewCell.m */; };
 		7E30722B1763F342000240D6 /* Nugget.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E30722A1763F342000240D6 /* Nugget.m */; };
 		7E30722E176406CC000240D6 /* NuggetsThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E30722D176406CC000240D6 /* NuggetsThirdViewController.m */; };
 		7E30723317641DB4000240D6 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E30723217641DB4000240D6 /* Parse.framework */; };
@@ -67,6 +68,8 @@
 
 /* Begin PBXFileReference section */
 		7E267C7C176A8981008AC0DD /* unknown_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = unknown_user.png; path = ../../../Downloads/unknown_user.png; sourceTree = "<group>"; };
+		7E267C7E176B9CEB008AC0DD /* TagCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCollectionViewCell.h; sourceTree = "<group>"; };
+		7E267C7F176B9CEB008AC0DD /* TagCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCollectionViewCell.m; sourceTree = "<group>"; };
 		7E3072291763F342000240D6 /* Nugget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nugget.h; sourceTree = "<group>"; };
 		7E30722A1763F342000240D6 /* Nugget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Nugget.m; sourceTree = "<group>"; };
 		7E30722C176406CC000240D6 /* NuggetsThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuggetsThirdViewController.h; sourceTree = "<group>"; };
@@ -212,6 +215,8 @@
 				7E30728A17696804000240D6 /* RegisterViewController.m */,
 				7E774BF91763D2BD00FEBBC2 /* NuggetsFirstViewController.h */,
 				7E774BFA1763D2BD00FEBBC2 /* NuggetsFirstViewController.m */,
+				7E267C7E176B9CEB008AC0DD /* TagCollectionViewCell.h */,
+				7E267C7F176B9CEB008AC0DD /* TagCollectionViewCell.m */,
 				7E774C001763D2BD00FEBBC2 /* NuggetsSecondViewController.h */,
 				7E774C011763D2BD00FEBBC2 /* NuggetsSecondViewController.m */,
 				7E30722C176406CC000240D6 /* NuggetsThirdViewController.h */,
@@ -376,6 +381,7 @@
 				7E30728D17696804000240D6 /* LoginViewController.m in Sources */,
 				7E30728E17696804000240D6 /* RegisterViewController.m in Sources */,
 				7E30728F17696804000240D6 /* Utils.m in Sources */,
+				7E267C80176B9CEC008AC0DD /* TagCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

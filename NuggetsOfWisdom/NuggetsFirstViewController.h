@@ -8,14 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "Nugget.h"
+#import "TagCollectionViewCell.h"
 
-@interface NuggetsFirstViewController : UIViewController <UITextViewDelegate>
+@interface NuggetsFirstViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UITextView *nuggetText;
 @property (weak, nonatomic) IBOutlet UITextField *NuggetToAddSource;
 @property (weak, nonatomic) IBOutlet UITextField *NuggetToAddTags;
 @property (weak, nonatomic) IBOutlet UILabel *nuggetCharacterCounter;
+@property (weak, nonatomic) IBOutlet UICollectionView *tagsCollectionView;
+@property (nonatomic, strong) NSMutableArray *tags;
 
-- (Nugget *)createNugget:(NSString *)text withSource:(NSString *)source withTags:(NSString *)tags;
+- (Nugget *)createNugget:(NSString *)text withSource:(NSString *)source withTags:(NSMutableArray *)tags;
 
 @end

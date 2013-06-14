@@ -14,17 +14,18 @@
 
 #define maxNuggetCharacterLength 140
 #define nuggetTextViewPlaceholderText @"What did you learn?"
+#define fontName @"Avenir-Book"
 
 @end
 
 @implementation NuggetsFirstViewController
 
-- (Nugget *)createNugget:(NSString *)text withSource:(NSString *)source withTags:(NSString *)tags
+- (Nugget *)createNugget:(NSString *)text withSource:(NSString *)source withTags:(NSMutableArray *)tags
 {
     Nugget *newNugget = [[Nugget alloc] init];
     newNugget.nugget = text;
     newNugget.source = source;
-    newNugget.tags = [tags componentsSeparatedByString:@","];
+    newNugget.tags = tags;
     return newNugget;
 }
 
@@ -49,7 +50,6 @@
 
     NSString* boldFontName = @"GillSans-Bold";
     [self styleNavigationBarWithFontName:boldFontName]; // assumes this first view controller is opened first
-    NSString* fontName = @"Avenir-Book";
     
     [self styleNavigationBarWithFontName:boldFontName];
     
@@ -70,6 +70,9 @@
     self.NuggetToAddTags.placeholder = @"Tags";
     self.NuggetToAddTags.leftViewMode = UITextFieldViewModeAlways;
     self.NuggetToAddTags.font = [UIFont fontWithName:fontName size:16.0f];
+    self.NuggetToAddTags.delegate = self;
+    
+    self.tags = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -104,13 +107,15 @@
     {
         Nugget *newNugget = [self createNugget:self.nuggetText.text
                                     withSource:self.NuggetToAddSource.text
-                                      withTags:self.NuggetToAddTags.text];
+                                      withTags:self.tags];
         [self addNuggetToBasket:newNugget];
         
         self.nuggetText.text = nuggetTextViewPlaceholderText;
         self.nuggetText.textColor = [UIColor lightGrayColor];
         self.NuggetToAddSource.text = @"";
         self.NuggetToAddTags.text = @"";
+        self.tags = [[NSMutableArray alloc] init];
+        [self.tagsCollectionView reloadData];
         
         [self.tabBarController setSelectedIndex:2]; // go to Me tab
     }
@@ -162,6 +167,58 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];
+}
+
+- (void)addTag
+{
+    [self.tags addObject:self.NuggetToAddTags.text];
+    self.NuggetToAddTags.text = @"";
+    [self.tagsCollectionView reloadData];
+}
+
+- (IBAction)addTagButtonClicked:(id)sender
+{
+    [self addTag];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self addTag];
+    return YES;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section
+{
+    return [self.tags count];
+}
+
+- (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView
+{
+    return 1;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    TagCollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"TagCell" forIndexPath:indexPath];
+    
+    cell.tagLabel.text = self.tags[indexPath.row];
+    return cell;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CGSize expectedLabelSize = [self.tags[indexPath.row] sizeWithFont:[UIFont fontWithName:fontName size:16.0f]];
+    expectedLabelSize.width *= 1.1; // hack because expectedLabelSize.width cuts off a bit of long words
+    return expectedLabelSize;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 10.0f;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 1.0f;
 }
 
 - (void)styleNavigationBarWithFontName:(NSString*)navigationTitleFont
