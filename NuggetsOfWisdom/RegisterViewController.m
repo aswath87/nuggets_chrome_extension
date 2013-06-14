@@ -47,6 +47,7 @@
     self.passwordTextField.backgroundColor = [UIColor whiteColor];
     self.passwordTextField.font = [UIFont fontWithName:fontName size:16.0f];
     self.passwordTextField.secureTextEntry = YES;
+    self.passwordTextField.delegate = self;
     
     UIView* leftView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 20)];
     self.passwordTextField.leftViewMode = UITextFieldViewModeAlways;
@@ -88,7 +89,7 @@
     }
 }
 
-- (IBAction)registerButtonClicked:(id)sender
+- (void)attemptSignUp
 {
     NSString *alertTitle, *alertMessage;
     if ([self.nameTextField.text length] == 0)
@@ -125,7 +126,18 @@
                                                      delegate:nil
                                             cancelButtonTitle:@"OK"
                                             otherButtonTitles:nil];
-    [message show];
+    [message show];    
+}
+
+- (IBAction)registerButtonClicked:(id)sender
+{
+    [self attemptSignUp];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self attemptSignUp];
+    return YES;
 }
 
 - (IBAction)goToLoginPage:(UIButton *)sender

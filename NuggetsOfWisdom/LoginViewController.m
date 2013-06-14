@@ -171,7 +171,7 @@
     if ([Utils isEmailValidWithString:self.emailTextField.text])
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Request password reset"
-                                                          message:[NSString stringWithFormat:@"Request password reset for %@?", self.emailTextField.text]
+                                                          message:[NSString stringWithFormat:@"Request a password reset for %@?", self.emailTextField.text]
                                                          delegate:self
                                                 cancelButtonTitle:@"Cancel"
                                                 otherButtonTitles:@"Send",nil];

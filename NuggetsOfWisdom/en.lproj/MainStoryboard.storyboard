@@ -248,10 +248,10 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JQL-Ag-4vU">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="135" id="kdd-GN-HvV"/>
                                     <constraint firstAttribute="height" constant="25" id="rYh-gT-LvC"/>
+                                    <constraint firstAttribute="width" constant="144" id="sLG-dm-chp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Already a member?">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -270,17 +270,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="7Ex-t1-Czx" firstAttribute="top" secondItem="VkW-Ed-akW" secondAttribute="top" constant="20" symbolic="YES" type="default" id="2oy-JM-xBO"/>
-                            <constraint firstItem="JQL-Ag-4vU" firstAttribute="top" secondItem="VkW-Ed-akW" secondAttribute="top" constant="147" id="B1b-TJ-tFs"/>
-                            <constraint firstItem="7kX-Ln-VuG" firstAttribute="centerX" secondItem="iFn-Oq-wHD" secondAttribute="centerX" type="default" id="O8m-mL-2Yk"/>
+                            <constraint firstItem="7kX-Ln-VuG" firstAttribute="top" secondItem="JQL-Ag-4vU" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="G8t-oe-ZnU"/>
+                            <constraint firstItem="7kX-Ln-VuG" firstAttribute="centerX" secondItem="JQL-Ag-4vU" secondAttribute="centerX" type="default" id="MxQ-pw-XOo"/>
+                            <constraint firstItem="JQL-Ag-4vU" firstAttribute="centerX" secondItem="iFn-Oq-wHD" secondAttribute="centerX" type="default" id="Ndz-rU-Tib"/>
                             <constraint firstItem="iFn-Oq-wHD" firstAttribute="leading" secondItem="VkW-Ed-akW" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="VYP-8i-u1j"/>
                             <constraint firstAttribute="trailing" secondItem="7Ex-t1-Czx" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Zo2-mK-oXQ"/>
                             <constraint firstAttribute="trailing" secondItem="zvY-Lh-Vsu" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="aJn-Tx-9fe"/>
                             <constraint firstAttribute="trailing" secondItem="iFn-Oq-wHD" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ee4-7J-ZqE"/>
-                            <constraint firstItem="7kX-Ln-VuG" firstAttribute="top" secondItem="VkW-Ed-akW" secondAttribute="top" constant="83" id="ehe-fd-OQE"/>
                             <constraint firstItem="7Ex-t1-Czx" firstAttribute="leading" secondItem="VkW-Ed-akW" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="k7D-xE-lxJ"/>
-                            <constraint firstItem="JQL-Ag-4vU" firstAttribute="centerX" secondItem="iFn-Oq-wHD" secondAttribute="centerX" type="default" id="l1Q-M5-6Nt"/>
                             <constraint firstItem="zvY-Lh-Vsu" firstAttribute="leading" secondItem="VkW-Ed-akW" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="rNk-Mt-pKS"/>
                             <constraint firstItem="iFn-Oq-wHD" firstAttribute="top" secondItem="zvY-Lh-Vsu" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="tQg-tz-xa2"/>
+                            <constraint firstItem="JQL-Ag-4vU" firstAttribute="top" secondItem="VkW-Ed-akW" secondAttribute="top" constant="148" id="tbp-0d-MlK"/>
                             <constraint firstItem="zvY-Lh-Vsu" firstAttribute="top" secondItem="7Ex-t1-Czx" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="xcx-e1-KiW"/>
                         </constraints>
                     </view>
@@ -327,9 +327,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRm-2E-bhb">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="7HI-DL-yoQ"/>
-                                    <constraint firstAttribute="width" constant="151" id="GDt-wD-j0l"/>
+                                    <constraint firstAttribute="width" constant="169" id="KCz-pe-541"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Sign up for an account">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -346,10 +346,10 @@
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="otB-Ty-Eme">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="19" id="4CX-Ee-Jzh"/>
-                                    <constraint firstAttribute="height" constant="25" id="hmE-yq-Xyx"/>
+                                    <constraint firstAttribute="width" constant="28" id="Yaf-44-WSd"/>
+                                    <constraint firstAttribute="height" constant="28" id="tMg-iG-5EB"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="?">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -366,16 +366,16 @@
                         <constraints>
                             <constraint firstItem="yTw-0T-Fbf" firstAttribute="leading" secondItem="mP0-L7-gWU" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="1kz-wW-h3E"/>
                             <constraint firstItem="z1V-tL-7Jh" firstAttribute="top" secondItem="mP0-L7-gWU" secondAttribute="top" constant="20" symbolic="YES" type="default" id="7Wh-BG-yG1"/>
-                            <constraint firstItem="otB-Ty-Eme" firstAttribute="centerY" secondItem="yTw-0T-Fbf" secondAttribute="centerY" type="default" id="83a-sS-2SM"/>
+                            <constraint firstItem="otB-Ty-Eme" firstAttribute="centerY" secondItem="yTw-0T-Fbf" secondAttribute="centerY" type="default" id="9Oh-ht-Qeq"/>
                             <constraint firstAttribute="trailing" secondItem="z1V-tL-7Jh" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="BBg-DH-Z3g"/>
-                            <constraint firstItem="LRm-2E-bhb" firstAttribute="centerX" secondItem="yTw-0T-Fbf" secondAttribute="centerX" type="default" id="Evh-51-vRO"/>
-                            <constraint firstItem="LRm-2E-bhb" firstAttribute="top" secondItem="mP0-L7-gWU" secondAttribute="top" constant="109" id="IFP-eg-pAc"/>
-                            <constraint firstAttribute="trailing" secondItem="otB-Ty-Eme" secondAttribute="trailing" constant="24" id="Khf-3R-Jg3"/>
-                            <constraint firstItem="QSO-Gc-Ozd" firstAttribute="top" secondItem="mP0-L7-gWU" secondAttribute="top" constant="44" id="TZg-oe-IRo"/>
+                            <constraint firstItem="LRm-2E-bhb" firstAttribute="centerX" secondItem="yTw-0T-Fbf" secondAttribute="centerX" type="default" id="Vfz-sL-kXX"/>
+                            <constraint firstAttribute="trailing" secondItem="otB-Ty-Eme" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="gAG-WH-xKj"/>
                             <constraint firstItem="yTw-0T-Fbf" firstAttribute="top" secondItem="z1V-tL-7Jh" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="iC2-eL-Oyc"/>
                             <constraint firstItem="z1V-tL-7Jh" firstAttribute="leading" secondItem="mP0-L7-gWU" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="iUR-6s-dRr"/>
-                            <constraint firstItem="QSO-Gc-Ozd" firstAttribute="centerX" secondItem="yTw-0T-Fbf" secondAttribute="centerX" type="default" id="mAF-8j-OC9"/>
+                            <constraint firstItem="LRm-2E-bhb" firstAttribute="top" secondItem="mP0-L7-gWU" secondAttribute="top" constant="112" id="qIY-Md-OPs"/>
                             <constraint firstAttribute="trailing" secondItem="yTw-0T-Fbf" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="qgu-t5-lCi"/>
+                            <constraint firstItem="QSO-Gc-Ozd" firstAttribute="top" secondItem="LRm-2E-bhb" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="t9d-pE-f7P"/>
+                            <constraint firstItem="QSO-Gc-Ozd" firstAttribute="centerX" secondItem="LRm-2E-bhb" secondAttribute="centerX" type="default" id="wyf-tj-Wxl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Welcome back" id="BCU-ZK-Mdx">
@@ -659,10 +659,6 @@
         <class className="LoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
             <relationships>
-                <relationship kind="action" name="cancelButtonClicked:"/>
-                <relationship kind="action" name="forgotPassword:"/>
-                <relationship kind="action" name="goToRegisterPage:"/>
-                <relationship kind="action" name="loginButtonClicked:"/>
                 <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
@@ -686,7 +682,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NuggetsSecondViewController.h"/>
             <relationships>
                 <relationship kind="action" name="forgotButtonClicked:" candidateClass="UIButton"/>
-                <relationship kind="action" name="rememberedButtonClicked:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="nextButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="nuggetLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="stuffToHide1" candidateClass="UIButton"/>
