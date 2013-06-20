@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Nuggets of Wisdom</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/styling.css">
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/parse-1.2.8.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+  </head>
+  <body>
+    <div id="extension-container">
+      <h2 class="nugget-title">Nuggets of Wisdom</h2>
+      <p>Remember what you learn</p>
+      <hr/>
+      <div class="row-fluid">
+        <form class="span12">
+          <label>Email address</label>
+          <input id="login-email" type="text" class="span12"/>
+          <label>Password</label>
+          <!-- <div class="input-append"> -->
+            <input id="login-password" type="password" class="span12"/>
+            <!-- <button class="btn" type="button">?</button> -->
+          <!-- </div> -->
+          <p id="login-error-1" class="error" style="display: none;">Please provide both an email address and password to sign in.</p>
+          <p id="login-error-2" class="error" style="display: none;">The email or password you provided does not appear to be valid.  Please check that you entered them correctly.</p>
+          <input id="login-button" class="btn span4" value="Login"/>
+        </form>
+        <p><a href="#">Create a Nugget account</a></p>
+      </div>
+    </div>
+  </body>
+</html>
+

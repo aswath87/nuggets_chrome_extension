@@ -1,7 +1,4 @@
 body {
-    min-width: 300px;
-    max-width: 300px;
-    width: 300px
     overflow-x: hidden;
     font-family: helvetica, sans-serif;
     font-size: 16px;
@@ -10,26 +7,27 @@ body {
     color: #EFEFEF;
 }
 
-#container {
+#extension-container {
     margin: 20px;
-    background
+    min-width: 300px;
+    max-width: 300px;
+    width: 300px
 }
 
-h2 {
+h2, h3, p {
+    text-align: center;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+}
+
+.nugget-title {
     font-family: garamond, serif;
     font-size: 28px;
 }
 
-h2, p {
-    margin-top: 0px;
-    margin-bottom: 5px;
-    text-align: center;
-}
-
-h3 {
-    margin: 19px 0px 10px 0px;
-    text-align: center;
-    font-family: garamond, serif;
 }
 
 hr {
@@ -38,7 +36,6 @@ hr {
 }
 
 textarea {
-    min-height: 100px;
     font-family: helvetica, sans-serif;
 }
 

@@ -2,38 +2,35 @@
 <html>
   <head>
     <title>Nuggets of Wisdom</title>
-    <link rel="stylesheet" type="text/css" href="css/styling.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/styling.css">
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <script type="text/javascript" src="js/parse-1.2.8.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
     <script type="text/javascript" src="js/nuggets.js"></script>
   </head>
   <body>
-    <div id="container">
-        
-    <h2>Nuggets of Wisdom</h2>
-    <p><small>Record. Recall. Discover.</small></p>  
-    
-    <hr />
-    
-    <form id="form">
-      <label>What did you learn?</label>
-      <textarea id="Nugget.Content" class="nugget-field" name="Nugget.Content" type="text" placeholder="Enter nugget here..."></textarea> 
-      <label>Source</label>
-      <input id="Nugget.Source" class="prepopulate" name="Nugget.Source" type="text" /> 
-      <label>Topic(s)</label>
-      <input id="Nugget.Tag" class="nugget-field" name="Nugget.Tag" type="text" placeholder="This nugget is about..." /> 
-      
-      <div id="submit" name="submit" /><img src="img/plus.png" /></div>
-    </form>
-    
-    <hr />
-    
-    <h3>Related Nuggets</h3>
-    <div id="query"></div>
-    
+    <div id="extension-container" style="display: none;">
+      <h2 class="nugget-title">Nuggets of Wisdom</h2>
+      <p>Remember what you learn</p>
+      <hr/>
+      <div class="row-fluid">
+        <form class="span12">
+          <label>What did you learn?</label>
+          <textarea id="nugget-text" class="span12" type="text" placeholder="Enter nugget here..." rows="5"></textarea> 
+          <label>Source</label>
+          <input id="nugget-source" class="prepopulate span12" type="text" /> 
+          <label>Topic(s)</label>
+          <input id="nugget-tags" class="span12" type="text" placeholder="This nugget is about..." /> 
+          
+          <div id="submit" name="submit" /><img src="img/plus.png" /></div>
+        </form>
+        <input id="logout-button" class="btn span4" value="Logout"/>
+        <hr/>
+        <h3>Related Nuggets</h3>
+        <div id="query"></div>
+      </div>
     </div>
   </body>
 </html>
