@@ -50,18 +50,20 @@ img {
     vertical-align: middle;
 }
 
-#submit {
+#add-nugget-button {
     cursor: pointer;
     height: 50px;
     width: 50px;
-    margin: 10px 100px 20px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#submit img {
+/*#submit img {
     position: relative;
     height: 50px;
     width: 50px;
-}
+}*/
 
 .nugget-tile {
     width: 100%;

@@ -1,9 +1,6 @@
 $(document).ready(function(){
 
 function initialize() {
-  chrome.tabs.getSelected(null, function(tab) {
-    $(".prepopulate").val(tab.title);
-  });
   Parse.initialize("F1fRCfIIYQzvft22ckZd5CdrOzhVecTXkwfgWflN", "DUoWr9lIjQME2MmqgMApFmWFdzMcl7B6mKfj8AAc");
   validateLogin();
 }
@@ -30,33 +27,28 @@ initialize();
 
 $('#login-button').click(function()
 {
-  var emailElement = document.getElementById("login-email");
-  var passwordElement = document.getElementById("login-password");
-  var error1Element = document.getElementById("login-error-1");
-  var error2Element = document.getElementById("login-error-2");
-  var loginButton = document.getElementById("login-button");
-  loginButton.disabled = true;
-  if (emailElement.value == "" || passwordElement.value == "")
+  $('#login-button').disabled = true;
+  if ($('#login-email').val() == "" || $('#login-password').val() == "")
   {
-    error1Element.style.display = "block";
-    error2Element.style.display = "none";
-    emailElement.focus();
+    $('#login-error-1').css('display','block');
+    $('#login-error-2').css('display','none');
+    $('#login-email').focus();
   }
   else
   {
-    error1Element.style.display = "none";
-    error2Element.style.display = "none";
-    Parse.User.logIn(emailElement.value, passwordElement.value, {
+    $('#login-error-1').css('display','none');
+    $('#login-error-2').css('display','none');
+    Parse.User.logIn($('#login-email').val(), $('#login-password').val(), {
       success: function(user) {
         goToNuggetPage();
       },
       error: function(user, error) {
-        error2Element.style.display = "block";
-        emailElement.focus();
+        $('#login-error-2').css('display','block');
+        $('#login-email').focus();
       }
     });
   }
-  loginButton.disabled = false;
+  $('#login-button').disabled = false;
 });
 
 });
