@@ -18,11 +18,6 @@ function validateLogin() {
   }
 }
 
-function goToLoginPage()
-{
-  window.location.replace('login.html');
-}
-
 function goToNuggetPage()
 {
   window.location.replace('nuggets.html');
