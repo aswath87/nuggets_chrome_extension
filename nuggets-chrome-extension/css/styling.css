@@ -7,11 +7,17 @@ body {
     color: #EFEFEF;
 }
 
-#extension-container {
-    margin: 20px;
+#extension-body {
     min-width: 300px;
     max-width: 300px;
-    width: 300px
+    width: 300px;
+    min-height: 450px;
+    max-height: 450px;
+    height: 450px
+}
+
+#extension-container {
+    margin: 20px;
 }
 
 h2, h3, h4, h5 {
@@ -58,12 +64,6 @@ img {
     margin-left: auto;
     margin-right: auto;
 }
-
-/*#submit img {
-    position: relative;
-    height: 50px;
-    width: 50px;
-}*/
 
 .nugget-tile {
     width: 100%;

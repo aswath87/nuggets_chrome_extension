@@ -8,7 +8,7 @@
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <script type="text/javascript" src="js/parse-1.2.8.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-    <script type="text/javascript" src="js/nuggets.js"></script>
+    <script type="text/javascript" src="js/my-nuggets.js"></script>
   </head>
   <body id="extension-body">
     <div id="extension-container" style="display: none;">
@@ -17,21 +17,14 @@
       <hr/>
       <div class="row-fluid">
         <div class="span12">
-          <textarea id="nugget-text" class="span12" type="text" placeholder="What did you learn?" rows="5"></textarea>
-          <input id="nugget-source" class="span12" type="text" placeholder="Source - url / person / place"/>
-          <input id="nugget-tags" class="span12" type="text" placeholder="Add tag" />
-          <div id="add-nugget-button"/><img src="img/plus.png" /></div>
-        </div>
-        <div class="span12">
-          <hr/>
-          <h3>Related Nuggets</h3>
+          <h3>My Nuggets</h3>
           <table class="table">
-            <tbody id="related-nuggets-table">
+            <tbody id="my-nuggets-table">
             </tbody>
           </table>
           <div>
-            <a href="my-nuggets.html" data-role="button" data-transition="flip" class="btn span6">My Nuggets<a/>
-            <input id="logout-button" class="btn offset2 span4" value="Logout"/>
+            <a href="nuggets.html" data-role="button" data-transition="flip" class="btn span4">Home<a/>
+            <input id="logout-button" class="btn offset4 span4" value="Logout"/>
             <hr/>
           </div>
         </div>
