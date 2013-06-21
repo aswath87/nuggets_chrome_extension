@@ -34,28 +34,6 @@ h2, h3, h4, h5 {
     font-size: 28px;
 }
 
-}
-
-hr {
-    margin-top: 0px;
-    margin-bottom: 15px;
-}
-
-textarea {
-    font-family: helvetica, sans-serif;
-}
-
-input, textarea {
-    width: 255px;
-    margin-bottom: 10px;
-}
-
-img {
-    margin: 4%;
-    border: 1% solid black;
-    vertical-align: middle;
-}
-
 #add-nugget-button {
     cursor: pointer;
     height: 50px;
@@ -65,36 +43,9 @@ img {
     margin-right: auto;
 }
 
-.nugget-tile {
-    width: 100%;
-    border-bottom: 1px dotted white;
-    min-height: 20px;
-    overflow: auto;
-    margin-bottom: 10px;
-    padding: 10px 0px;
-}
-
-.nugget-tile > div {
-    display: inline-block;
-    line-height: 120%;
-    margin-bottom: 5px;
-}
-
-.nugget-content {
-    float: left;
-    width: 85%;
-    font-size: 14px;
-}
-
-.nugget-add {
-    float: right;
-    cursor: pointer;
-    width: 20px;
-    text-align: right;
-    height: 20px;
-}
-
 .follow-image {
     height: 15px;
     width: 15px;
+    margin: 4%;
+    vertical-align: middle;
 }
