@@ -13,23 +13,24 @@
   <body>
     <div id="extension-container" style="display: none;">
       <h2 class="nugget-title">Nuggets of Wisdom</h2>
-      <p>Remember what you learn</p>
+      <h5>Remember what you learn</h5>
       <hr/>
       <div class="row-fluid">
-        <form class="span12">
-          <label>What did you learn?</label>
-          <textarea id="nugget-text" class="span12" type="text" placeholder="Enter nugget here..." rows="5"></textarea> 
-          <label>Source</label>
-          <input id="nugget-source" class="span12" type="text" /> 
-          <label>Topic(s)</label>
-          <input id="nugget-tags" class="span12" type="text" placeholder="This nugget is about..." /> 
-          
+        <div class="span12">
+          <textarea id="nugget-text" class="span12" type="text" placeholder="What did you learn?" rows="5"></textarea>
+          <input id="nugget-source" class="span12" type="text" placeholder="Source - url / person / place"/>
+          <input id="nugget-tags" class="span12" type="text" placeholder="Add tag" />
           <div id="add-nugget-button"/><img src="img/plus.png" /></div>
-        </form>
-        <input id="logout-button" class="btn span4" value="Logout"/>
-        <hr/>
-        <h3>Related Nuggets</h3>
-        <div id="query"></div>
+        </div>
+        <div class="span12">
+          <hr/>
+          <h3>Related Nuggets</h3>
+          <table class="table">
+            <tbody id="related-nuggets-table">
+            </tbody>
+          </table>
+          <input id="logout-button" class="btn span4" value="Logout"/>
+        </div>
       </div>
     </div>
   </body>

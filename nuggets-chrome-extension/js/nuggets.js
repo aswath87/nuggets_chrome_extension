@@ -1,11 +1,8 @@
 $(document).ready(function(){
 
-var tabURL = "";
-
 function initialize() {
   chrome.tabs.getSelected(null, function(tab) {
     $('#nugget-source').val(tab.title);
-    tabURL = tab.url;
   });
   Parse.initialize("F1fRCfIIYQzvft22ckZd5CdrOzhVecTXkwfgWflN", "DUoWr9lIjQME2MmqgMApFmWFdzMcl7B6mKfj8AAc");
   validateLogin();
@@ -14,6 +11,32 @@ function initialize() {
 function goToLoginPage()
 {
   window.location.replace('login.html');
+}
+
+function runQuery()
+{
+  chrome.tabs.getSelected(null, function(tab) {
+    var Nugget = Parse.Object.extend("Nugget");
+    var query = new Parse.Query(Nugget);
+    query.equalTo("url", tab.url).descending("createdAt").limit(10);
+    query.find({
+      success: function(results) {
+        if (results.length == 0)
+        {
+          $('#related-nuggets-table').html('<p>none</p>');
+        }
+        else
+        {
+          var related_nuggets = [];
+          for(i=0;i<results.length;i++)
+          {
+            related_nuggets.push('<tr><td><p>' + results[i].get("text") + '<img class="follow-image" src="img/plus.png"/></p></td></tr>');
+          }
+          $('#related-nuggets-table').html(related_nuggets.join(''));
+        }
+      }
+    });
+  });
 }
 
 function validateLogin() {
@@ -25,6 +48,7 @@ function validateLogin() {
   else
   {
     $('#extension-container').css('display','block');
+    runQuery();
   }
 }
 
@@ -34,25 +58,28 @@ $('#add-nugget-button').click(function()
 {
   if ($('#nugget-text').val() != "")
   {
-    var Nugget = Parse.Object.extend("Nugget");
-    var nugget = new Nugget();
-    nugget.save({
-      text: $('#nugget-text').val(),
-      source: $('#nugget-source').val(),
-      url: tabURL,
-      tags: [$('#nugget-tags').val()],
-      owner: Parse.User.current()
-    }, {
-      success: function(nugget)
-      {
-        // show some form of success here
-        $('#nugget-text').val("");
-        $('#nugget-tags').val("");
-      },
-      error: function(object, error)
-      {
-        // show some form of error here
-      }
+    chrome.tabs.getSelected(null, function(tab) {
+      var Nugget = Parse.Object.extend("Nugget");
+      var nugget = new Nugget();
+      nugget.save({
+        text: $('#nugget-text').val(),
+        source: $('#nugget-source').val(),
+        url: tab.url,
+        tags: [$('#nugget-tags').val()],
+        owner: Parse.User.current()
+      }, {
+        success: function(nugget)
+        {
+          // show some form of success here
+          $('#nugget-text').val("");
+          $('#nugget-tags').val("");
+          runQuery();
+        },
+        error: function(object, error)
+        {
+          // show some form of error here
+        }
+      });
     });
   }
   else
