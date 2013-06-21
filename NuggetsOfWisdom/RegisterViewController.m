@@ -112,6 +112,7 @@
         PFUser *user = [PFUser user];
         user.username = self.emailTextField.text; // using email address as username
         user.password = self.passwordTextField.text;
+        user.email = self.emailTextField.text;
         [user setObject:self.nameTextField.text forKey:@"displayname"];
         [self.spinner startAnimating];
         dispatch_queue_t downloadQueue = dispatch_queue_create("register_user", NULL);
