@@ -1,12 +1,3 @@
-body {
-    overflow-x: hidden;
-    font-family: helvetica, sans-serif;
-    font-size: 16px;
-    text-align: left;
-    background-color: rgb(50,102,147);/*#23941F;*/
-    color: #EFEFEF;
-}
-
 #extension-body {
     min-width: 300px;
     max-width: 300px;
@@ -16,9 +7,9 @@ body {
     height: 450px
 }
 
-#extension-container {
+/*#extension-container {
     margin: 20px;
-}
+}*/
 
 h2, h3, h4, h5 {
     text-align: center;
@@ -34,14 +25,30 @@ h2, h3, h4, h5 {
     font-size: 28px;
 }
 
-#add-nugget-button {
+.nugget-messages {
+    margin-top: 5px;
+    margin-bottom: -5px;
+    vertical-align: center;
+}
+
+#nugget-message {
+    font-weight: 500;
+    margin-left: 2px;
+}
+
+#nugget-text-count {
+    color: gray;
+    margin-right: 2px;
+}
+
+/*#add-nugget-button {
     cursor: pointer;
     height: 50px;
     width: 50px;
     margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
-}
+}*/
 
 .follow-image {
     height: 15px;

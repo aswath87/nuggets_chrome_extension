@@ -27,7 +27,7 @@ initialize();
 
 $('#login-button').click(function()
 {
-  $('#login-button').disabled = true;
+  $('#login-button').prop('disabled', true);
   if ($('#login-email').val() == "" || $('#login-password').val() == "")
   {
     $('#login-error-1').css('display','block');
@@ -48,12 +48,12 @@ $('#login-button').click(function()
       }
     });
   }
-  $('#login-button').disabled = false;
+  $('#login-button').prop('disabled', false);
 });
 
 $('#register-button').click(function()
 {
-  $('#register-button').disabled = true;
+  $('#register-button').prop('disabled', true);
   if ($('#register-name').val() == "")
   {
     $('#register-error-1').css('display','block');
@@ -100,7 +100,7 @@ $('#register-button').click(function()
       }
     });
   }
-  $('#register-button').disabled = false;
+  $('#register-button').prop('disabled', false);
 });
 
 $('#go-to-register').click(function()

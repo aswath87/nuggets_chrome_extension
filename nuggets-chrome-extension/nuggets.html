@@ -17,10 +17,16 @@
       <hr/>
       <div class="row-fluid">
         <div class="span12">
-          <textarea id="nugget-text" class="span12" type="text" placeholder="What did you learn?" rows="5"></textarea>
+          <textarea id="nugget-text" class="span12" type="text" placeholder="What did you learn?" rows="4"></textarea>
           <input id="nugget-source" class="span12" type="text" placeholder="Source - url / person / place"/>
           <input id="nugget-tags" class="span12" type="text" placeholder="Add tag" />
-          <div id="add-nugget-button"/><img src="img/plus.png" /></div>
+          <div class="row-fluid">
+            <div class="nugget-messages span8">
+              <span id="nugget-message" class="span10" style="display: block;"></span>
+              <p id="nugget-text-count" class="pull-right text-right">140</p>
+            </div>
+            <input id="add-nugget-button" class="btn btn-primary span4 text-right pull-right" type="button" value="Save"/>
+          </div>
         </div>
         <div class="span12">
           <hr/>
@@ -30,7 +36,7 @@
             </tbody>
           </table>
           <div>
-            <a href="my-nuggets.html" data-role="button" data-transition="flip" class="btn span6">My Nuggets<a/>
+            <a href="my-nuggets.html" data-role="button" data-transition="flip" class="btn btn-info span6">My Nuggets<a/>
             <input id="logout-button" class="btn offset2 span4" value="Logout"/>
             <hr/>
           </div>

@@ -54,9 +54,41 @@ function validateLogin() {
 
 initialize();
 
+var maxNuggetCharLength = 140;
+
+$('#nugget-text').bind('input', function() {
+  var charsLeft = maxNuggetCharLength - $(this).val().length;
+  $('#nugget-text-count').html(charsLeft);
+  if (charsLeft < 0)
+  {
+    $('#nugget-text-count').css('color','red');
+    $('#add-nugget-button').prop('disabled', true);
+  }
+  else
+  {
+    $('#nugget-text-count').css('color','gray');
+    $('#add-nugget-button').prop('disabled', false);
+  }
+  $('#nugget-message').css('display','none');
+});
+
 $('#add-nugget-button').click(function()
 {
-  if ($('#nugget-text').val() != "")
+  if ($('#nugget-text').val() == "")
+  {
+    $('#nugget-message').css('color','red');
+    $('#nugget-message').html("Enter a nugget!");
+    $('#nugget-message').css('display','block');
+    $('#nugget-text').focus();
+  }
+  else if ($('#nugget-text').val().length > maxNuggetCharLength) // textarea bind to input should prevent this, but putting this in as backup to verify nugget text is not over maxNuggetCharLength characters.
+  {
+    $('#nugget-message').css('color','red');
+    $('#nugget-message').html("Nugget can't be more than " + maxNuggetCharLength + " characters!");
+    $('#nugget-message').css('display','block');
+    $('#nugget-text').focus();
+  }
+  else
   {
     chrome.tabs.getSelected(null, function(tab) {
       var Nugget = Parse.Object.extend("Nugget");
@@ -70,21 +102,23 @@ $('#add-nugget-button').click(function()
       }, {
         success: function(nugget)
         {
-          // show some form of success here
+          $('#nugget-message').css('color','green');
+          $('#nugget-message').html("Saved!");
+          $('#nugget-message').css('display','block');
           $('#nugget-text').val("");
           $('#nugget-tags').val("");
+          $('#nugget-text').focus();
           runQuery();
         },
         error: function(object, error)
         {
-          // show some form of error here
+          $('#nugget-message').css('color','red');
+          $('#nugget-message').html(error.message);
+          $('#nugget-message').css('display','block');
+          $('#nugget-text').focus();
         }
       });
     });
-  }
-  else
-  {
-    // show error to provide nugget!
   }
 });
 
