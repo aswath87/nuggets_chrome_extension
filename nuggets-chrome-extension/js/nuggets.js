@@ -74,12 +74,14 @@ $('#nugget-text').bind('input', function() {
 
 $('#add-nugget-button').click(function()
 {
+  $('#add-nugget-button').prop('disabled', true);
   if ($('#nugget-text').val() == "")
   {
     $('#nugget-message').css('color','red');
     $('#nugget-message').html("Enter a nugget!");
     $('#nugget-message').css('display','block');
     $('#nugget-text').focus();
+    $('#add-nugget-button').prop('disabled', false);
   }
   else if ($('#nugget-text').val().length > maxNuggetCharLength) // textarea bind to input should prevent this, but putting this in as backup to verify nugget text is not over maxNuggetCharLength characters.
   {
@@ -87,6 +89,7 @@ $('#add-nugget-button').click(function()
     $('#nugget-message').html("Nugget can't be more than " + maxNuggetCharLength + " characters!");
     $('#nugget-message').css('display','block');
     $('#nugget-text').focus();
+    $('#add-nugget-button').prop('disabled', false);
   }
   else
   {
@@ -109,6 +112,7 @@ $('#add-nugget-button').click(function()
           $('#nugget-tags').val("");
           $('#nugget-text').focus();
           runQuery();
+          $('#add-nugget-button').prop('disabled', false);
         },
         error: function(object, error)
         {
@@ -116,6 +120,7 @@ $('#add-nugget-button').click(function()
           $('#nugget-message').html(error.message);
           $('#nugget-message').css('display','block');
           $('#nugget-text').focus();
+          $('#add-nugget-button').prop('disabled', false);
         }
       });
     });
