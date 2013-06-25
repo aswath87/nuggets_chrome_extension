@@ -1,5 +1,10 @@
 $(document).ready(function(){
 
+$('#my-nuggets-table').on('click', 'a.nugget-source-link', function(event) {
+  chrome.tabs.create({url: $(this).attr('href')});
+  return false;
+});
+
 function initialize() {
   Parse.initialize("F1fRCfIIYQzvft22ckZd5CdrOzhVecTXkwfgWflN", "DUoWr9lIjQME2MmqgMApFmWFdzMcl7B6mKfj8AAc");
   validateLogin();
@@ -26,7 +31,14 @@ function runQuery()
         var my_nuggets = [];
         for(i=0;i<results.length;i++)
         {
-          my_nuggets.push('<tr><td><p>' + results[i].get("text") + '<img class="follow-image" src="img/plus.png"/></p></td></tr>');
+          var markup_to_push = '<tr><td><p>' + results[i].get("text") + '</p>';
+          if (results[i].get("url") != "")
+          {
+            markup_to_push += '<a href="' + results[i].get("url") + '" class="nugget-source-link">' + results[i].get("source") + '</a>';
+          }
+          markup_to_push += '</td></tr>';
+
+          my_nuggets.push(markup_to_push);
         }
         $('#my-nuggets-table').html(my_nuggets.join(''));
       }

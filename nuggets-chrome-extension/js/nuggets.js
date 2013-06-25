@@ -30,7 +30,7 @@ function runQuery()
           var related_nuggets = [];
           for(i=0;i<results.length;i++)
           {
-            related_nuggets.push('<tr><td><p>' + results[i].get("text") + '<img class="follow-image" src="img/plus.png"/></p></td></tr>');
+            related_nuggets.push('<tr><td><p>' + results[i].get("text") + '</p></td></tr>');
           }
           $('#related-nuggets-table').html(related_nuggets.join(''));
         }
@@ -96,10 +96,15 @@ $('#add-nugget-button').click(function()
     chrome.tabs.getSelected(null, function(tab) {
       var Nugget = Parse.Object.extend("Nugget");
       var nugget = new Nugget();
+      var tabURL = "";
+        if ($('#nugget-source').val() == tab.title) // only save url if nugget-source field is still tab's title - ie. user didn't change it
+        {
+          tabURL = tab.url;
+        }
       nugget.save({
         text: $('#nugget-text').val(),
         source: $('#nugget-source').val(),
-        url: tab.url,
+        url: tabURL,
         tags: $('#nugget-tags').attr("value").split(','), // .val() AND .prop("value") returns "" after submitting the first time.  Should be checking for the HTML markup attribute instead.
         owner: Parse.User.current()
       }, {
