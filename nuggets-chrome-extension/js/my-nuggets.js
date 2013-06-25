@@ -36,6 +36,10 @@ function runQuery()
           {
             markup_to_push += '<a href="' + results[i].get("url") + '" class="nugget-source-link">' + results[i].get("source") + '</a>';
           }
+          else if (results[i].get("source") != "")
+          {
+            markup_to_push += '<p class="gray">' + results[i].get("source") + '</p>';
+          }
           markup_to_push += '</td></tr>';
 
           my_nuggets.push(markup_to_push);
