@@ -100,7 +100,7 @@ $('#add-nugget-button').click(function()
         text: $('#nugget-text').val(),
         source: $('#nugget-source').val(),
         url: tab.url,
-        tags: [$('#nugget-tags').val()],
+        tags: $('#nugget-tags').attr("value").split(','), // .val() AND .prop("value") returns "" after submitting the first time.  Should be checking for the HTML markup attribute instead.
         owner: Parse.User.current()
       }, {
         success: function(nugget)
@@ -112,6 +112,9 @@ $('#add-nugget-button').click(function()
           $('#nugget-tags').val("");
           $('#nugget-text').focus();
           runQuery();
+          $('.icon-remove').each(function() {
+            $(this).click();
+          });
           $('#add-nugget-button').prop('disabled', false);
         },
         error: function(object, error)

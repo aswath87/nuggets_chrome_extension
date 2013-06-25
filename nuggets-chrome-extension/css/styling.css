@@ -25,6 +25,24 @@ h2, h3, h4, h5 {
     font-size: 28px;
 }
 
+.gray {
+    color: gray;
+}
+
+#nugget-source-div {
+    margin-left: 5px;
+}
+
+#nugget-source-icon {
+    position: relative;
+    margin-right: -23px;
+    top: -4px;
+}
+
+#nugget-source {
+    padding-left: 22px;
+}
+
 .nugget-messages {
     margin-top: 5px;
     margin-bottom: -5px;
@@ -40,15 +58,6 @@ h2, h3, h4, h5 {
     color: gray;
     margin-right: 2px;
 }
-
-/*#add-nugget-button {
-    cursor: pointer;
-    height: 50px;
-    width: 50px;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-}*/
 
 .follow-image {
     height: 15px;
