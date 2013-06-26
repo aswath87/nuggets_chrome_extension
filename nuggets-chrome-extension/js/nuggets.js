@@ -115,11 +115,11 @@ $('#add-nugget-button').click(function()
           $('#nugget-message').css('display','block');
           $('#nugget-text').val("");
           $('#nugget-tags').val("");
-          $('#nugget-text').focus();
           runQuery();
           $('.icon-remove').each(function() {
             $(this).click();
           });
+          $('#nugget-text').focus();
           $('#add-nugget-button').prop('disabled', false);
         },
         error: function(object, error)
