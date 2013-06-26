@@ -20,6 +20,7 @@ function runQuery()
   var Nugget = Parse.Object.extend("Nugget");
   var query = new Parse.Query(Nugget);
   query.equalTo("owner", Parse.User.current()).descending("updatedAt");
+  query.notEqualTo("deleted", true);
   query.find({
     success: function(results) {
       if (results.length == 0)
@@ -31,7 +32,7 @@ function runQuery()
         var my_nuggets = [];
         for(i=0;i<results.length;i++)
         {
-          var markup_to_push = '<tr><td><p>' + results[i].get("text");
+          var markup_to_push = '<tr><td><div id="' + results[i].id + '" class="nugget-wrapper"><p>' + results[i].get("text");
           var tags = results[i].get("tags");
           for (j=0;j<tags.length;j++)
           {
@@ -51,7 +52,9 @@ function runQuery()
           {
             timeAgo = moment().fromNow();
           }
-          markup_to_push += '<span class="nugget-time-ago">' + timeAgo + '</span></td></tr>';
+          markup_to_push += '<div class="row-fluid"><span class="nugget-time-ago span10">' + timeAgo + '</span>';
+          markup_to_push += '<span class="span1 pull-right nugget-action-icons" style="display: none;"><i class="icon-trash nugget-action-icon"></i></span>';
+          markup_to_push += '</div></div></td></tr>';
           my_nuggets.push(markup_to_push);
         }
         $('#my-nuggets-table').html(my_nuggets.join(''));
@@ -59,6 +62,46 @@ function runQuery()
     }
   });
 }
+
+$('#my-nuggets-table').on('mouseenter', 'tr', function()
+{
+  $(this).find('.nugget-action-icons').css('display','block');
+});
+
+$('#my-nuggets-table').on('mouseleave', 'tr', function()
+{
+  $(this).find('.nugget-action-icons').css('display','none');
+});
+
+$('#my-nuggets-table').on('click', '.icon-trash', function()
+{
+  var nugget_div = $(this).parents('.nugget-wrapper');
+  // nugget_div.prop('disabled', true);
+  var nugget_id = nugget_div.attr('id');
+  var Nugget = Parse.Object.extend("Nugget");
+  var query = new Parse.Query(Nugget);
+  query.get(nugget_id, {
+    success: function(nugget)
+    {
+      nugget.save({
+        deleted: true
+      }, {
+        success: function(nugget2)
+        {
+          runQuery();
+        },
+        error: function(object2, error2)
+        {
+          // nugget_div.prop('disabled', false);
+        }
+      });
+    },
+    error: function(object, error)
+    {
+      // nugget_div.prop('disabled', false);
+    }
+  });
+});
 
 function validateLogin() {
   var currentUser = Parse.User.current();

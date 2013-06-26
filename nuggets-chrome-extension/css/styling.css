@@ -78,6 +78,11 @@ h2, h3, h4, h5 {
     font-weight: 200;
 }
 
+.nugget-action-icon {
+    cursor: pointer;
+    margin-left: 5px;
+}
+
 .follow-image {
     height: 15px;
     width: 15px;

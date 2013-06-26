@@ -18,7 +18,9 @@ function runQuery()
   chrome.tabs.getSelected(null, function(tab) {
     var Nugget = Parse.Object.extend("Nugget");
     var query = new Parse.Query(Nugget);
-    query.equalTo("url", tab.url).descending("updatedAt").limit(10);
+    query.equalTo("url", tab.url).descending("updatedAt");
+    query.notEqualTo("deleted", true);
+    query.limit(10);
     query.find({
       success: function(results) {
         if (results.length == 0)
@@ -30,7 +32,7 @@ function runQuery()
           var related_nuggets = [];
           for(i=0;i<results.length;i++)
           {
-            var markup_to_push = '<tr><td><p>' + results[i].get("text") + " ";
+            var markup_to_push = '<tr><td><div id="' + results[i].id + '" class="nugget-wrapper"><p>' + results[i].get("text") + " ";
             var tags = results[i].get("tags");
             for (j=0;j<tags.length;j++)
             {
@@ -41,7 +43,10 @@ function runQuery()
             {
               timeAgo = moment().fromNow();
             }
-            markup_to_push += '</p><span class="nugget-time-ago">' + timeAgo + '</span></td></tr>';
+            markup_to_push += '</p>';
+            markup_to_push += '<div class="row-fluid"><span class="nugget-time-ago span10">' + timeAgo + '</span>';
+            markup_to_push += '<span class="span1 pull-right nugget-action-icons" style="display: none;"><i class="icon-plus nugget-action-icon"></i></span>';
+            markup_to_push += '</div></div></td></tr>';
             related_nuggets.push(markup_to_push);
           }
           $('#related-nuggets-table').html(related_nuggets.join(''));
@@ -68,7 +73,7 @@ initialize();
 
 var maxNuggetCharLength = 140;
 
-$('#nugget-text').bind('input', function() {
+$('#nugget-text').on('input', function() {
   var charsLeft = maxNuggetCharLength - $(this).val().length;
   $('#nugget-text-count').html(charsLeft);
   if (charsLeft < 0)
@@ -94,6 +99,16 @@ $('#nugget-source-icon').click(function()
 $('#nugget-source-clear').click(function()
 {
   $('#nugget-source').val("");
+});
+
+$('#related-nuggets-table').on('mouseenter', 'tr', function()
+{
+  $(this).find('.nugget-action-icons').css('display','block');
+});
+
+$('#related-nuggets-table').on('mouseleave', 'tr', function()
+{
+  $(this).find('.nugget-action-icons').css('display','none');
 });
 
 $('#add-nugget-button').click(function()
