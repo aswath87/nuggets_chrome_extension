@@ -18,7 +18,7 @@ function runQuery()
   chrome.tabs.getSelected(null, function(tab) {
     var Nugget = Parse.Object.extend("Nugget");
     var query = new Parse.Query(Nugget);
-    query.equalTo("url", tab.url).descending("createdAt").limit(10);
+    query.equalTo("url", tab.url).descending("updatedAt").limit(10);
     query.find({
       success: function(results) {
         if (results.length == 0)
@@ -30,7 +30,19 @@ function runQuery()
           var related_nuggets = [];
           for(i=0;i<results.length;i++)
           {
-            related_nuggets.push('<tr><td><p>' + results[i].get("text") + '</p></td></tr>');
+            var markup_to_push = '<tr><td><p>' + results[i].get("text") + " ";
+            var tags = results[i].get("tags");
+            for (j=0;j<tags.length;j++)
+            {
+              markup_to_push += '<span class="nugget-tag">#' + tags[j] + '</span> ';
+            }
+            var timeAgo = moment(results[i].updatedAt).fromNow();
+            if (moment().diff(results[i].updatedAt) < 0)  // Parse seems to set updatedAt a couple seconds into the future, so preventing the time-ago tag from saying "in a few seconds"
+            {
+              timeAgo = moment().fromNow();
+            }
+            markup_to_push += '</p><span class="nugget-time-ago">' + timeAgo + '</span></td></tr>';
+            related_nuggets.push(markup_to_push);
           }
           $('#related-nuggets-table').html(related_nuggets.join(''));
         }

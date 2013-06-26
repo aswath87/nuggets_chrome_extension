@@ -59,6 +59,16 @@ h2, h3, h4, h5 {
     margin-right: 2px;
 }
 
+.nugget-tag {
+    color: gray;
+    font-weight: 600;
+}
+
+.nugget-time-ago {
+    font-size: 12px;
+    font-weight: 200;
+}
+
 .follow-image {
     height: 15px;
     width: 15px;
