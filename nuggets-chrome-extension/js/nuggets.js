@@ -84,6 +84,18 @@ $('#nugget-text').bind('input', function() {
   $('#nugget-message').css('display','none');
 });
 
+$('#nugget-source-icon').click(function()
+{
+  chrome.tabs.getSelected(null, function(tab) {
+    $('#nugget-source').val(tab.title);
+  });
+});
+
+$('#nugget-source-clear').click(function()
+{
+  $('#nugget-source').val("");
+});
+
 $('#add-nugget-button').click(function()
 {
   $('#add-nugget-button').prop('disabled', true);
@@ -132,9 +144,10 @@ $('#add-nugget-button').click(function()
           $('#nugget-message').html("Saved!");
           $('#nugget-message').css('display','block');
           $('#nugget-text').val("");
+          $('#nugget-source').val(tab.title);
           $('#nugget-tags').val("");
           runQuery();
-          $('.icon-remove').each(function() {
+          $('.icon-remove-tag').each(function() {
             $(this).click();
           });
           $('#nugget-text').focus();

@@ -218,7 +218,7 @@
         constructor: Item,
 
         initialize: function () {
-            this.$icon = $('<i class="icon-remove icon-white"></i>')
+            this.$icon = $('<i class="icon-remove icon-white icon-remove-tag"></i>')
                 .on('click', $.proxy(this.handleRemoveClick, this));
             this.$element = $('<span class="label"></span>')
                 .append(this.value)
