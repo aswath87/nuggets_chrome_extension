@@ -25,7 +25,7 @@ function goToNuggetPage()
 
 initialize();
 
-$('#login-button').click(function()
+function attemptLogin()
 {
   $('#login-button').prop('disabled', true);
   if ($('#login-email').val() == "" || $('#login-password').val() == "")
@@ -49,9 +49,22 @@ $('#login-button').click(function()
     });
   }
   $('#login-button').prop('disabled', false);
+}
+
+$('#login-button').click(function()
+{
+  attemptLogin();
 });
 
-$('#register-button').click(function()
+$('#login-password').keyup(function(e)
+{
+  if (e.which == 13)
+  {
+    attemptLogin();
+  }
+});
+
+function attemptRegister()
 {
   $('#register-button').prop('disabled', true);
   if ($('#register-name').val() == "")
@@ -101,6 +114,19 @@ $('#register-button').click(function()
     });
   }
   $('#register-button').prop('disabled', false);
+}
+
+$('#register-button').click(function()
+{
+  attemptRegister();
+});
+
+$('#register-password').keyup(function(e)
+{
+  if (e.which == 13)
+  {
+    attemptRegister();
+  }
 });
 
 $('#go-to-register').click(function()
