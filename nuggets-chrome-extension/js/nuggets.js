@@ -19,7 +19,7 @@ function runQuery()
     var Nugget = Parse.Object.extend("Nugget");
     var query = new Parse.Query(Nugget);
     query.equalTo("url", tab.url).descending("updatedAt");
-    query.notEqualTo("deleted", true);
+    query.notEqualTo("isDeleted", true);
     query.limit(10);
     query.find({
       success: function(results) {

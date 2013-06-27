@@ -114,11 +114,15 @@ $('#my-nuggets-table').on('click', '.icon-trash', function()
   query.get(nugget_id).then(function(nugget) {
     var Nugget_User = Parse.Object.extend("Nugget_User");
     var query2 = new Parse.Query(Nugget_User);
-    query2.equalTo("user", Parse.User.current());
     query2.equalTo("nugget", nugget);
-    query2.first().then(function(nugget_user) {
-      nugget_user.set("isDeleted", true);
-      nugget_user.save();
+    query2.find().then(function(nugget_users) {
+      if (nugget_users.length == 1 && nugget_users[0].get("user").id == Parse.User.current().id)
+      {
+        nugget.set("isDeleted", true);
+        nugget.save();
+      }
+      nugget_users[0].set("isDeleted", true);
+      nugget_users[0].save();
     }, function(error) {
       // nugget_div.prop('disabled', false);
     }).then(function() { // after nugget_user has been updated to isDeleted=true
