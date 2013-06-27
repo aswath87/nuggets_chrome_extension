@@ -99,6 +99,7 @@ $('#nugget-source-icon').click(function()
 $('#nugget-source-clear').click(function()
 {
   $('#nugget-source').val("");
+  $('#nugget-source').focus();
 });
 
 $('#related-nuggets-table').on('mouseenter', 'tr', function()
