@@ -128,14 +128,22 @@ $('#my-nuggets-table').on('click', '.icon-trash', function()
       if (nugget_users.length == 1 && nugget_users[0].get("user").id == Parse.User.current().id)
       {
         nugget.set("isDeleted", true);
-        nugget.save();
+        nugget.save().then(function() {
+          runQuery();
+        });
       }
-      nugget_users[0].set("isDeleted", true);
-      nugget_users[0].save();
+      for (i=0;i<nugget_users.length;i++)
+      {
+        if (nugget_users[i].get("user").id == Parse.User.current().id)
+        {
+          nugget_users[i].set("isDeleted", true);
+          nugget_users[i].save().then(function() {
+            runQuery();
+          });
+        }
+      }
     }, function(error) {
       // nugget_div.prop('disabled', false);
-    }).then(function() { // after nugget_user has been updated to isDeleted=true
-      runQuery();
     });
   }).then(function() { // in case nugget gets deleted and the query.get(nugget_id) fails, should refresh my nuggets
     runQuery();
