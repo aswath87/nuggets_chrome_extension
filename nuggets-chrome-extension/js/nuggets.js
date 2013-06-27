@@ -25,7 +25,7 @@ function runQuery()
       success: function(results) {
         if (results.length == 0)
         {
-          $('#related-nuggets-table').html('<p>none</p>');
+          $('#related-nuggets-div').css("display", "none");
         }
         else
         {
@@ -50,6 +50,7 @@ function runQuery()
             related_nuggets.push(markup_to_push);
           }
           $('#related-nuggets-table').html(related_nuggets.join(''));
+          $('#related-nuggets-div').css("display", "block");
         }
       }
     });
