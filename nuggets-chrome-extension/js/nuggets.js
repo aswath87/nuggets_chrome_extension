@@ -32,21 +32,15 @@ function runQuery()
           var related_nuggets = [];
           for(i=0;i<results.length;i++)
           {
-            var markup_to_push = '<tr><td><div id="' + results[i].id + '" class="nugget-wrapper"><p>' + results[i].get("text") + " ";
+            var markup_to_push = '<tr><td><div id="' + results[i].id + '" class="nugget-wrapper row-fluid"><div class="span11"><p>' + results[i].get("text") + " ";
             var tags = results[i].get("tags");
             for (j=0;j<tags.length;j++)
             {
               markup_to_push += '<span class="nugget-tag">#' + tags[j] + '</span> ';
             }
-            var timeAgo = moment(results[i].updatedAt).fromNow();
-            if (moment().diff(results[i].updatedAt) < 0)  // Parse seems to set updatedAt a couple seconds into the future, so preventing the time-ago tag from saying "in a few seconds"
-            {
-              timeAgo = moment().fromNow();
-            }
-            markup_to_push += '</p>';
-            markup_to_push += '<div class="row-fluid"><span class="nugget-time-ago span10">' + timeAgo + '</span>';
+            markup_to_push += '</p></div>';
             markup_to_push += '<span class="span1 pull-right nugget-action-icons" style="display: none;"><i class="icon-plus nugget-action-icon"></i></span>';
-            markup_to_push += '</div></div></td></tr>';
+            markup_to_push += '</div></td></tr>';
             related_nuggets.push(markup_to_push);
           }
           $('#related-nuggets-table').html(related_nuggets.join(''));

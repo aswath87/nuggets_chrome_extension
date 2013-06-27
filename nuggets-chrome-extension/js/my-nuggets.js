@@ -57,31 +57,53 @@ function runQuery()
       else
       {
         var my_nuggets = [];
-        var results = $.map(results_nugget_user, function(n) {
-          return n.get("nugget");
+        var results = $.map(results_nugget_user, function(nugget_user) {
+          var nugget = nugget_user.get("nugget");
+          var return_object = new Object();
+          return_object.id = nugget.id;
+          return_object.text = nugget.get("text");
+          return_object.tags = nugget.get("tags");
+          return_object.url = nugget.get("url");
+          return_object.source = nugget.get("source");
+          return_object.isOwner = nugget_user.get("isOwner");
+          return_object.createdAt = nugget_user.createdAt;
+          return_object.updatedAt = nugget_user.updatedAt;
+          return return_object;
         });
         // results.sort(sortNuggetsDescendingByUpdatedAt); // should sort by nugget_user updatedAt rather than nugget's
         for(i=0;i<results.length;i++)
         {
-          var markup_to_push = '<tr><td><div id="' + results[i].id + '" class="nugget-wrapper"><p>' + results[i].get("text");
-          var tags = results[i].get("tags");
+          var markup_to_push = '<tr><td><div id="' + results[i].id + '" class="nugget-wrapper"><p>' + results[i].text;
+          var tags = results[i].tags;
           for (j=0;j<tags.length;j++)
           {
             markup_to_push += ' <span class="nugget-tag">#' + tags[j] + '</span>';
           }
           markup_to_push += '</p>'
-          if (results[i].get("url") && results[i].get("url") != "")
+          if (results[i].url && results[i].url != "")
           {
-            markup_to_push += '<p><a href="' + results[i].get("url") + '" class="nugget-source-link">' + results[i].get("source") + '</a></p>';
+            markup_to_push += '<p><a href="' + results[i].url + '" class="nugget-source-link">' + results[i].source + '</a></p>';
           }
-          else if (results[i].get("source") != "")
+          else if (results[i].source != "")
           {
-            markup_to_push += '<p class="gray">' + results[i].get("source") + '</p>';
+            markup_to_push += '<p class="gray">' + results[i].source + '</p>';
           }
           var timeAgo = moment(results[i].updatedAt).fromNow();
           if (moment().diff(results[i].updatedAt) < 0)  // Parse seems to set updatedAt a couple seconds into the future, so preventing the time-ago tag from saying "in a few seconds"
           {
             timeAgo = moment().fromNow();
+          }
+          if (results[i].isOwner == false) // currently, if you're not the owner, there's no way for you to over update the nugget
+          {
+            timeAgo = "Added " + timeAgo;
+          }
+          else if (results[i].createdAt.getTime() == results[i].updatedAt.getTime())
+          {
+            timeAgo = "Created " + timeAgo;
+          }
+          else
+          {
+            timeAgo = "Updated " + timeAgo;
           }
           markup_to_push += '<div class="row-fluid"><span class="nugget-time-ago span10">' + timeAgo + '</span>';
           markup_to_push += '<span class="span1 pull-right nugget-action-icons" style="display: none;"><i class="icon-trash nugget-action-icon"></i></span>';

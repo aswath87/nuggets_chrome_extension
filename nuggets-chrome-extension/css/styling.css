@@ -68,6 +68,10 @@ h2, h3, h4, h5 {
     margin-right: 2px;
 }
 
+.nugget-wrapper {
+    position: relative;
+}
+
 .nugget-tag {
     color: gray;
     font-weight: 600;
@@ -76,6 +80,12 @@ h2, h3, h4, h5 {
 .nugget-time-ago {
     font-size: 12px;
     font-weight: 200;
+}
+
+.nugget-action-icons {
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 .nugget-action-icon {
