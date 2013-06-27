@@ -56,21 +56,6 @@ function runQuery()
   });
 }
 
-function validateLogin() {
-  var currentUser = Parse.User.current();
-  if (!currentUser)
-  {
-    goToLoginPage();
-  }
-  else
-  {
-    $('#extension-container').css('display','block');
-    runQuery();
-  }
-}
-
-initialize();
-
 var maxNuggetCharLength = 140;
 
 $('#nugget-text').on('input', function() {
@@ -186,6 +171,51 @@ $('#add-nugget-button').click(function()
     });
   }
 });
+
+$('#related-nuggets-table').on('click', '.icon-plus', function()
+{
+  var nugget_div = $(this).parents('.nugget-wrapper');
+  var nugget_id = nugget_div.attr('id');
+  var Nugget = Parse.Object.extend("Nugget");
+  var nugget = new Nugget();
+  nugget.id = nugget_id;
+  var Nugget_User = Parse.Object.extend("Nugget_User");
+  var query = new Parse.Query(Nugget_User);
+  query.equalTo("user", Parse.User.current());
+  query.equalTo("nugget", nugget);
+  query.find().then(function(nugget_users) {
+    if (!nugget_users || nugget_users.length == 0)
+    {
+      var nugget_user = new Nugget_User();
+      nugget_user.save({
+        nugget: nugget,
+        user: Parse.User.current(),
+        isOwner: false
+      });
+    }
+    else if (nugget_users.length == 1 && nugget_users[0].get("isDeleted") == true)
+    {
+      var nugget_user = nugget_users[0];
+      nugget_user.set("isDeleted", false);
+      nugget_user.save();
+    }
+  });
+});
+
+function validateLogin() {
+  var currentUser = Parse.User.current();
+  if (!currentUser)
+  {
+    goToLoginPage();
+  }
+  else
+  {
+    $('#extension-container').css('display','block');
+    runQuery();
+  }
+}
+
+initialize();
 
 $('#logout-button').click(function()
 {

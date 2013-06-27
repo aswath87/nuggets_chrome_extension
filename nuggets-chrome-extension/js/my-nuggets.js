@@ -20,6 +20,27 @@ function sortNuggetsDescendingByUpdatedAt(a, b)
   return ((a.updatedAt > b.updatedAt) ? -1 : ((a.updatedAt < b.updatedAt) ? 1 : 0));
 }
 
+// function migrationCode()
+// {
+//   var Nugget = Parse.Object.extend("Nugget");
+//   var query = new Parse.Query(Nugget);
+//   query.ascending("updatedAt");
+//   query.find({
+//     success: function(results) {
+//       for(i=0;i<results.length;i++)
+//       {
+//         var Nugget_User = Parse.Object.extend("Nugget_User");
+//         var nugget_user = new Nugget_User();
+//         nugget_user.save({
+//           nugget: results[i],
+//           user: Parse.User.current(),
+//           isOwner: true
+//         });
+//       }
+//     }
+//   });
+// }
+
 function runQuery()
 {
   var Nugget_User = Parse.Object.extend("Nugget_User");
@@ -39,7 +60,7 @@ function runQuery()
         var results = $.map(results_nugget_user, function(n) {
           return n.get("nugget");
         });
-        results.sort(sortNuggetsDescendingByUpdatedAt);
+        // results.sort(sortNuggetsDescendingByUpdatedAt); // should sort by nugget_user updatedAt rather than nugget's
         for(i=0;i<results.length;i++)
         {
           var markup_to_push = '<tr><td><div id="' + results[i].id + '" class="nugget-wrapper"><p>' + results[i].get("text");
@@ -118,6 +139,7 @@ function validateLogin() {
   {
     $('#extension-container').css('display','block');
     runQuery();
+    // migrationCode();
   }
 }
 
