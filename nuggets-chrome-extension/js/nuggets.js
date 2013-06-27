@@ -147,14 +147,19 @@ $('#add-nugget-button').click(function()
       {
         tagsToSave = tagsText.split(',');
       }
-      nugget.save({
-        text: $('#nugget-text').val(),
-        source: $('#nugget-source').val(),
-        url: tabURL,
-        tags: tagsToSave,
-        owner: Parse.User.current()
+      nugget.set("text", $('#nugget-text').val());
+      nugget.set("source", $('#nugget-source').val());
+      nugget.set("url", tabURL);
+      nugget.set("tags", tagsToSave);
+
+      var Nugget_User = Parse.Object.extend("Nugget_User");
+      var nugget_user = new Nugget_User();
+      nugget_user.save({
+        nugget: nugget,
+        user: Parse.User.current(),
+        isOwner: true
       }, {
-        success: function(nugget)
+        success: function(nugget_user)
         {
           $('#nugget-message').css('color','green');
           $('#nugget-message').html("Saved!");

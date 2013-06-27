@@ -15,21 +15,31 @@ function goToLoginPage()
   window.location.replace('login.html');
 }
 
+function sortNuggetsDescendingByUpdatedAt(a, b)
+{
+  return ((a.updatedAt > b.updatedAt) ? -1 : ((a.updatedAt < b.updatedAt) ? 1 : 0));
+}
+
 function runQuery()
 {
-  var Nugget = Parse.Object.extend("Nugget");
-  var query = new Parse.Query(Nugget);
-  query.equalTo("owner", Parse.User.current()).descending("updatedAt");
-  query.notEqualTo("deleted", true);
+  var Nugget_User = Parse.Object.extend("Nugget_User");
+  var query = new Parse.Query(Nugget_User);
+  query.equalTo("user", Parse.User.current()).descending("updatedAt");
+  query.notEqualTo("isDeleted", true);
+  query.include("nugget");
   query.find({
-    success: function(results) {
-      if (results.length == 0)
+    success: function(results_nugget_user) {
+      if (results_nugget_user.length == 0)
       {
         $('#my-nuggets-table').html('<p>none</p>');
       }
       else
       {
         var my_nuggets = [];
+        var results = $.map(results_nugget_user, function(n) {
+          return n.get("nugget");
+        });
+        results.sort(sortNuggetsDescendingByUpdatedAt);
         for(i=0;i<results.length;i++)
         {
           var markup_to_push = '<tr><td><div id="' + results[i].id + '" class="nugget-wrapper"><p>' + results[i].get("text");
@@ -80,26 +90,21 @@ $('#my-nuggets-table').on('click', '.icon-trash', function()
   var nugget_id = nugget_div.attr('id');
   var Nugget = Parse.Object.extend("Nugget");
   var query = new Parse.Query(Nugget);
-  query.get(nugget_id, {
-    success: function(nugget)
-    {
-      nugget.save({
-        deleted: true
-      }, {
-        success: function(nugget2)
-        {
-          runQuery();
-        },
-        error: function(object2, error2)
-        {
-          // nugget_div.prop('disabled', false);
-        }
-      });
-    },
-    error: function(object, error)
-    {
+  query.get(nugget_id).then(function(nugget) {
+    var Nugget_User = Parse.Object.extend("Nugget_User");
+    var query2 = new Parse.Query(Nugget_User);
+    query2.equalTo("user", Parse.User.current());
+    query2.equalTo("nugget", nugget);
+    query2.first().then(function(nugget_user) {
+      nugget_user.set("isDeleted", true);
+      nugget_user.save();
+    }, function(error) {
       // nugget_div.prop('disabled', false);
-    }
+    }).then(function() { // after nugget_user has been updated to isDeleted=true
+      runQuery();
+    });
+  }).then(function() { // in case nugget gets deleted and the query.get(nugget_id) fails, should refresh my nuggets
+    runQuery();
   });
 });
 
