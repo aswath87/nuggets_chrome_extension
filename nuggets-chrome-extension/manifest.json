@@ -11,8 +11,7 @@
   },
   "permissions": [
     "tabs",
-    "contextMenus",
-    "storage"
+    "contextMenus"
   ],
   "icons": {
     "16": "img/nuggets16.png"
