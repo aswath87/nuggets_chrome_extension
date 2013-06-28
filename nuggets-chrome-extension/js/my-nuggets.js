@@ -74,9 +74,12 @@ function runQuery()
         {
           var markup_to_push = '<tr><td><div id="' + results[i].id + '" class="nugget-wrapper"><p>' + results[i].text;
           var tags = results[i].tags;
-          for (j=0;j<tags.length;j++)
+          if (tags)
           {
-            markup_to_push += ' <span class="nugget-tag">#' + tags[j] + '</span>';
+            for (j=0;j<tags.length;j++)
+            {
+              markup_to_push += ' <span class="nugget-tag">#' + tags[j] + '</span>';
+            }
           }
           markup_to_push += '</p>'
           if (results[i].url && results[i].url != "")

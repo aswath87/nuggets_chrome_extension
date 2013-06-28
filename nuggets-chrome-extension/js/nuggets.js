@@ -34,9 +34,12 @@ function runQuery()
           {
             var markup_to_push = '<tr><td><div id="' + results[i].id + '" class="nugget-wrapper row-fluid"><div class="span11"><p>' + results[i].get("text") + " ";
             var tags = results[i].get("tags");
-            for (j=0;j<tags.length;j++)
+            if (tags)
             {
-              markup_to_push += '<span class="nugget-tag">#' + tags[j] + '</span> ';
+              for (j=0;j<tags.length;j++)
+              {
+                markup_to_push += '<span class="nugget-tag">#' + tags[j] + '</span> ';
+              }
             }
             markup_to_push += '</p></div>';
             markup_to_push += '<span class="span1 pull-right nugget-action-icons" style="display: none;"><i class="icon-plus nugget-action-icon"></i></span>';
