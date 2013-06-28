@@ -15,6 +15,10 @@ h2, h3, h4, h5 {
     text-align: center;
 }
 
+p {
+    word-break: break-word;
+}
+
 .error {
     color: red;
     font-size: 12px;
