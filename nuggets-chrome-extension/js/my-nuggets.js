@@ -124,8 +124,9 @@ $('#my-nuggets-table').on('click', '.icon-trash', function()
     var Nugget_User = Parse.Object.extend("Nugget_User");
     var query2 = new Parse.Query(Nugget_User);
     query2.equalTo("nugget", nugget);
+    query2.notEqualTo("isDeleted", true);
     query2.find().then(function(nugget_users) {
-      if (nugget_users.length == 1 && nugget_users[0].get("user").id == Parse.User.current().id)
+      if (nugget_users.length == 1 && nugget_users[0].get("user").id == Parse.User.current().id) // last person to lose connection with this nugget, set nugget as deleted
       {
         nugget.set("isDeleted", true);
         nugget.save().then(function() {
