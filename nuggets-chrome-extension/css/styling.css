@@ -97,11 +97,30 @@ p {
     margin-left: 5px;
 }
 
-.follow-image {
-    height: 15px;
-    width: 15px;
-    margin: 4%;
-    vertical-align: middle;
+#my-nuggets-search-div {
+    margin-left: 5px;
+}
+
+#my-nuggets-search-icon {
+    position: relative;
+    margin-right: -23px;
+    top: -4px;
+}
+
+#my-nuggets-search {
+    padding-left: 22px;
+    padding-right: 22px;
+}
+
+#my-nuggets-search-clear {
+    position: relative;
+    cursor: pointer;
+    margin-left: -23px;
+    top: -4px;
+}
+
+.highlight {
+    background-color: #FFFF00;
 }
 
 .well, .navbar-inner, .popover, .btn, .tooltip, input, select, textarea, pre, .progress, .modal, .add-on, .alert, .table-bordered, .nav>.active>a, .dropdown-menu, .tooltip-inner, .badge, .label, .img-polaroid {
