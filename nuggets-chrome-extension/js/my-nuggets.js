@@ -15,32 +15,6 @@ function goToLoginPage()
   window.location.replace('login.html');
 }
 
-function sortNuggetsDescendingByUpdatedAt(a, b)
-{
-  return ((a.updatedAt > b.updatedAt) ? -1 : ((a.updatedAt < b.updatedAt) ? 1 : 0));
-}
-
-// function migrationCode()
-// {
-//   var Nugget = Parse.Object.extend("Nugget");
-//   var query = new Parse.Query(Nugget);
-//   query.ascending("updatedAt");
-//   query.find({
-//     success: function(results) {
-//       for(i=0;i<results.length;i++)
-//       {
-//         var Nugget_User = Parse.Object.extend("Nugget_User");
-//         var nugget_user = new Nugget_User();
-//         nugget_user.save({
-//           nugget: results[i],
-//           user: Parse.User.current(),
-//           isOwner: true
-//         });
-//       }
-//     }
-//   });
-// }
-
 function runQuery()
 {
   var Nugget_User = Parse.Object.extend("Nugget_User");
@@ -69,7 +43,6 @@ function runQuery()
           return_object.updatedAt = nugget_user.updatedAt;
           return return_object;
         });
-        // results.sort(sortNuggetsDescendingByUpdatedAt); // should sort by nugget_user updatedAt rather than nugget's
         for(i=0;i<results.length;i++)
         {
           var markup_to_push = '<tr><td><div id="' + results[i].id + '" class="nugget-wrapper"><p>' + results[i].text;
@@ -119,7 +92,6 @@ $('#my-nuggets-table').on('mouseleave', 'tr', function()
 $('#my-nuggets-table').on('click', '.icon-trash', function()
 {
   var nugget_div = $(this).parents('.nugget-wrapper');
-  // nugget_div.prop('disabled', true);
   var nugget_id = nugget_div.attr('id');
   var Nugget = Parse.Object.extend("Nugget");
   var query = new Parse.Query(Nugget);
@@ -147,7 +119,6 @@ $('#my-nuggets-table').on('click', '.icon-trash', function()
         }
       }
     }, function(error) {
-      // nugget_div.prop('disabled', false);
     });
   }).then(function() { // in case nugget gets deleted and the query.get(nugget_id) fails, should refresh my nuggets
     runQuery();
@@ -164,7 +135,6 @@ function validateLogin() {
   {
     $('#extension-container').css('display','block');
     runQuery();
-    // migrationCode();
   }
 }
 
