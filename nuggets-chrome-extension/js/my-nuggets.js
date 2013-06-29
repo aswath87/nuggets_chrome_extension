@@ -34,7 +34,7 @@ function addHighlightMarkup(text, highlightText)
         break;
       }
       return_markup += text.substring(endOfPreviousHighlightIndex, highlightIndex);
-    } while (text.length > endOfPreviousHighlightIndex + highlightText.length)
+    } while (text.length >= endOfPreviousHighlightIndex + highlightText.length)
     return_markup += text.substring(endOfPreviousHighlightIndex);
     return return_markup;
   }
