@@ -176,6 +176,7 @@ $('#my-nuggets-table').on('mouseleave', 'tr', function()
 $('#my-nuggets-table').on('click', '.icon-trash', function()
 {
   var nugget_div = $(this).parents('.nugget-wrapper');
+  nugget_div.fadeTo(500, 0.2);
   var nugget_id = nugget_div.attr('id');
   var Nugget = Parse.Object.extend("Nugget");
   var query = new Parse.Query(Nugget);
@@ -188,9 +189,7 @@ $('#my-nuggets-table').on('click', '.icon-trash', function()
       if (nugget_users.length == 1 && nugget_users[0].get("user").id == Parse.User.current().id) // last person to lose connection with this nugget, set nugget as deleted
       {
         nugget.set("isDeleted", true);
-        nugget.save().then(function() {
-          runQuery();
-        });
+        nugget.save();
       }
       for (i=0;i<nugget_users.length;i++)
       {
@@ -203,9 +202,8 @@ $('#my-nuggets-table').on('click', '.icon-trash', function()
         }
       }
     }, function(error) {
+      nugget_div.fadeTo(200, 1.0);
     });
-  }).then(function() { // in case nugget gets deleted and the query.get(nugget_id) fails, should refresh my nuggets
-    runQuery();
   });
 });
 

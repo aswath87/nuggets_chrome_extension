@@ -198,6 +198,7 @@ $('#related-nuggets-table').on('click', '.icon-plus', function()
       nugget_user.save();
     }
   });
+  $(this).prop('class','icon-ok');
 });
 
 function validateLogin() {
