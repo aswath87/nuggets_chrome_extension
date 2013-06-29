@@ -48,12 +48,9 @@ function updateMyNuggetsMarkup(results, highlightText)
   {
     var markup_to_push = '<tr><td><div id="' + results[i].id + '" class="nugget-wrapper"><p>' + addHighlightMarkup(results[i].text, highlightText);
     var tags = results[i].tags;
-    if (tags)
+    for (j=0;j<tags.length;j++)
     {
-      for (j=0;j<tags.length;j++)
-      {
-        markup_to_push += ' <span class="nugget-tag">' + addHighlightMarkup('#' + tags[j], highlightText) + '</span>';
-      }
+      markup_to_push += ' <span class="nugget-tag">' + addHighlightMarkup('#' + tags[j], highlightText) + '</span>';
     }
     markup_to_push += '</p>'
     if (results[i].url && results[i].url != "")
@@ -97,7 +94,14 @@ function runQuery()
           var return_object = new Object();
           return_object.id = nugget.id;
           return_object.text = nugget.get("text");
-          return_object.tags = nugget.get("tags");
+          if (!nugget.get("tags"))
+          {
+            return_object.tags = [];
+          }
+          else
+          {
+            return_object.tags = nugget.get("tags");
+          }
           return_object.url = nugget.get("url");
           return_object.source = nugget.get("source");
           return_object.isOwner = nugget_user.get("isOwner");
