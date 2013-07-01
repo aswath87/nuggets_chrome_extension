@@ -74,6 +74,7 @@ p {
 
 .nugget-wrapper {
     position: relative;
+    margin-bottom: -10px;
 }
 
 .nugget-tag {
@@ -99,6 +100,7 @@ p {
 
 #my-nuggets-search-div {
     margin-left: 5px;
+    margin-bottom: -11px;
 }
 
 #my-nuggets-search-icon {
