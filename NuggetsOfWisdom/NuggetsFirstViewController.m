@@ -12,7 +12,7 @@
 
 @interface NuggetsFirstViewController ()
 
-#define maxNuggetCharacterLength 140
+#define maxNuggetCharacterLength 200
 #define nuggetTextViewPlaceholderText @"What did you learn?"
 #define fontName @"Avenir-Book"
 
@@ -102,6 +102,15 @@
     {
         UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Incomplete entry"
                                                           message:@"Enter a nugget!"
+                                                         delegate:nil
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+        [message show];
+    }
+    else if ([self.nuggetText.text length] > maxNuggetCharacterLength)
+    {
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Nugget too long"
+                                                          message:[NSString stringWithFormat:@"Nugget can't be more than %d characters!", maxNuggetCharacterLength]
                                                          delegate:nil
                                                 cancelButtonTitle:@"OK"
                                                 otherButtonTitles:nil];

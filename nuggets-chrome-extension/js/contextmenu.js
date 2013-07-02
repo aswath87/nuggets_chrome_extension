@@ -7,9 +7,9 @@ function contextMenuClicked(info, tab) {
 	}
 	else
 	{
-		if (info.selectionText.length > 140)
+		if (info.selectionText.length > 200)
 		{
-			alert('Nuggets must be 140 characters or less!');
+			alert('Nuggets must be 200 characters or less!');
 		}
 		else
 		{

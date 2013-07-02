@@ -54,7 +54,7 @@ function runQuery()
   });
 }
 
-var maxNuggetCharLength = 140;
+var maxNuggetCharLength = 200;
 
 $('#nugget-text').on('input', function() {
   var charsLeft = maxNuggetCharLength - $(this).val().length;
