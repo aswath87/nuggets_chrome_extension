@@ -171,9 +171,12 @@
 
 - (void)addTag
 {
-    [self.tags addObject:self.NuggetToAddTags.text];
-    self.NuggetToAddTags.text = @"";
-    [self.tagsCollectionView reloadData];
+    if (self.NuggetToAddTags.text.length > 0)
+    {
+        [self.tags addObject:self.NuggetToAddTags.text];
+        self.NuggetToAddTags.text = @"";
+        [self.tagsCollectionView reloadData];
+    }
 }
 
 - (IBAction)addTagButtonClicked:(id)sender

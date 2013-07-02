@@ -79,7 +79,7 @@
 
 - (NSString *)nuggetTagForRow:(NSUInteger)row
 {
-    return [self.nuggets[row][@"tags"] componentsJoinedByString:@","];
+    return [self.nuggets[row][@"tags"] componentsJoinedByString:@", "];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
