@@ -181,11 +181,8 @@ $('#my-nuggets-table').on('click', '.icon-trash', function()
   var Nugget = Parse.Object.extend("Nugget");
   var nugget = new Nugget();
   nugget.id = nugget_id;
-  // var innerQuery = new Parse.Query(Nugget);
-  // innerQuery.equalTo("nugget", nugget)
   var Nugget_User = Parse.Object.extend("Nugget_User");
   var query = new Parse.Query(Nugget_User);
-  // query.matchesQuery("nugget", innerQuery);
   query.equalTo("nugget", nugget);
   query.notEqualTo("isDeleted", true);
   query.include("nugget");
