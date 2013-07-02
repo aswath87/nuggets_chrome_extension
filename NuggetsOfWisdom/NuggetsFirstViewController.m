@@ -88,7 +88,11 @@
     [nuggetObject setObject:nugget.nugget forKey:@"text"];
     [nuggetObject setObject:nugget.source forKey:@"source"];
     [nuggetObject setObject:nugget.tags forKey:@"tags"];
-    [nuggetObject saveEventually];
+    
+    PFObject *nuggetUserObject = [PFObject objectWithClassName:@"Nugget_User"];
+    [nuggetUserObject setObject:[PFUser currentUser] forKey:@"user"];
+    [nuggetUserObject setObject:nuggetObject forKey:@"nugget"];
+    [nuggetUserObject saveEventually];
 }
 
 - (void)attemptSaveNugget

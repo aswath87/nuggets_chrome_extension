@@ -10,7 +10,7 @@
 
 @interface NuggetsThirdViewController : UITableViewController <UIAlertViewDelegate>
 
-@property (nonatomic, strong) NSArray *nuggets;
+@property (nonatomic, strong) NSMutableArray *nuggets;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 
 @end

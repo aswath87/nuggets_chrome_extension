@@ -49,12 +49,17 @@
 //    [self.refreshControl beginRefreshing];
     dispatch_queue_t loaderQ = dispatch_queue_create("loader", NULL);
     dispatch_async(loaderQ, ^{
-        PFQuery *query = [PFQuery queryWithClassName:@"Nugget"];
-        [query whereKey:@"owner" equalTo:[PFUser currentUser]];
-        [query orderByDescending:@"createdAt"];
-        NSArray *nuggets = [query findObjects];
+        PFQuery *query = [PFQuery queryWithClassName:@"Nugget_User"];
+        [query whereKey:@"user" equalTo:[PFUser currentUser]];
+        [query orderByDescending:@"updatedAt"];
+        [query includeKey:@"nugget"];
+        NSArray *nugget_users = [query findObjects];
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.nuggets = nuggets;
+            self.nuggets = [[NSMutableArray alloc] init];
+            for (PFObject *nugget_user in nugget_users)
+            {
+                [self.nuggets addObject:[nugget_user objectForKey:@"nugget"]];
+            }
             [self.tableView reloadData];
 //            [self.refreshControl endRefreshing];
         });

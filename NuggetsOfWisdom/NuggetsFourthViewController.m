@@ -41,6 +41,7 @@
     dispatch_queue_t loaderQ = dispatch_queue_create("loader", NULL);
     dispatch_async(loaderQ, ^{
         PFQuery *query = [PFQuery queryWithClassName:@"Nugget"];
+        [query whereKey:@"owner" notEqualTo:[PFUser currentUser]];
         [query includeKey:@"owner"];
         NSArray *nuggets = [query findObjects];
         dispatch_async(dispatch_get_main_queue(), ^{
