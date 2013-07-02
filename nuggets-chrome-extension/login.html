@@ -20,12 +20,13 @@
           <label>Email address</label>
           <input id="login-email" type="text" class="span12"/>
           <label>Password</label>
-          <!-- <div class="input-append"> -->
+          <div id="login-password-div" class="span12">
             <input id="login-password" type="password" class="span12"/>
-            <!-- <button class="btn" type="button">?</button> -->
-          <!-- </div> -->
+            <span id="login-forgot-password-icon" data-toggle="tooltip" data-placement="top" title="" data-original-title="Forgot password?"><i class="icon-question-sign"></i></span>
+          </div>
           <p id="login-error-1" class="error" style="display: none;">Please provide both an email address and password to sign in.</p>
           <p id="login-error-2" class="error" style="display: none;">The email or password you provided does not appear to be valid.  Please check that you entered them correctly.</p>
+          <p id="login-password-message" class="error" style="display: none;"></p>
           <input id="login-button" class="btn btn-primary span4" type="button" value="Login"/>
         </form>
         <p><a id="go-to-register" href="#">Create a Nugget account</a></p>

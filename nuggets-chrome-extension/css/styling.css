@@ -19,6 +19,22 @@ p {
     word-break: break-word;
 }
 
+#login-password-div {
+    margin-left: 0px;
+}
+
+#login-password {
+    margin-right: -5px;
+    padding-right: 22px;
+}
+
+#login-forgot-password-icon {
+    position: relative;
+    cursor: pointer;
+    margin-left: -19px;
+    top: -4px;
+}
+
 .error {
     color: red;
     font-size: 12px;

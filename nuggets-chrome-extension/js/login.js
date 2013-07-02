@@ -2,6 +2,7 @@ $(document).ready(function(){
 
 function initialize() {
   Parse.initialize("F1fRCfIIYQzvft22ckZd5CdrOzhVecTXkwfgWflN", "DUoWr9lIjQME2MmqgMApFmWFdzMcl7B6mKfj8AAc");
+  $("span[data-toggle=tooltip]").tooltip();
   validateLogin();
 }
 
@@ -32,12 +33,14 @@ function attemptLogin()
   {
     $('#login-error-1').css('display','block');
     $('#login-error-2').css('display','none');
+    $('#login-password-message').css('display','none');
     $('#login-email').focus();
   }
   else
   {
     $('#login-error-1').css('display','none');
     $('#login-error-2').css('display','none');
+    $('#login-password-message').css('display','none');
     Parse.User.logIn($('#login-email').val(), $('#login-password').val(), {
       success: function(user) {
         goToNuggetPage();
@@ -61,6 +64,34 @@ $('#login-password').keyup(function(e)
   if (e.which == 13)
   {
     attemptLogin();
+  }
+});
+
+$('#login-forgot-password-icon').click(function()
+{
+  $('#login-error-1').css('display','none');
+  $('#login-error-2').css('display','none');
+  var email = $('#login-email').val();
+  if (validateEmail(email))
+  {
+    Parse.User.requestPasswordReset(email, {
+    success: function() {
+      $('#login-password-message').css('color','green');
+      $('#login-password-message').html("Instructions to reset your password were sent to " + email);
+      $('#login-password-message').css('display','block');
+    },
+    error: function(error) {
+      $('#login-password-message').css('color','red');
+      $('#login-password-message').html(error.message);
+      $('#login-password-message').css('display','block');
+      $('#login-email').focus();
+    }
+    });
+  }
+  else
+  {
+    $('#login-error-2').css('display','block');
+    $('#login-email').focus();
   }
 });
 
