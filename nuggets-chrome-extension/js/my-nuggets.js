@@ -179,31 +179,34 @@ $('#my-nuggets-table').on('click', '.icon-trash', function()
   nugget_div.fadeTo(500, 0.2);
   var nugget_id = nugget_div.attr('id');
   var Nugget = Parse.Object.extend("Nugget");
-  var query = new Parse.Query(Nugget);
-  query.get(nugget_id).then(function(nugget) {
-    var Nugget_User = Parse.Object.extend("Nugget_User");
-    var query2 = new Parse.Query(Nugget_User);
-    query2.equalTo("nugget", nugget);
-    query2.notEqualTo("isDeleted", true);
-    query2.find().then(function(nugget_users) {
-      if (nugget_users.length == 1 && nugget_users[0].get("user").id == Parse.User.current().id) // last person to lose connection with this nugget, set nugget as deleted
+  var nugget = new Nugget();
+  nugget.id = nugget_id;
+  // var innerQuery = new Parse.Query(Nugget);
+  // innerQuery.equalTo("nugget", nugget)
+  var Nugget_User = Parse.Object.extend("Nugget_User");
+  var query = new Parse.Query(Nugget_User);
+  // query.matchesQuery("nugget", innerQuery);
+  query.equalTo("nugget", nugget);
+  query.notEqualTo("isDeleted", true);
+  query.include("nugget");
+  query.find().then(function(nugget_users) {
+    if (nugget_users.length == 1 && nugget_users[0].get("user").id == Parse.User.current().id) // last person to lose connection with this nugget, set nugget as deleted
+    {
+      nugget_users[0].get("nugget").set("isDeleted", true);
+      nugget_users[0].get("nugget").save();
+    }
+    for (i=0;i<nugget_users.length;i++)
+    {
+      if (nugget_users[i].get("user").id == Parse.User.current().id)
       {
-        nugget.set("isDeleted", true);
-        nugget.save();
+        nugget_users[i].set("isDeleted", true);
+        nugget_users[i].save().then(function() {
+          runQuery();
+        });
       }
-      for (i=0;i<nugget_users.length;i++)
-      {
-        if (nugget_users[i].get("user").id == Parse.User.current().id)
-        {
-          nugget_users[i].set("isDeleted", true);
-          nugget_users[i].save().then(function() {
-            runQuery();
-          });
-        }
-      }
-    }, function(error) {
-      nugget_div.fadeTo(200, 1.0);
-    });
+    }
+  }, function(error) {
+    nugget_div.fadeTo(200, 1.0);
   });
 });
 
