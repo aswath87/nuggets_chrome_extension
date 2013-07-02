@@ -40,6 +40,7 @@
     }
     else
     {
+        [self updateNuggetCharacterCounter:self.nuggetText];
 //        [self.nuggetText becomeFirstResponder];
     }
 }
@@ -163,9 +164,13 @@
     [textView resignFirstResponder];
 }
 
-- (void)textViewDidChange:(UITextView *)textView {
-    //create NSString containing the text from the UITextView
-    NSString *substring = [NSString stringWithString:textView.text];
+- (void)updateNuggetCharacterCounter:(UITextView *)textView
+{
+    NSString *substring = @"";
+    if (self.nuggetText.textColor != [UIColor lightGrayColor])
+    {
+        substring = [NSString stringWithString:textView.text];
+    }
     
     if (substring.length > maxNuggetCharacterLength)
     {
@@ -175,6 +180,11 @@
         self.nuggetCharacterCounter.textColor = [UIColor blackColor];
     }
     self.nuggetCharacterCounter.text = [NSString stringWithFormat:@"%d",maxNuggetCharacterLength - [substring length]];
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    [self updateNuggetCharacterCounter:textView];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
