@@ -105,7 +105,6 @@ function runQuery()
           }
           return_object.url = nugget.get("url");
           return_object.source = nugget.get("source");
-          return_object.isOwner = nugget_user.get("isOwner");
           return_object.updatedAt = nugget_user.updatedAt;
           return return_object;
         });

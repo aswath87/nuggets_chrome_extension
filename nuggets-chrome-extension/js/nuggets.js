@@ -134,13 +134,13 @@ $('#add-nugget-button').click(function()
       nugget.set("source", $('#nugget-source').val());
       nugget.set("url", tabURL);
       nugget.set("tags", tagsToSave);
+      nugget.set("owner", Parse.User.current())
 
       var Nugget_User = Parse.Object.extend("Nugget_User");
       var nugget_user = new Nugget_User();
       nugget_user.save({
         nugget: nugget,
-        user: Parse.User.current(),
-        isOwner: true
+        user: Parse.User.current()
       }, {
         success: function(nugget_user)
         {
@@ -187,8 +187,7 @@ $('#related-nuggets-table').on('click', '.icon-plus', function()
       var nugget_user = new Nugget_User();
       nugget_user.save({
         nugget: nugget,
-        user: Parse.User.current(),
-        isOwner: false
+        user: Parse.User.current()
       });
     }
     else if (nugget_users.length == 1 && nugget_users[0].get("isDeleted") == true)
