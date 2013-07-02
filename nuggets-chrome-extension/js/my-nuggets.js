@@ -86,6 +86,7 @@ function runQuery()
       if (results_nugget_user.length == 0)
       {
         $('#my-nuggets-table').html('<p>none</p>');
+        $('#my-nuggets-search-div').css('display','none');
       }
       else
       {
@@ -110,8 +111,8 @@ function runQuery()
         });
         my_nuggets = results;
         updateMyNuggetsMarkup(my_nuggets);
+        $('#my-nuggets-search-div').css('display','block');
       }
-      $('#my-nuggets-search-div').css('display','block');
     }
   });
 }
