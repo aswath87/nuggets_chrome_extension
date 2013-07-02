@@ -209,7 +209,6 @@ function validateLogin() {
   }
   else
   {
-    $('#extension-container').css('display','block');
     runQuery();
   }
 }

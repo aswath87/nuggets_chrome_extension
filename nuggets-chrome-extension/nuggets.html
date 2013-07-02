@@ -14,10 +14,23 @@
     <script type="text/javascript" src="js/nuggets.js"></script>
   </head>
   <body id="extension-body">
-    <div id="extension-container" style="display: none;">
-      <h2 class="nugget-title">Nuggets of Wisdom</h2>
-      <h5>Remember what you learn</h5>
-      <hr/>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <img src="img/nuggets24.png" class="pull-left navbar-icon"/>
+        <span class="brand">Create a nuggit</span>
+        <div class="navbar-dropdown">
+          <div class="btn-group pull-right">
+            <button class="btn btn-small dropdown-toggle" data-toggle="dropdown" tabindex="-1"><i class="icon-user"></i>  <span class="caret"></span></button>
+            <ul class="dropdown-menu pull-right">
+              <li><a href="my-nuggets.html">My nuggits</a></li>
+              <li class="divider"></li>
+              <li><a id="logout-button" href="#">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="extension-container">
       <div class="row-fluid">
         <div class="span12">
           <textarea id="nugget-text" class="span12" type="text" placeholder="What did you learn?" rows="4"></textarea>
@@ -34,19 +47,13 @@
             </div>
             <input id="add-nugget-button" class="btn btn-primary span4 text-right pull-right" type="button" value="Save"/>
           </div>
-          <hr/>
         </div>
         <div id="related-nuggets-div" class="span12" style="display: none;">
-          <h3>Related Nuggets</h3>
+          <p class="lead">Related Nuggets</p>
           <table class="table">
             <tbody id="related-nuggets-table">
             </tbody>
           </table>
-        </div>
-        <div>
-          <a href="my-nuggets.html" data-role="button" data-transition="flip" class="btn btn-info span6">My Nuggets<a/>
-          <input id="logout-button" class="btn offset2 span4" type="button" value="Logout"/>
-          <hr/>
         </div>
       </div>
     </div>
