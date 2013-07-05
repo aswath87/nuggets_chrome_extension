@@ -7,8 +7,13 @@
     height: 280px
 }
 
-.navbar {
-    margin: -1px -21px 15px;
+#extension-container {
+    margin-top: 65px;
+}
+
+.navbar-inner {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
 }
 
 .navbar-icon {
