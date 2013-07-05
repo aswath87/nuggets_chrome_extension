@@ -154,6 +154,10 @@ p {
     top: -4px;
 }
 
+#welcome-done-button {
+    margin-bottom: 20px;
+}
+
 .highlight {
     background-color: #FFFF00;
 }

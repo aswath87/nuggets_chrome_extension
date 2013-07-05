@@ -17,11 +17,20 @@ function validateLogin() {
   {
     goToNuggetPage();
   }
+  else
+  {
+    $('#login-email').focus();
+  }
 }
 
 function goToNuggetPage()
 {
   window.location.replace('nuggets.html');
+}
+
+function goToWelcomePage()
+{
+  window.location.replace('welcome.html');
 }
 
 initialize();
@@ -135,7 +144,7 @@ function attemptRegister()
     user.set("email", $('#register-email').val());
     user.signUp(null, {
       success: function(user) {
-        goToNuggetPage();
+        goToWelcomePage();
       },
       error: function(user, error) {
         $('#register-error-4').html(error.message);
@@ -164,12 +173,14 @@ $('#go-to-register').click(function()
 {
   $('#login-div').css('display','none');
   $('#register-div').css('display','block');
+  $('#register-name').focus();
 });
 
 $('#go-to-login').click(function()
 {
   $('#register-div').css('display','none');
   $('#login-div').css('display','block');
+  $('#login-email').focus();
 });
 
 });
