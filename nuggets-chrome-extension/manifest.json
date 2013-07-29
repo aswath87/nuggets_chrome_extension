@@ -18,5 +18,13 @@
   },
   "background": {
     "scripts": ["js/jquery-1.10.1.min.js", "js/parse-1.2.8.min.js", "js/contextmenu.js"]
-  }
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["http://www.ted.com/*"],
+      "css": ["css/design.css", "css/bootstrap.min.css"],
+      "js": ["js/jquery-1.10.1.min.js", "js/nugget-inject.js", "js/bootstrap.js"]
+    }
+  ]
 }

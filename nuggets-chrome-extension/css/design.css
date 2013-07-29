@@ -1,0 +1,47 @@
+#nugget-review a {
+
+
+float: left;
+color: #FFFFFF;
+text-decoration: none;
+background: rgb(26, 180, 174);
+}
+#nugget-review {
+    margin-top: 12px; 
+    display:block;
+    clear: both;
+    height: 60px;
+position: relative;
+color: #FFFFFF;
+padding: 20px 30px;
+text-decoration: none;
+background: rgb(26, 180, 174);
+}
+#nugget-review body {
+color: #333333;
+font: 15px/22px "Helvetica Neue","Helvetica",Arial,sans-serif;
+font-weight: normal;
+}
+
+#nugget-review h3 {
+font-size: 21px;
+line-height: 24px;
+}
+
+#nugget-review h1, h2, h3, h4, h5 {
+margin: 0 0 22px 0;
+padding: 0;
+font-family: "maven-pro","Helvetica Neue","Helvetica",Arial,sans-serif;
+font-weight: normal;
+-webkit-font-smoothing: antialiased;
+}
+
+#nugget-review a {
+color: #FFFFFF;
+}
+
+#nugget-review a small {
+position: absolute;
+bottom: 20px;
+color: #6C6C6C;
+}
