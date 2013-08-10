@@ -27,12 +27,9 @@ Parse.Cloud.run('nextRevisionNugget', { }, {
     
     strVar="";
     strVar += "<div class=\"\" id=\"nugget-review\">";
-    strVar += "<a data-feed-post-link=\"\" >";
-    strVar += "<small>";
-    strVar += "<span data-feed-post-date=\"%m %d\">Nugg from Jun 14 2013<\/span>";
-    strVar += "<\/small>";
-    strVar += "<h3 data-feed-post-title=\"\">" + nuggetText + "<\/h3>"; //Right apology - express regret, accept responsibility, commit to making it right, genuinely repent, request forgiveness<\/h3>";
-    strVar += "<\/a><\/div>";
+    strVar += "<div id =\"nugget-text\">" + nuggetText + "<\/div>"; //Right apology - express regret, accept responsibility, commit to making it right, genuinely repent, request forgiveness<\/h3>";
+    strVar += "<div id = \"nugget-meta\">Nugg from Jun 14 2013<\/div>";
+    strVar += "<\/div>";
     
     $('body').prepend(strVar);
     $(strVar).insertAfter('#subscribe-banner');

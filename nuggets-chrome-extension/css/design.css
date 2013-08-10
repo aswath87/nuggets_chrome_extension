@@ -1,29 +1,30 @@
-#nugget-review a {
-
-
+nugget-text {
 float: left;
 color: #FFFFFF;
+color: #000;
 text-decoration: none;
-background: rgb(26, 180, 174);
 }
+
 #nugget-review {
     margin-top: 12px;
     margin-bottom: 12px; 
     display:block;
     clear: both;
-    min-height: 60px;
+    min-height: 40px;
 position: relative;
 color: #FFFFFF;
 padding: 20px 30px 10px;
 text-decoration: none;
 background: rgb(26, 180, 174);
-width: 600px;
-border-top-right-radius: 20px 20px;
-border-bottom-right-radius: 5px 5px;
+background: #FFCC00; 
+width: 740px;
 text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 5px 5px #888888;
 }
 
-#nugget-review:before {
+#nugget-reviews:before {
    content:"";
    position:absolute;
    top:0;
@@ -43,37 +44,27 @@ font: 15px/22px "Helvetica Neue","Helvetica",Arial,sans-serif;
 font-weight: normal;
 }
 
-#nugget-review h3 {
+#nugget-text {
 font-size: 18px;
 font-family: "maven-pro","Helvetica Neue","Helvetica",Arial,sans-serif;
 line-height: 24px;
-color: #FFFFFF;
+color: #000;
 font-style: normal;
 font-weight: normal; 
 text-decoration: none;
 text-transform: none;
 letter-spacing: normal;
-clear: both; 
-}
-
-#nugget-review h1, h2, h3, h4, h5 {
-margin: 0 0 22px 0;
-padding: 0;
-font-family: "maven-pro","Helvetica Neue","Helvetica",Arial,sans-serif;
+clear: both;
 font-weight: normal;
 -webkit-font-smoothing: antialiased;
 }
 
-#nugget-review a {
 
-}
-
-#nugget-review a small {
-position: absolute;
+#nugget-meta {
 font-size: 10px;
 font-family: "maven-pro","Helvetica Neue","Helvetica",Arial,sans-serif;
+margin-top: 5px; 
 left: 30px; 
-bottom: 3px;
 color: #6C6C6C;
 font-style: normal;
 font-weight: normal; 
