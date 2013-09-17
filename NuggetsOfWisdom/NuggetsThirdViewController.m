@@ -8,6 +8,7 @@
 
 #import "NuggetsThirdViewController.h"
 #import "NuggetsTableViewCell.h"
+#import "NuggetViewController.h"
 #import <Parse/Parse.h>
 
 @interface NuggetsThirdViewController ()
@@ -104,9 +105,21 @@
     
     cell.nuggetSourceLabel.text = [self nuggetSourceForRow:indexPath.row];
     cell.nuggetLabel.text = [self nuggetForRow:indexPath.row];
+    [cell.nuggetLabel sizeToFit];
     cell.nuggetTag.text = [self nuggetTagForRow:indexPath.row];
     
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    if ([[segue identifier] isEqualToString:@"toNuggetPage"]) {
+        // Set the selected button in the new view
+        [segue.destinationViewController setNugget:[self nuggetForRow:indexPath.row]];
+        [segue.destinationViewController setNuggetSource:[self nuggetSourceForRow:indexPath.row]];
+        [segue.destinationViewController setNuggetTags:[self nuggetTagForRow:indexPath.row]];
+    }
 }
 
 - (void)logout

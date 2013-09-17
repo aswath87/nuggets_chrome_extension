@@ -8,6 +8,7 @@
 
 #import "NuggetsFourthViewController.h"
 #import "NuggetsWithAuthorTableViewCell.h"
+#import "NuggetViewController.h"
 #import <Parse/Parse.h>
 
 @interface NuggetsFourthViewController ()
@@ -102,6 +103,18 @@
     cell.nuggetTagsLabel.text = [self nuggetTagForRow:indexPath.row];
     
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    if ([[segue identifier] isEqualToString:@"toNuggetPage2"]) {
+        // Set the selected button in the new view
+        [segue.destinationViewController setTitle:[self nuggetOwnerNameForRow:indexPath.row]];
+        [segue.destinationViewController setNugget:[self nuggetForRow:indexPath.row]];
+        [segue.destinationViewController setNuggetSource:[self nuggetSourceForRow:indexPath.row]];
+        [segue.destinationViewController setNuggetTags:[self nuggetTagForRow:indexPath.row]];
+    }
 }
 
 /*
