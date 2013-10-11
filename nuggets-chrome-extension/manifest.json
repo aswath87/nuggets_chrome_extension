@@ -23,7 +23,7 @@
   "content_scripts": [
     {
       "matches": ["http://www.ted.com/*", "https://www.khanacademy.org/*", "https://class.coursera.org/*"],
-      "css": ["css/design.css", "css/bootstrap.min.css"],
+      "css": ["css/styling-inject.css", "css/bootstrap.min.css"],
       "js": ["js/jquery-1.10.1.min.js", "js/parse-1.2.8.min.js", "js/nugget-inject.js", "js/bootstrap.js"]
       
     }
