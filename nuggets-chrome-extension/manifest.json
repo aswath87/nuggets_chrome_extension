@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "Nuggets of Wisdom",
+  "name": "Nuggets",
   "description": "This extension allows you to save the nuggets of wisdom from links you browse.",
   "version": "0.1",
 
@@ -22,7 +22,7 @@
 
   "content_scripts": [
     {
-      "matches": ["http://www.ted.com/*", "http://*/*"],
+      "matches": ["http://www.ted.com/*", "https://www.khanacademy.org/*", "https://class.coursera.org/*"],
       "css": ["css/design.css", "css/bootstrap.min.css"],
       "js": ["js/jquery-1.10.1.min.js", "js/parse-1.2.8.min.js", "js/nugget-inject.js", "js/bootstrap.js"]
       

@@ -32,7 +32,7 @@ function contextMenuClicked(info, tab) {
 }
 
 chrome.contextMenus.create({
-	"title": "Add to Nuggets of Wisdom",
+	"title": "Add to Nuggets",
 	"contexts": ['selection'],
 	"onclick": contextMenuClicked
 });
