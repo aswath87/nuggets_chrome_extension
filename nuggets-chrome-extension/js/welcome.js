@@ -37,23 +37,34 @@ function updateWelcomeNuggetsMarkup()
   $('#welcome-nuggets-table').html(welcome_nuggets_markup.join(''));
   $('#welcome-nuggets-div').css("display", "block");
 }
+
 function runQuery()
 {
-  var Nugget = Parse.Object.extend("Nugget");
-  var query = new Parse.Query(Nugget);
+  var Nugget_User = Parse.Object.extend("Nugget_User");
+  var User = Parse.Object.extend("User");
+  var user = new User();
+  user.id = "fyudoOXYX2";
+  var query = new Parse.Query(Nugget_User);
+  query.equalTo("user", user);
   query.notEqualTo("isDeleted", true).ascending("updatedAt").limit(20);
-  query.find({
-    success: function(results) {
-      if (results.length == 0)
+  query.include("nugget");
+  query.find().then(function(results) {
+    console.log('results: ' + results.length);
+    if (results.length == 0)
+    {
+      $('#welcome-nuggets-div').css("display", "none");
+    }
+    else
+    {
+      results = results.sort(function() { return 0.5 - Math.random();}); // randomize array
+      /*for (result in results)
       {
-        $('#welcome-nuggets-div').css("display", "none");
-      }
-      else
-      {
-        results = results.sort(function() { return 0.5 - Math.random();}); // randomize array
-        welcome_nuggets = results;
-        updateWelcomeNuggetsMarkup();
-      }
+        welcome_nuggets.push(result.get("nugget"));
+      }*/
+      welcome_nuggets = $.map(results, function(nugget_user) {
+          return nugget_user.get("nugget");
+      });
+      updateWelcomeNuggetsMarkup();
     }
   });
 }

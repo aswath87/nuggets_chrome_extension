@@ -154,6 +154,12 @@ p {
     top: -4px;
 }
 
+.welcome-subtext {
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
 #welcome-done-button {
     margin-bottom: 20px;
 }
