@@ -4,7 +4,8 @@
     width: 300px;
     min-height: 280px;
     max-height: 450px;
-    height: 280px
+    height: 280px;
+    background-color: #E8E8E8; 
 }
 
 #extension-container {
@@ -109,6 +110,9 @@ p {
 .nugget-wrapper {
     position: relative;
     margin-bottom: -10px;
+    padding: 12px;
+    background: white;
+    box-shadow: 0 1px 0 #D0D0D0; 
 }
 
 .nugget-tag {
@@ -129,7 +133,7 @@ p {
 
 .nugget-action-icon {
     cursor: pointer;
-    margin-left: 5px;
+    margin-left: -15px;
 }
 
 #my-nuggets-search-div {
@@ -177,5 +181,9 @@ p {
     border-radius: 0px !important;
     border-collapse: collapse !important;
     background-image: none !important;
+}
+
+.table td {
+    padding: 8px 0 8px 0;
 }
 
