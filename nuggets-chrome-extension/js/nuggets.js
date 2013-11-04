@@ -145,7 +145,7 @@ $('#add-nugget-button').click(function()
         success: function(nugget_user)
         {
           $('#nugget-message').css('color','green');
-          $('#nugget-message').html("Saved!");
+          $('#nugget-message').html("Saved! Your first reminder will be tomorrow!");
           $('#nugget-message').css('display','block');
           $('#nugget-text').val("");
           $('#nugget-source').val(tab.title);
