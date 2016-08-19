@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 var welcome_nuggets = [];
-var welcome_nuggets_to_show = 5;
+var welcome_nuggets_to_show = 3;
 var next_welcome_nugget_index = 0;
 
 function initialize() {

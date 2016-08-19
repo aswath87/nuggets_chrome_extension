@@ -8,6 +8,26 @@
     background-color: #E8E8E8; 
 }
 
+#welcome-extenstion-body {
+    min-width: 300px;
+    max-width: 300px;
+    width: 300px;
+    min-height: 280px;
+    max-height: 450px;
+    height: 280px;
+    background-color: #FFFFFF; 
+
+}
+
+.sub-lead {
+      margin-bottom: 20px;
+      margin-top: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color:rgb(40, 2, 152);
+}
+
 #extension-container {
     margin-top: 65px;
 }
@@ -18,7 +38,10 @@
 }
 
 .navbar-icon {
-    margin: 8px 10px 0px -11px;
+    max-width: 24px; 
+    max-height: 24px; 
+    margin: 6px 4px 0px -11px;
+
 }
 
 .navbar-dropdown {
@@ -53,6 +76,12 @@ p {
 .error {
     color: red;
     font-size: 12px;
+}
+
+.logo-section {
+    margin-right: auto; 
+    margin-left: auto;
+    text-align: center;
 }
 
 .nugget-title {
@@ -173,6 +202,21 @@ p {
     background-color: #FFFF00;
 }
 
+.logo-header {
+    max-width: 198px; 
+    max-height: 198px;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: #FF6600; 
+}
+
+a {
+  color: #662AEA;
+  text-decoration: none;
+}
+
 .well, .navbar-inner, .popover, .btn, .tooltip, input, select, textarea, pre, .progress, .modal, .add-on, .alert, .table-bordered, .nav>.active>a, .dropdown-menu, .tooltip-inner, .badge, .label, .img-polaroid {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
@@ -183,6 +227,17 @@ p {
     border-collapse: collapse !important;
     background-image: none !important;
 }
+
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus, .dropdown-submenu:hover>a, .dropdown-submenu:focus>a 
+{
+background-color: #FF6600; 
+background-image: -webkit-gradient(linear,0 0,0 100%,from(#FF6600),to(#FF6600));
+  background-image: -webkit-linear-gradient(top,#FF6600,#FF6600);
+  background-image: -o-linear-gradient(top,#FF6600,#FF6600);
+  background-image: linear-gradient(to bottom,#FF6600,#FF6600);
+    
+
+    }
 
 .table td {
     padding: 8px 0 8px 0;

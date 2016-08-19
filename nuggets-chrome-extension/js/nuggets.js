@@ -1,7 +1,10 @@
 $(document).ready(function(){
 
 function initialize() {
-  chrome.tabs.getSelected(null, function(tab) {
+  chrome.tabs.query({active:true,currentWindow:true},function(tabArray){
+    var tab = tabArray[0];
+    // alert(tab.url)
+ // chrome.tabs.getSelected(null, function(tab) {
     $('#nugget-source').val(tab.title);
   });
   Parse.initialize("F1fRCfIIYQzvft22ckZd5CdrOzhVecTXkwfgWflN", "DUoWr9lIjQME2MmqgMApFmWFdzMcl7B6mKfj8AAc");
@@ -15,7 +18,10 @@ function goToLoginPage()
 
 function runQuery()
 {
-  chrome.tabs.getSelected(null, function(tab) {
+  chrome.tabs.query({active:true,currentWindow:true},function(tabArray){
+    var tab = tabArray[0];
+
+  //chrome.tabs.getSelected(null, function(tab) {
     var Nugget = Parse.Object.extend("Nugget");
     var query = new Parse.Query(Nugget);
     query.equalTo("url", tab.url).descending("updatedAt");
@@ -74,7 +80,9 @@ $('#nugget-text').on('input', function() {
 
 $('#nugget-source-icon').click(function()
 {
-  chrome.tabs.getSelected(null, function(tab) {
+  chrome.tabs.query({active:true,currentWindow:true},function(tabArray){
+    var tab = tabArray[0];
+  //chrome.tabs.getSelected(null, function(tab) {
     $('#nugget-source').val(tab.title);
   });
 });
@@ -116,10 +124,14 @@ $('#add-nugget-button').click(function()
   }
   else
   {
-    chrome.tabs.getSelected(null, function(tab) {
+    chrome.tabs.query({active:true,currentWindow:true},function(tabArray){
+    var tab = tabArray[0];
+   // chrome.tabs.getSelected(null, function(tab) {
       var Nugget = Parse.Object.extend("Nugget");
       var nugget = new Nugget();
       var tabURL = "";
+
+
       if ($('#nugget-source').val() == tab.title) // only save url if nugget-source field is still tab's title - ie. user didn't change it
       {
         tabURL = tab.url;
@@ -140,7 +152,8 @@ $('#add-nugget-button').click(function()
       var nugget_user = new Nugget_User();
       nugget_user.save({
         nugget: nugget,
-        user: Parse.User.current()
+        user: Parse.User.current(), 
+        isOwner: true, 
       }, {
         success: function(nugget_user)
         {

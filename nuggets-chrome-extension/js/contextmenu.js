@@ -18,6 +18,7 @@ function contextMenuClicked(info, tab) {
       		nugget.set("text", info.selectionText);
 			nugget.set("source", tab.title);
 			nugget.set("url", tab.url);
+			nugget.set("owner", Parse.User.current());
 
 			var Nugget_User = Parse.Object.extend("Nugget_User");
 			var nugget_user = new Nugget_User();

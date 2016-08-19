@@ -12,10 +12,11 @@
   </head>
   <body id="extension-body">
     <div>
-      <h2 class="nugget-title">Nuggets</h2>
-      <h5>Remember what you learn</h5>
+      <div class="logo-section">
+        <img src="img/nuggets_logo.png" class="logo-header"/>
+      </div>
       <hr/>
-      <div id="login-div" class="row-fluid">
+      <div id="login-div" class="row-fluid" style="display: none;">
         <form class="span12">
           <label>Email address</label>
           <input id="login-email" type="text" class="span12"/>
@@ -31,7 +32,8 @@
         </form>
         <p><a id="go-to-register" href="#">Create a Nugget account</a></p>
       </div>
-      <div id="register-div" class="row-fluid" style="display: none;">
+      <div id="register-div" class="row-fluid">
+        <p class="lead">Remember everything you learn!</p>
         <form class="span12">
           <label>Name</label>
           <input id="register-name" type="text" class="span12"/>
@@ -43,9 +45,9 @@
           <input id="register-password" type="password" class="span12"/>
           <p id="register-error-3" class="error" style="display: none;">Please use a password of at least 6 characters.</p>
           <p id="register-error-4" class="error" style="display: none;"></p>
-          <input id="register-button" class="btn btn-primary span4" type="button" value="Register"/>
+          <input id="register-button" class="btn btn-primary span4" type="button" value="Sign up"/> and let's get started! 
         </form>
-        <p><a id="go-to-login" href="#">Already a member?</a></p>
+        <p><a id="go-to-login" href="#">Already a user?</a></p>
       </div>
     </div>
   </body>

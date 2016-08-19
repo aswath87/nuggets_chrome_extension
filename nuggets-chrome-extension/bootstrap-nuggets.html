@@ -11,7 +11,7 @@
     <script type="text/javascript" src="js/parse-1.2.8.min.js"></script>
     <script type="text/javascript" src="js/welcome.js"></script>
   </head>
-  <body id="welcome-extenstion-body">
+  <body id="extension-body">
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <img src="img/nuggets_logo_notext.png" class="pull-left navbar-icon"/>
@@ -21,13 +21,13 @@
     <div id="extension-container">
       <div class="row-fluid">
         <div id="welcome-nuggets-div" class="span12" style="display: none;">
-          <p class="lead">Nuggets in 3 simple steps</p>
-          <p class="sub-lead">1. Create nuggets to record the stuff you learn</p>
-          <img src = "img/create_nugget.png"></img>
-          <p class="sub-lead">2. Prefer not to type? Simply highlight the text and right click to create a nugget.</p>
-          <img src = "img/highlight.png"></img>
-          <p class="sub-lead">3. Ta da! Nuggets will send you timely reminders by email and via notifications. You can browse your nuggets on your own as well.</p>
-          <a id="welcome-done-button" href="bootstrap-nuggets.html" class="btn btn-primary offset4 span4">Got it</a>
+          <p class="lead">Let's get you started with some popular nuggets!</p>
+          <p class="welcome-subtext">Here are some popular nuggets to kickstart your collection. Click the plus (+) button of any of the "nuggets" you think are worth and remembering. Click the "Done" button below when you are finished.</p>
+          <table class="table">
+            <tbody id="welcome-nuggets-table">
+            </tbody>
+          </table>
+          <a id="welcome-done-button" href="nuggets.html" class="btn btn-primary offset4 span4">Let's start!</a>
         </div>
       </div>
     </div>

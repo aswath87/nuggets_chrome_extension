@@ -2,30 +2,23 @@
   "manifest_version": 2,
 
   "name": "Nuggets",
-  "description": "This extension allows you to save the nuggets of wisdom from links you browse.",
-  "version": "0.1",
+  "description": "Nuggets helps you remember everything you learn. Record what your learn in nuggets of 200 chars (or less) and get timely reminders.",
+  "version": "1.7",
 
   "browser_action": {
-    "default_icon": "img/nuggets.png",
+    "default_icon": "img/nuggets_logo_notext.png",
     "default_popup": "nuggets.html"
   },
   "permissions": [
-    "tabs",
-    "contextMenus"
+    "contextMenus", 
+    "activeTab"
   ],
   "icons": {
-    "16": "img/nuggets16.png"
+    "16": "img/nuggets16.png", 
+    "24": "img/nuggets24.png"
   },
   "background": {
     "scripts": ["js/jquery-1.10.1.min.js", "js/parse-1.2.8.min.js", "js/contextmenu.js"]
-  },
+  }
 
-  "content_scripts": [
-    {
-      "matches": ["http://www.placeholder.com/placeholder"],
-      "css": ["css/styling-inject.css", "css/bootstrap.min.css"],
-      "js": ["js/jquery-1.10.1.min.js", "js/parse-1.2.8.min.js", "js/nugget-inject.js", "js/bootstrap.js"]
-      
-    }
-  ]
 }
