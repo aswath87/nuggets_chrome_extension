@@ -1,6 +1,8 @@
 $(document).ready(function(){
 
 var my_nuggets = [];
+var CURRENT_NUGGET_USER = 'currentNuggetUser';
+
 
 $('#my-nuggets-table').on('click', 'a.nugget-source-link', function(event) {
   chrome.tabs.create({url: $(this).attr('href')});
@@ -8,7 +10,6 @@ $('#my-nuggets-table').on('click', 'a.nugget-source-link', function(event) {
 });
 
 function initialize() {
-  Parse.initialize("F1fRCfIIYQzvft22ckZd5CdrOzhVecTXkwfgWflN", "DUoWr9lIjQME2MmqgMApFmWFdzMcl7B6mKfj8AAc");
   validateLogin();
 }
 
@@ -74,14 +75,31 @@ function updateMyNuggetsMarkup(results, highlightText)
   $('#my-nuggets-table').html(my_nuggets_markup.join(''));
 }
 
+function getCurrentUserToken() {
+    return JSON.parse(localStorage.getItem(CURRENT_NUGGET_USER))['token'];
+}
+
+function getCurrentUserId() {
+    return JSON.parse(localStorage.getItem(CURRENT_NUGGET_USER))['userId'];
+}
+
+function doesUserCurrentExist() {
+  return localStorage.getItem(CURRENT_NUGGET_USER);
+}
+
+function removeUserObjectFromLocalStorage() {
+  localStorage.removeItem(CURRENT_NUGGET_USER);
+}
+
 function runQuery()
 {
-  var Nugget_User = Parse.Object.extend("Nugget_User");
-  var query = new Parse.Query(Nugget_User);
-  query.equalTo("user", Parse.User.current()).descending("updatedAt");
-  query.notEqualTo("isDeleted", true);
-  query.include("nugget");
-  query.find({
+  var token = getCurrentUserToken();
+  var userId = getCurrentUserId();
+  $.ajax({
+    url: "https://nuggets-django.herokuapp.com/api/v0/user/" + userId + "/nuggets",
+    type: 'GET',
+    dataType: 'json',
+    headers:{'Authorization':'Token ' + token},
     success: function(results_nugget_user) {
       if (results_nugget_user.length == 0)
       {
@@ -90,25 +108,23 @@ function runQuery()
       }
       else
       {
-        var results = $.map(results_nugget_user, function(nugget_user) {
-          var nugget = nugget_user.get("nugget");
-          var return_object = new Object();
+        my_nuggets = $.map(results_nugget_user, function(nugget) {
+          var return_object = {};
           return_object.id = nugget.id;
-          return_object.text = nugget.get("text");
-          if (!nugget.get("tags"))
+          return_object.text = nugget.text;
+          if (!nugget.tags)
           {
-            return_object.tags = [];
+              return_object.tags = [];
           }
           else
           {
-            return_object.tags = nugget.get("tags");
+              return_object.tags = nugget.tags;
           }
-          return_object.url = nugget.get("url");
-          return_object.source = nugget.get("source");
-          return_object.updatedAt = nugget_user.updatedAt;
+          return_object.url = nugget.url;
+          return_object.source = nugget.source;
+          return_object.updatedAt = nugget.updatedAt;
           return return_object;
         });
-        my_nuggets = results;
         updateMyNuggetsMarkup(my_nuggets);
         $('#my-nuggets-search-div').css('display','block');
       }
@@ -177,39 +193,26 @@ $('#my-nuggets-table').on('click', '.icon-trash', function()
 {
   var nugget_div = $(this).parents('.nugget-wrapper');
   nugget_div.fadeTo(500, 0.2);
-  var nugget_id = nugget_div.attr('id');
-  var Nugget = Parse.Object.extend("Nugget");
-  var nugget = new Nugget();
-  nugget.id = nugget_id;
-  var Nugget_User = Parse.Object.extend("Nugget_User");
-  var query = new Parse.Query(Nugget_User);
-  query.equalTo("nugget", nugget);
-  query.notEqualTo("isDeleted", true);
-  query.include("nugget");
-  query.find().then(function(nugget_users) {
-    if (nugget_users.length == 1 && nugget_users[0].get("user").id == Parse.User.current().id) // last person to lose connection with this nugget, set nugget as deleted
-    {
-      nugget_users[0].get("nugget").set("isDeleted", true);
-      nugget_users[0].get("nugget").save();
-    }
-    for (i=0;i<nugget_users.length;i++)
-    {
-      if (nugget_users[i].get("user").id == Parse.User.current().id)
-      {
-        nugget_users[i].set("isDeleted", true);
-        nugget_users[i].save().then(function() {
-          runQuery();
-        });
+  var nuggetId = nugget_div.attr('id');
+  var token = getCurrentUserToken();
+  var userId = getCurrentUserId();
+
+  $.ajax({
+    url: "https://nuggets-django.herokuapp.com/api/v0/user/" + userId + "/nuggets/" + nuggetId + "/",
+    type: 'DELETE',
+    dataType: 'json',
+    headers:{'Authorization':'Token ' + token},
+      success: function() {
+        runQuery();
+      },
+      error: function() {
+        nugget_div.fadeTo(200, 1.0);
       }
-    }
-  }, function(error) {
-    nugget_div.fadeTo(200, 1.0);
-  });
+    });
 });
 
 function validateLogin() {
-  var currentUser = Parse.User.current();
-  if (!currentUser)
+  if (!doesUserCurrentExist())
   {
     goToLoginPage();
   }
@@ -223,7 +226,7 @@ initialize();
 
 $('#logout-button').click(function()
 {
-  Parse.User.logOut();
+  removeUserObjectFromLocalStorage();
   goToLoginPage();
 });
 

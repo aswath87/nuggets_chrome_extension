@@ -3,7 +3,7 @@
 
   "name": "Nuggets",
   "description": "Nuggets helps you remember everything you learn. Record what your learn in nuggets of 200 chars (or less) and get timely reminders.",
-  "version": "1.7",
+  "version": "1.8",
 
   "browser_action": {
     "default_icon": "img/nuggets_logo_notext.png",
@@ -11,7 +11,8 @@
   },
   "permissions": [
     "contextMenus", 
-    "activeTab"
+    "activeTab",
+    "*://*/*"
   ],
   "icons": {
     "16": "img/nuggets16.png", 
