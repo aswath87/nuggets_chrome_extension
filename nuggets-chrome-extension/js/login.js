@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+var CURRENT_NUGGET_USER = 'currentNuggetUser';
+
 function initialize() {
   Parse.initialize("F1fRCfIIYQzvft22ckZd5CdrOzhVecTXkwfgWflN", "DUoWr9lIjQME2MmqgMApFmWFdzMcl7B6mKfj8AAc");
   $("span[data-toggle=tooltip]").tooltip();
@@ -11,8 +13,16 @@ function validateEmail(email) {
     return re.test(email);
 }
 
+function getCurrentUser() {
+    JSON.parse(localStorage.getItem(CURRENT_NUGGET_USER));
+}
+
+function saveCurrentUserInLocalStorage(user) {
+    localStorage.setItem(CURRENT_NUGGET_USER, JSON.stringify(user))
+}
+
 function validateLogin() {
-  var currentUser = Parse.User.current();
+  var currentUser = getCurrentUser();
   if (currentUser)
   {
     goToNuggetPage();
@@ -52,6 +62,14 @@ function attemptLogin()
     $('#login-password-message').css('display','none');
     Parse.User.logIn($('#login-email').val(), $('#login-password').val(), {
       success: function(user) {
+        $.post("https://nuggets-django.herokuapp.com/api-token-auth/",
+          {
+              username: $('#login-email').val(),
+              password: $('#login-password').val()
+          },
+          function(response, status){
+              saveCurrentUserInLocalStorage(response);
+          });
         goToNuggetPage();
       },
       error: function(user, error) {
