@@ -3,9 +3,9 @@ $(document).ready(function(){
 var welcome_nuggets = [];
 var welcome_nuggets_to_show = 3;
 var next_welcome_nugget_index = 0;
+var CURRENT_NUGGET_USER = 'currentNuggetUser';
 
 function initialize() {
-  Parse.initialize("F1fRCfIIYQzvft22ckZd5CdrOzhVecTXkwfgWflN", "DUoWr9lIjQME2MmqgMApFmWFdzMcl7B6mKfj8AAc");
   validateLogin();
 }
 
@@ -40,33 +40,30 @@ function updateWelcomeNuggetsMarkup()
 
 function runQuery()
 {
-  var Nugget_User = Parse.Object.extend("Nugget_User");
-  var User = Parse.Object.extend("User");
-  var user = new User();
-  user.id = "fyudoOXYX2";
-  var query = new Parse.Query(Nugget_User);
-  query.equalTo("user", user);
-  query.notEqualTo("isDeleted", true).ascending("updatedAt").limit(20);
-  query.include("nugget");
-  query.find().then(function(results) {
-    console.log('results: ' + results.length);
-    if (results.length == 0)
-    {
-      $('#welcome-nuggets-div').css("display", "none");
-    }
-    else
-    {
-      results = results.sort(function() { return 0.5 - Math.random();}); // randomize array
-      /*for (result in results)
-      {
-        welcome_nuggets.push(result.get("nugget"));
-      }*/
-      welcome_nuggets = $.map(results, function(nugget_user) {
-          return nugget_user.get("nugget");
-      });
-      updateWelcomeNuggetsMarkup();
-    }
-  });
+  var userId = "fyudoOXYX2"; // TODO once data is migrated, we need to make a call to find the token for this user. Until then, this won't work!!
+  var token = 'GET FROM API using /api-token-auth with username and password';
+  $.ajax({
+    url: "https://nuggets-django.herokuapp.com/api/v0/user/" + userId + "/nuggets",
+    type: 'GET',
+    dataType: 'json',
+    headers:{'Authorization':'Token ' + token},
+    success: function(results) {
+      console.log('results: ' + results.length);
+      if (results.length == 0) {
+        $('#welcome-nuggets-div').css("display", "none");
+      }
+      else {
+        results = results.sort(function () {
+          return 0.5 - Math.random();
+        }); // randomize array
+
+        welcome_nuggets = $.map(results, function (nugget) {
+          return nugget;
+        });
+        updateWelcomeNuggetsMarkup();
+      }
+    }}
+  );
 }
 
 $('#welcome-nuggets-table').on('mouseenter', 'tr', function()
@@ -79,33 +76,41 @@ $('#welcome-nuggets-table').on('mouseleave', 'tr', function()
   $(this).find('.nugget-action-icons').css('display','none');
 });
 
+function getCurrentUserToken() {
+  return JSON.parse(localStorage.getItem(CURRENT_NUGGET_USER))['token'];
+}
+
+function getCurrentUserId() {
+  return JSON.parse(localStorage.getItem(CURRENT_NUGGET_USER))['userId'];
+}
+
 $('#welcome-nuggets-table').on('click', '.icon-plus', function()
 {
   var nugget_div = $(this).parents('.nugget-wrapper');
   var nugget_id = nugget_div.attr('id');
-  var Nugget = Parse.Object.extend("Nugget");
-  var nugget = new Nugget();
-  nugget.id = nugget_id;
-  var Nugget_User = Parse.Object.extend("Nugget_User");
-  var query = new Parse.Query(Nugget_User);
-  query.equalTo("user", Parse.User.current());
-  query.equalTo("nugget", nugget);
-  query.find().then(function(nugget_users) {
-    if (!nugget_users || nugget_users.length == 0)
-    {
-      var nugget_user = new Nugget_User();
-      nugget_user.save({
-        nugget: nugget,
-        user: Parse.User.current()
-      });
-    }
-    else if (nugget_users.length == 1 && nugget_users[0].get("isDeleted") == true)
-    {
-      var nugget_user = nugget_users[0];
-      nugget_user.set("isDeleted", false);
-      nugget_user.save();
+
+  var userId = "fyudoOXYX2"; // TODO once data is migrated, we need to make a call to find the token for this user. Until then, this won't work!!
+  var token = 'GET FROM API using /api-token-auth with username and password';
+  $.ajax({
+    url: "https://nuggets-django.herokuapp.com/api/v0/user/" + userId + "/nuggets/" + nugget_id + "/",
+    type: 'GET',
+    dataType: 'json',
+    headers:{'Authorization':'Token ' + token},
+    success: function(nugget_from_famous_person) {
+      // copy nugget from famous person into current user:
+      var currentUserId = getCurrentUserId();
+      var currentUserToken = getCurrentUserToken();
+      var dataMap = { text : nugget_from_famous_person.text, tags : nugget_from_famous_person.tags, source : nugget_from_famous_person.source };
+      $.ajax({
+        url: "https://nuggets-django.herokuapp.com/api/v0/user/" + currentUserId + "/",
+        data: dataMap,
+        type: 'POST',
+        dataType: 'json',
+        headers:{'Authorization':'Token ' + currentUserToken},
+        });
     }
   });
+
   $(this).prop('class','icon-ok');
   nugget_div.fadeTo(1000, 0.2, function() {
     for(i=0;i<welcome_nuggets.length;i++)
@@ -120,9 +125,12 @@ $('#welcome-nuggets-table').on('click', '.icon-plus', function()
   });
 });
 
+function doesUserCurrentExist() {
+  return localStorage.getItem(CURRENT_NUGGET_USER);
+}
+
 function validateLogin() {
-  var currentUser = Parse.User.current();
-  if (!currentUser)
+  if (!doesUserCurrentExist())
   {
     goToLoginPage();
   }
