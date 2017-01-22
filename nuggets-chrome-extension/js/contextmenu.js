@@ -1,7 +1,17 @@
+function getCurrentUserToken() {
+    return JSON.parse(localStorage.getItem(CURRENT_NUGGET_USER))['token'];
+}
+
+function getCurrentUserId() {
+    return JSON.parse(localStorage.getItem(CURRENT_NUGGET_USER))['userId'];
+}
+
+function doesUserCurrentExist() {
+    return localStorage.getItem(CURRENT_NUGGET_USER);
+}
+
 function contextMenuClicked(info, tab) {
-	Parse.initialize("F1fRCfIIYQzvft22ckZd5CdrOzhVecTXkwfgWflN", "DUoWr9lIjQME2MmqgMApFmWFdzMcl7B6mKfj8AAc");
-	var currentUser = Parse.User.current();
-	if (!currentUser)
+	if (!doesUserCurrentExist())
 	{
 		alert('Login in the chrome extension above!');
 	}
@@ -13,20 +23,19 @@ function contextMenuClicked(info, tab) {
 		}
 		else
 		{
-			var Nugget = Parse.Object.extend("Nugget");
-      		var nugget = new Nugget();
-      		nugget.set("text", info.selectionText);
-			nugget.set("source", tab.title);
-			nugget.set("url", tab.url);
-			nugget.set("owner", Parse.User.current());
-
-			var Nugget_User = Parse.Object.extend("Nugget_User");
-			var nugget_user = new Nugget_User();
-			nugget_user.set("nugget", nugget);
-			nugget_user.set("user", Parse.User.current());
-			nugget_user.set("isOwner", true);
-			nugget_user.save().then(function() {
-				alert('Nugget saved!');
+			var currentUserId = getCurrentUserId();
+			var currentUserToken = getCurrentUserToken();
+			var dataMap = { text: info.selectionText, source: tab.title, url: tab.url };
+			$.ajax({
+				url: "https://nuggets-django.herokuapp.com/api/v0/user/" + currentUserId + "/",
+				data: dataMap,
+				type: 'POST',
+				dataType: 'json',
+				headers:{'Authorization':'Token ' + currentUserToken},
+				success: function(nugget_user)
+				{
+					alert('Nugget saved!');
+				}
 			});
 		}
 	}

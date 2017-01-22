@@ -3,7 +3,6 @@ $(document).ready(function(){
 var CURRENT_NUGGET_USER = 'currentNuggetUser';
 
 function initialize() {
-  Parse.initialize("F1fRCfIIYQzvft22ckZd5CdrOzhVecTXkwfgWflN", "DUoWr9lIjQME2MmqgMApFmWFdzMcl7B6mKfj8AAc");
   $("span[data-toggle=tooltip]").tooltip();
   validateLogin();
 }
@@ -60,23 +59,19 @@ function attemptLogin()
     $('#login-error-1').css('display','none');
     $('#login-error-2').css('display','none');
     $('#login-password-message').css('display','none');
-    Parse.User.logIn($('#login-email').val(), $('#login-password').val(), {
-      success: function(user) {
-        $.post("https://nuggets-django.herokuapp.com/api-token-auth/",
-          {
-              username: $('#login-email').val(),
-              password: $('#login-password').val()
-          },
-          function(response, status){
-              saveCurrentUserInLocalStorage(response);
-          });
-        goToNuggetPage();
+    $.post("https://nuggets-django.herokuapp.com/api-token-auth/",
+      {
+          username: $('#login-email').val(),
+          password: $('#login-password').val()
       },
-      error: function(user, error) {
+      function(response, status){
+          saveCurrentUserInLocalStorage(response);
+          goToNuggetPage();
+      },
+      function(user, error) {
         $('#login-error-2').css('display','block');
         $('#login-email').focus();
-      }
-    });
+      });
   }
   $('#login-button').prop('disabled', false);
 }
