@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+var CURRENT_NUGGET_USER = 'currentNuggetUser';
+
 function initialize() {
   chrome.tabs.query({active:true,currentWindow:true},function(tabArray){
     var tab = tabArray[0];
@@ -35,6 +37,7 @@ function runQuery()
 {
   chrome.tabs.query({active:true,currentWindow:true},function(tabArray){
     var tab = tabArray[0];
+    var token = getCurrentUserToken();
 
   //chrome.tabs.getSelected(null, function(tab) {
     $.ajax({
@@ -146,18 +149,13 @@ $('#add-nugget-button').click(function()
       {
         tabURL = tab.url;
       }
-      var tagsToSave = [];
       var tagsText = $('#nugget-tags').attr("value"); // .val() AND .prop("value") returns "" after submitting the first time.  Should be checking for the HTML markup attribute instead.
-      if (tagsText != null)
-      {
-        tagsToSave = tagsText.split(',');
-      }
 
       var currentUserId = getCurrentUserId();
       var currentUserToken = getCurrentUserToken();
-      var dataMap = { text: $('#nugget-text').val(), tags: tagsToSave, source: $('#nugget-source').val(), url: tabURL };
+      var dataMap = { text: $('#nugget-text').val(), tags: tagsText, source: $('#nugget-source').val(), url: tabURL };
       $.ajax({
-        url: "https://nuggets-django.herokuapp.com/api/v0/user/" + currentUserId + "/",
+        url: "https://nuggets-django.herokuapp.com/api/v0/user/" + currentUserId + "/nuggets/",
         data: dataMap,
         type: 'POST',
         dataType: 'json',

@@ -150,20 +150,24 @@ function attemptRegister()
     $('#register-error-2').css('display','none');
     $('#register-error-3').css('display','none');
     $('#register-error-4').css('display','none');
-    var user = new Parse.User();
-    user.set("displayname", $('#register-name').val());
-    user.set("username", $('#register-email').val());
-    user.set("password", $('#register-password').val());
-    user.set("email", $('#register-email').val());
-    user.signUp(null, {
-      success: function(user) {
-        goToWelcomePage();
-      },
-      error: function(user, error) {
-        $('#register-error-4').html(error.message);
-        $('#register-error-4').css('display','block');
-        $('#register-email').focus();
-      }
+
+    var dataMap = { displayname: $('#register-name').val(), username: $('#register-email').val(), password: $('#register-password').val(), email: $('#register-email').val() };
+    $.ajax({
+        url: "https://nuggets-django.herokuapp.com/api-register/",
+        data: dataMap,
+        type: 'POST',
+        dataType: 'json',
+        success: function(response)
+        {
+          saveCurrentUserInLocalStorage(response);
+          goToWelcomePage();
+        },
+        error: function(object, error)
+        {
+          $('#register-error-4').html(error.message);
+          $('#register-error-4').css('display','block');
+          $('#register-email').focus();
+        }
     });
   }
   $('#register-button').prop('disabled', false);

@@ -38,32 +38,33 @@ function updateWelcomeNuggetsMarkup()
   $('#welcome-nuggets-div').css("display", "block");
 }
 
-function runQuery()
+function loadSampleNuggets()
 {
-  var userId = "fyudoOXYX2"; // TODO once data is migrated, we need to make a call to find the token for this user. Until then, this won't work!!
-  var token = 'GET FROM API using /api-token-auth with username and password';
-  $.ajax({
-    url: "https://nuggets-django.herokuapp.com/api/v0/user/" + userId + "/nuggets",
-    type: 'GET',
-    dataType: 'json',
-    headers:{'Authorization':'Token ' + token},
-    success: function(results) {
-      console.log('results: ' + results.length);
-      if (results.length == 0) {
-        $('#welcome-nuggets-div').css("display", "none");
-      }
-      else {
-        results = results.sort(function () {
-          return 0.5 - Math.random();
-        }); // randomize array
-
-        welcome_nuggets = $.map(results, function (nugget) {
-          return nugget;
-        });
-        updateWelcomeNuggetsMarkup();
-      }
-    }}
-  );
+  welcome_nuggets = [{"owner":{"__type":"Pointer","className":"_User","objectId":"VDQ0z1vRVL"},"source":"To Find Happiness, Forget About Passion - Oliver Segovia - Harvard Business Review","text":"Happiness comes from the intersection of what you love, what you're good at, and what the world needs. We've been told time and again to keep finding the first. Our schools helped developed the second. It's time we put more thought on the third.","url":"http://blogs.hbr.org/2012/01/to-find-happiness-forget-about/","tags":["happiness"],"objectId":"lWIRT5hDto","createdAt":"2013-06-26T17:12:26.293Z","updatedAt":"2013-10-11T04:37:18.355Z"},{"owner":{"__type":"Pointer","className":"_User","objectId":"VDQ0z1vRVL"},"source":"Be lucky - it's an easy skill to learn - Telegraph","text":"Lucky people are more relaxed and open, and therefore see what is there rather than just what they are looking for.","url":"http://www.telegraph.co.uk/technology/3304496/Be-lucky-its-an-easy-skill-to-learn.html","tags":["luck"],"objectId":"2euhUzpEWr","createdAt":"2013-06-26T17:03:54.596Z","updatedAt":"2013-07-02T19:33:46.466Z"},{"owner":{"__type":"Pointer","className":"_User","objectId":"GAIdY9BElL"},"source":"Write less.","text":"Fewer words create a more powerful message. Write less. ","url":"http://getnashty.com/write-less","tags":["hack","career","life"],"objectId":"GuTc4Bfyzb","createdAt":"2013-10-01T20:24:34.146Z","updatedAt":"2013-10-01T20:24:34.146Z"},{"owner":{"__type":"Pointer","className":"_User","objectId":"VDQ0z1vRVL"},"source":"The Internet Just Made Microsoft Kill a Car for a Faster Horse — Adventures in Consumer Technology — Medium","text":"“If I had asked what my customers wanted, they would have said they wanted a faster horse.” - Henry Ford","url":"https://medium.com/adventures-in-consumer-technology/a849a9d4d530","tags":["customers"],"objectId":"Edi1t4BwwU","createdAt":"2013-06-21T16:59:12.909Z","updatedAt":"2013-07-02T19:33:46.182Z"},{"owner":{"__type":"Pointer","className":"_User","objectId":"VDQ0z1vRVL"},"source":"Think different: How an entrepreneur makes decisions to go camping - GeekWire","text":"An entrepreneur minimizes the number of regrets in his life by recognizing that there is a real cost to not doing something.","url":"http://www.geekwire.com/2012/entrepreneur-decisions-camping/","tags":["entrepreneur","regret"],"objectId":"9PoNmqX8m1","createdAt":"2013-06-26T17:22:31.775Z","updatedAt":"2013-07-02T19:33:47.094Z"},{"owner":{"__type":"Pointer","className":"_User","objectId":"GAIdY9BElL"},"source":"Woody Allen Interview - Woody Allen Blue Jasmine Quotes - Esquire","text":"If you don't have your health, you have nothing. Stay healthy, keep fit. ","url":"http://www.esquire.com/features/what-ive-learned/woody-allen-0913","tags":["life","health"],"objectId":"gqCk9vF3su","createdAt":"2013-08-10T07:48:17.704Z","updatedAt":"2013-08-10T07:48:17.704Z"},{"owner":{"__type":"Pointer","className":"_User","objectId":"GAIdY9BElL"},"source":"Ashton Kutcher reveals real name and gives great speech at 2013 Teen Choice Awards | Cultivated Influence","text":"Be smart, be thoughtful, be generous. Nothing else matters. ","url":"http://cultivatedinfluence.net/2013/08/12/ashton-kutcher-reveals-real-first-name-and-gives-great-speech-at-2013-teen-choice-awards/","tags":["life"],"objectId":"zErC2kGDE0","createdAt":"2013-08-14T18:32:55.419Z","updatedAt":"2013-08-14T18:32:55.419Z"},{"owner":{"__type":"Pointer","className":"_User","objectId":"fyudoOXYX2"},"source":"Steve Jobs: How to live before you die | Video on TED.com","text":"Stay Hungry. Stay Foolish.","url":"http://www.ted.com/talks/steve_jobs_how_to_live_before_you_die.html","tags":["life","stevejobs"],"objectId":"5y1l7Z04Nw","createdAt":"2013-10-11T04:50:08.225Z","updatedAt":"2013-10-11T04:53:12.158Z"},{"owner":{"__type":"Pointer","className":"_User","objectId":"fyudoOXYX2"},"source":"Steve Jobs: How to live before you die | Video on TED.com","text":"Find what you love. The only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle.","url":"http://www.ted.com/talks/steve_jobs_how_to_live_before_you_die.html","tags":["life","advice","passion","stevejobs"],"objectId":"H3gbckrsCM","createdAt":"2013-10-11T04:52:37.404Z","updatedAt":"2013-10-11T04:53:22.429Z"},{"owner":{"__type":"Pointer","className":"_User","objectId":"fyudoOXYX2"},"source":"Ashton Kutcher reveals real name and gives great speech at 2013 Teen Choice Awards | Cultivated Influence","text":"Opportunities look a lot like work.","url":"http://cultivatedinfluence.net/2013/08/12/ashton-kutcher-reveals-real-first-name-and-gives-great-speech-at-2013-teen-choice-awards/","tags":["life","opportunity"],"objectId":"MXYGvXP06G","createdAt":"2013-10-11T04:46:12.731Z","updatedAt":"2013-10-11T04:46:12.731Z"}]
+  // var userId = "1"; // TODO once data is migrated, we need to make a call to find the token for this user. Until then, this won't work!! The old id was fyudoOXYX2
+  // var token = 'GET FROM API using /api-token-auth with username and password';
+  // $.ajax({
+  //   url: "https://nuggets-django.herokuapp.com/api/v0/user/" + userId + "/nuggets",
+  //   type: 'GET',
+  //   dataType: 'json',
+  //   headers:{'Authorization':'Token ' + token},
+  //   success: function(results) {
+  //     console.log('results: ' + results.length);
+  //     if (results.length == 0) {
+  //       $('#welcome-nuggets-div').css("display", "none");
+  //     }
+  //     else {
+  //       results = results.sort(function () {
+  //         return 0.5 - Math.random();
+  //       }); // randomize array
+  //
+  //       welcome_nuggets = $.map(results, function (nugget) {
+  //         return nugget;
+  //       });
+  //       updateWelcomeNuggetsMarkup();
+  //     }
+  //   }}
+  // );
 }
 
 $('#welcome-nuggets-table').on('mouseenter', 'tr', function()
@@ -136,7 +137,7 @@ function validateLogin() {
   }
   else
   {
-    runQuery();
+    loadSampleNuggets();
   }
 }
 
